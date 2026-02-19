@@ -817,7 +817,7 @@ Industries Accordion (stacked, centered)
 .hero__buttons--center{ justify-content:center; }
 
 .usecase{
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
   text-align: center; /* center the block */
 }
