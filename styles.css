@@ -808,6 +808,41 @@ Industries Accordion (stacked, centered)
   margin-top:12px;
 }
 
+/* =========================
+   Use Case (Water page)
+========================= */
+.usecase{
+  max-width:760px;
+  margin:0 auto;
+  text-align:left;
+}
+.usecase--center{
+  text-align:center;
+}
+.usecase__list{
+  margin:0;
+  padding-left:18px;
+  line-height:1.7;
+}
+.usecase__punch{
+  margin:18px 0 0;
+  font-weight:600;
+}
+.usecase__lead{
+  margin:0 0 12px;
+}
+.usecase__body{
+  margin:18px 0 0;
+}
+.usecase__close{
+  margin:18px 0 0;
+}
+.usecase__proof{
+  margin:18px 0 0;
+  opacity:.72;
+  font-size:.95rem;
+}
+
 /* -----------------------------------------
    Contact Section
 ------------------------------------------ */
