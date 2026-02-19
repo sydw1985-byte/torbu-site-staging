@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Prevents SEO duplication if both www and root resolve -->
+  <link rel="canonical" href="https://torbu.com/">
+
+  <title>TORBU — Operating Intelligence for Regulated Systems</title>
+  <meta name="description" content="TORBU defines standards, structure, and oversight so intelligent systems operate with clear accountability." />
+
+  <!-- Turnstile (only needed on pages that render the widget) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <!-- Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicons (cache-busted) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=20260219" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260219">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=20260219">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=20260219">
+  
+  <!-- iOS -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260219">
+  <meta name="apple-mobile-web-app-title" content="TORBU">
+  
+  <!-- Safari pinned tab -->
+  <link rel="mask-icon" href="safari-pinned-tab.svg?v=20260219" color="#035157">
+  
+  <!-- Android / PWA -->
+  <link rel="manifest" href="site.webmanifest?v=20260219">
+  <meta name="theme-color" content="#035157">
+
+  <!-- Cache-bust if needed -->
+  <link rel="stylesheet" href="styles.css?v=9" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="#main" aria-label="TORBU home">
+      <img class="brand__logo" src="assets/torbu-logo-horizontal-green.png" alt="TORBU" />
+    </a>
+
+    <!-- Centered desktop nav links (NO Contact link here) -->
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav__links nav__links--desktop">
+        <a class="nav__link" href="#governance">Governance</a>
+        <a class="nav__link" href="#model">Model</a>
+        <a class="nav__link" href="#architecture">Architecture</a>
+        <a class="nav__link" href="#why">Why now</a>
+      </div>
+    </nav>
+
+    <!-- Right side actions -->
+    <div class="nav__actions">
+      <!-- Desktop-only green CTA -->
+      <a class="btn btn--primary nav__cta" href="#contact">Contact</a>
+      <!-- Mobile-only hamburger -->
+      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" id="drawer" hidden>
+    <nav class="drawer__nav" aria-label="Mobile navigation">
+      <a class="drawer__link" href="#governance">Governance</a>
+      <a class="drawer__link" href="#model">Model</a>
+      <a class="drawer__link" href="#architecture">Architecture</a>
+      <a class="drawer__link" href="#why">Why now</a>
+      <a class="drawer__link" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+<!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner hero__inner--single">
+        <div class="hero__copy hero__copy--overlay">
+
+    <h1 class="h1">Who’s accountable when AI fails?</h1>
+
+          <p class="lead">
+            AI accelerates execution.<br />
+            Humans remain responsible.
+          </p>
+          
+          <p class="lead lead--secondary">
+            <strong>TORBU ensures standards flow down—<br/>
+            and verified results roll up.</strong>
+          </p>
+      
+          <p class="hero__subline">
+            TORBU is governance software for regulated systems.
+          </p>
+
+
+          <div class="hero__buttons">
+            <a class="btn btn--ghost btn--ghost-on-hero" href="#model">Model</a>
+            <a class="btn btn--ghost btn--ghost-on-hero" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+<!-- GOVERNANCE -->
+<section class="section" id="governance">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Infrastructure requires governance</h2>
+    </div>
+
+    <div class="sector-gravity">
+      <p class="sector-gravity__water">As automation expands, oversight must scale with it.</p>
+      <p class="sector-gravity__water">Across regulated environments:</p>
+      <p class="sector-gravity__water">
+        Standards must propagate.<br />
+        Performance must be visible.<br />
+        Responsibility must be traceable.
+      </p>
+      <p class="sector-gravity__bridge">
+        TORBU establishes the operating model for durable traceability.
+      </p>
+    </div>
+
+    <!-- GOVERNANCE > INDUSTRIES (Accordion) -->
+    <div class="industry-accordion" id="industryAccordion" aria-label="Regulated industries">
+      
+      <!-- Industry section title -->
+      <div class="governance__head">
+        <h3 class="h3 governance__title">Sector Applications</h3>
+        <p class="governance__subhead">Fragmented systems. Workforce transition. Compliance pressure.</p>
+      </div>
+    
+      <!-- WATER -->
+      <div class="industryItem">
+        <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-water">
+          <span class="industryIcon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C12 2 5 10 5 14a7 7 0 0014 0c0-4-7-12-7-12z"/>
+            </svg>
+          </span>
+          <span class="industryLabel">Water</span>
+          <span class="industryPlus" aria-hidden="true">+</span>
+        </button>
+    
+        <div class="industryPanel" id="panel-water" hidden>
+          <div class="industryPanelInner">
+            <p class="industryLead">
+              <strong>Water.</strong> Utilities must meet uniform regulatory standards across systems of varying size and capacity. Workforce retirements, fragmented records, and uneven execution increase compliance risk.
+            </p>
+            <div class="industryDivider" aria-hidden="true"></div>
+            <p class="industryTorbu">
+              <strong>TORBU</strong> propagates statutory requirements, validates execution at defined checkpoints, and rolls verified evidence up for program oversight and state reporting.
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- ENERGY -->
+      <div class="industryItem">
+        <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-energy">
+          <span class="industryIcon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </span>
+          <span class="industryLabel">Energy</span>
+          <span class="industryPlus" aria-hidden="true">+</span>
+        </button>
+    
+        <div class="industryPanel" id="panel-energy" hidden>
+          <div class="industryPanelInner">
+            <p class="industryLead">
+              <strong>Energy.</strong> Distributed crews and vendors execute critical work while regulatory and safety requirements evolve faster than field practice.
+            </p>
+            <div class="industryDivider" aria-hidden="true"></div>
+            <p class="industryTorbu">
+              <strong>TORBU</strong> aligns policy to field workflows, verifies critical steps, and preserves supervisory visibility across assets and contractors.
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- TRANSIT -->
+      <div class="industryItem">
+        <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-transit">
+          <span class="industryIcon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="3" width="16" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="8" y2="17"/>
+              <line x1="16" y1="21" x2="16" y2="17"/>
+            </svg>
+          </span>
+          <span class="industryLabel">Transit</span>
+          <span class="industryPlus" aria-hidden="true">+</span>
+        </button>
+    
+        <div class="industryPanel" id="panel-transit" hidden>
+          <div class="industryPanelInner">
+            <p class="industryLead">
+              <strong>Transit.</strong> Safety depends on repeatable inspections, training currency, and auditable handoffs across depots and contractors.
+            </p>
+            <div class="industryDivider" aria-hidden="true"></div>
+            <p class="industryTorbu">
+              <strong>TORBU</strong> coordinates roles and validation checkpoints, producing verified records for regulators and post-incident review.
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- PUBLIC SAFETY -->
+      <div class="industryItem">
+        <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-public-safety">
+          <span class="industryIcon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/>
+            </svg>
+          </span>
+          <span class="industryLabel">Public Safety</span>
+          <span class="industryPlus" aria-hidden="true">+</span>
+        </button>
+    
+        <div class="industryPanel" id="panel-public-safety" hidden>
+          <div class="industryPanelInner">
+            <p class="industryLead">
+              <strong>Public Safety.</strong> Units must remain synchronized on policy and readiness while decisions stay traceable through command.
+            </p>
+            <div class="industryDivider" aria-hidden="true"></div>
+            <p class="industryTorbu">
+              <strong>TORBU</strong> propagates standards down and rolls readiness evidence up with clear accountability.
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- MILITARY -->
+      <div class="industryItem">
+        <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-military">
+          <span class="industryIcon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3v18"/>
+              <path d="M6 4h10l-1.5 3L16 10H6"/>
+            </svg>
+          </span>
+          <span class="industryLabel">Military</span>
+          <span class="industryPlus" aria-hidden="true">+</span>
+        </button>
+    
+        <div class="industryPanel" id="panel-military" hidden>
+          <div class="industryPanelInner">
+            <p class="industryLead">
+              <strong>Military.</strong> Standardized training and validation must scale across units without breaking hierarchical oversight.
+            </p>
+            <div class="industryDivider" aria-hidden="true"></div>
+            <p class="industryTorbu">
+              <strong>TORBU</strong> coordinates execution at scale and provides commanders verified visibility into readiness and compliance.
+            </p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div> <!-- /container -->
+</section>
+
+<!-- MODEL -->
+    <section class="section section--alt" id="model">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="h2">Model</h2>
+          <p class="subhead">From standards to verified supervisory control.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="checkpoint" aria-hidden="true"></div>
+            <h3 class="h3">Define</h3>
+            <p>Codify standards and assign accountable ownership.</p>
+          </div>
+
+          <div class="step">
+            <div class="checkpoint" aria-hidden="true"></div>
+            <h3 class="h3">Execute</h3>
+            <p>Deploy structured tasks and checkpoints under defined authority.</p>
+          </div>
+
+          <div class="step">
+            <div class="checkpoint" aria-hidden="true"></div>
+            <h3 class="h3">Verify</h3>
+            <p>Validate performance before risk compounds.</p>
+          </div>
+          <div class="step">
+            <div class="checkpoint"></div>
+            <h3 class="h3">Govern</h3>
+            <p>Preserve supervisory control across access, records, and policy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+<!-- ARCHITECTURE -->
+<section class="section section--alt" id="architecture">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Architecture</h2>
+      <p class="subhead">
+        TORBU operates alongside existing systems. It does not replace them.
+      </p>
+    </div>
+
+    <!-- Layer Stack -->
+    <div class="integrate__stack" role="list" aria-label="Integration diagram">
+      <div class="integrate__card integrate__card--top" role="listitem" tabindex="0">
+        <div class="integrate__kicker">Supervisory Layer</div>
+        <div class="integrate__items">Standards • Policy • Compliance • Oversight</div>
+      </div>
+
+      <div class="integrate__connector" aria-hidden="true">
+        <span class="integrate__arrow">↑</span>
+        <span class="integrate__meta">visibility & traceability</span>
+        <span class="integrate__arrow">↓</span>
+      </div>
+
+      <div class="integrate__card integrate__card--mid" role="listitem" tabindex="0">
+        <div class="integrate__kicker">Execution Layer</div>
+        <div class="integrate__items">
+          Workflows • Roles • Certification • Validation
+        </div>
+      </div>
+
+      <div class="integrate__connector" aria-hidden="true">
+        <span class="integrate__arrow">↑</span>
+        <span class="integrate__meta">coordination & continuity</span>
+        <span class="integrate__arrow">↓</span>
+      </div>
+
+      <div class="integrate__card integrate__card--bot" role="listitem" tabindex="0">
+        <div class="integrate__kicker">Physical Layer</div>
+        <div class="integrate__items">
+          Assets • Engineering • Workforce • Operations
+        </div>
+      </div>
+    </div>
+
+  <!-- ECOSYSTEM MODEL (inside Architecture section) -->
+    <div class="eco eco--clean">
+      <div class="eco__divider" aria-hidden="true"></div>
+    
+      <div class="eco__head">
+        <h3 class="h3 eco__title">Ecosystem Model</h3>
+        <p class="eco__subhead">Designed for coordinated delivery environments. Built with partners.</p>
+      </div>
+    
+      <div class="eco__grid" role="list" aria-label="Ecosystem roles">
+        <div class="eco__card" role="listitem" tabindex="0">
+          <div class="eco__kicker">Policy &amp; Standards Leadership</div>
+          <div class="eco__items">Statutory frameworks • Compliance thresholds • Program governance</div>
+        </div>
+    
+        <div class="eco__card" role="listitem" tabindex="0">
+          <div class="eco__kicker">Engineering &amp; Technical Execution</div>
+          <div class="eco__items">Capital upgrades • Asset modernization • System remediation</div>
+        </div>
+    
+        <div class="eco__card" role="listitem" tabindex="0">
+          <div class="eco__kicker">Data &amp; Risk Intelligence</div>
+          <div class="eco__items">Asset condition • Workforce capacity • Performance signals</div>
+        </div>
+      </div>
+    
+      <div class="eco__center" aria-label="Coordinated operating layer">
+        <div class="eco__centerTitle">TORBU is the Coordinated Operating Layer.</div>
+        <div class="eco__centerText">Standards flow down. Verified results roll up.</div>
+      </div>
+
+    
+      <p class="eco__caption">Framework added. Systems preserved.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="section section--alt" id="why">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Why now</h2>
+    </div>
+    <p class="why-now__body">
+      AI accelerates execution. Responsibility remains human.
+    </p>
+    <p class="why-now__body">
+      Automation scales. Accountability does not.
+    </p>
+    <p class="why-now__body">
+      <span style="font-weight: 500;">TORBU ensures oversight in automated systems.</span>
+    </p>
+    
+  </div>
+</section>
+
+    <!-- CONTACT -->
+    <section class="section section--cta" id="contact">
+      <div class="container">
+        <div class="cta">
+          <div class="cta__copy">
+            <h2 class="h2">Contact</h2>
+            <p class="subhead">Inquiries.</p>
+
+            <div class="cta__meta">
+              <div class="meta">
+                <span class="meta__label">Email</span>
+                <span class="meta__value">info@torbu.com</span>
+              </div>
+              <div class="meta">
+                <span class="meta__label">Focus</span>
+                <span class="meta__value">Governance • Traceability • Operational Control</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LIVE FORM -->
+            <form
+              class="form"
+              id="contactForm"
+              method="POST"
+              action="https://orange-wind-4bed.syd-ab8.workers.dev/submit"
+              novalidate
+            >
+            <!-- Honeypot -->
+            <input
+              type="text"
+              name="company"
+              autocomplete="off"
+              tabindex="-1"
+              aria-hidden="true"
+              style="position:absolute;left:-9999px;"
+            >
+            <!-- Turnstile (invisible) -->
+            <div class="cf-turnstile"
+              data-sitekey="0x4AAAAAACcnvT_VJJnqRu3U"
+              data-size="invisible"></div>
+
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+
+            <label>
+              <span>Organization</span>
+              <input type="text" name="org" autocomplete="organization" required>
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+
+            <label>
+              <span>Message</span>
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="What problem are you solving?"
+                required
+              ></textarea>
+            </label>
+
+            <button class="btn btn--primary btn--full" type="submit">
+              <span class="btn__text">Send</span>
+              <span class="btn__spinner" aria-hidden="true"></span>
+            </button>
+
+            <p class="fineprint">
+              We respond promptly. If you prefer, email us directly.
+            </p>
+          </form>
+        </div>
+    </section>
+  </main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer__top">
+      <div class="footer__left">
+        <div class="footer__brand">
+          TORBU<span class="reg reg--brand" aria-hidden="true">®</span>
+        </div>
+        <div class="footer__tag">Operating Intelligence for Regulated Systems.</div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#governance">Governance</a>
+        <a href="#model">Model</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#why">Why now</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+
+    <div class="footer__bottom">
+      <div class="footer__legal">
+        © <span id="year"></span> TORBU, LLC. All rights reserved.
+        TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.
+      </div>
+      <div class="footer__legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="footer__sep">•</span>
+        <a href="terms.html">Terms of Service</a>
+      </div>   
+    </div>
+
+  </div>
+</footer>
+  
+<!-- Automatically adjusts copyright year -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- Your JS (cache-busted) -->
+  <script src="app.js?v=10"></script>
+</body>
+</html>

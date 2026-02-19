@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Terms of Service — TORBU</title>
+  <meta name="description" content="TORBU Terms of Service" />
+
+  <!-- Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=9" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="./index.html#main" aria-label="TORBU home">
+        <img class="brand__logo" src="assets/torbu-logo-horizontal-green.png" alt="TORBU" />
+      </a>
+
+      <!-- Centered desktop nav links (NO Contact link here) -->
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav__links nav__links--desktop">
+          <a class="nav__link" href="./index.html#governance">Governance</a>
+          <a class="nav__link" href="./index.html#model">Model</a>
+          <a class="nav__link" href="./index.html#architecture">Architecture</a>
+          <a class="nav__link" href="./index.html#why">Why now</a>
+        </div>
+      </nav>
+
+      <!-- Right side actions -->
+      <div class="nav__actions">
+        <!-- Desktop-only green CTA -->
+        <a class="btn btn--primary nav__cta" href="./index.html#contact">Contact</a>
+
+        <!-- Mobile-only hamburger -->
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="drawer"
+          aria-label="Open menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="drawer" id="drawer" hidden>
+      <nav class="drawer__nav" aria-label="Mobile navigation">
+        <a class="drawer__link" href="./index.html#governance">Governance</a>
+        <a class="drawer__link" href="./index.html#model">Model</a>
+        <a class="drawer__link" href="./index.html#architecture">Architecture</a>
+        <a class="drawer__link" href="./index.html#why">Why now</a>
+        <a class="drawer__link" href="./index.html#contact">Contact</a>
+
+        <!-- Legal -->
+        <a class="drawer__link" href="./privacy.html">Privacy Policy</a>
+        <a class="drawer__link" href="./terms.html">Terms of Service</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main" class="legal">
+    <div class="container">
+      <header class="legal__head">
+        <div class="legal__shell">
+          <div class="legal__kicker">Agreement</div>
+          <h1 class="h2 legal__title">Terms of Service</h1>
+          <p class="legal__subtitle">
+            These Terms govern your use of the TORBU website. By accessing or using the site, you agree to these Terms.
+          </p>
+        </div>
+      </header>
+
+      <div class="legal__shell">
+        <div class="legal__card">
+
+          <div class="legal__meta">
+            <div><b>Effective:</b> <span id="termsEffective"></span></div>
+            <div><b>Last updated:</b> <span id="termsUpdated"></span></div>
+          </div>
+
+          <div class="legal__toc" aria-label="Terms table of contents">
+            <div class="legal__tocTitle">Sections</div>
+            <a href="#use">Use of site</a>
+            <a href="#content">Content & IP</a>
+            <a href="#links">Third-party links</a>
+            <a href="#disclaimer">Disclaimers</a>
+            <a href="#liability">Limitation of liability</a>
+            <a href="#indemnity">Indemnification</a>
+            <a href="#law">Governing law</a>
+            <a href="#changes">Changes</a>
+            <a href="#contact-us">Contact</a>
+          </div>
+
+          <section class="legal__section" id="use">
+            <h2>Use of site</h2>
+            <p>
+              You may use this website for lawful purposes only. You agree not to interfere with the site’s operation,
+              attempt unauthorized access, or use the site to transmit malicious code or spam.
+            </p>
+          </section>
+
+          <section class="legal__section" id="content">
+            <h2>Content & intellectual property</h2>
+            <p>
+              The site and its content are owned by TORBU, LLC or its licensors and are protected by intellectual property laws.
+              You may not copy, modify, distribute, or create derivative works from the site content without written permission,
+              except as permitted by law.
+            </p>
+            <p>
+              TORBU<span class="reg reg--legal">®</span> is a registered trademark of TORBU, LLC.
+            </p>
+          </section>
+
+          <section class="legal__section" id="links">
+            <h2>Third-party links</h2>
+            <p>
+              The site may include links to third-party websites. TORBU is not responsible for third-party content, policies, or practices.
+              Access third-party sites at your own risk.
+            </p>
+          </section>
+
+          <section class="legal__section" id="disclaimer">
+            <h2>Disclaimers</h2>
+            <p>
+              The site is provided “as is” and “as available.” TORBU makes no warranties of any kind, express or implied,
+              including warranties of merchantability, fitness for a particular purpose, and non-infringement.
+            </p>
+          </section>
+
+          <section class="legal__section" id="liability">
+            <h2>Limitation of liability</h2>
+            <p>
+              To the maximum extent permitted by law, TORBU will not be liable for indirect, incidental, special, consequential,
+              or punitive damages, or any loss of profits or revenues, arising from your use of the site.
+            </p>
+          </section>
+
+          <section class="legal__section" id="indemnity">
+            <h2>Indemnification</h2>
+            <p>
+              You agree to defend, indemnify, and hold harmless TORBU and its affiliates from any claims, liabilities, damages,
+              losses, and expenses arising from your use of the site or violation of these Terms.
+            </p>
+          </section>
+
+          <section class="legal__section" id="law">
+            <h2>Governing law</h2>
+            <p>
+              These Terms are governed by the laws applicable in TORBU’s primary place of business, without regard to conflict of law principles.
+            </p>
+          </section>
+
+          <section class="legal__section" id="changes">
+            <h2>Changes</h2>
+            <p>
+              We may update these Terms from time to time. The “Last updated” date reflects the latest revision.
+            </p>
+          </section>
+
+          <section class="legal__section" id="contact-us">
+            <h2>Contact</h2>
+            <p>
+              Questions about these Terms? Contact TORBU at
+              <a href="mailto:info@torbu.com">info@torbu.com</a>.
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+  <div class="container">
+
+    <div class="footer__top">
+      <div class="footer__left">
+        <div class="footer__brand">
+          TORBU<span class="reg reg--brand" aria-hidden="true">®</span>
+        </div>
+        <div class="footer__tag">Operating Intelligence for Regulated Systems.</div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="./index.html#governance">Governance</a>
+        <a href="./index.html#model">Model</a>
+        <a href="./index.html#architecture">Architecture</a>
+        <a href="./index.html#why">Why now</a>
+        <a href="./index.html#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__legal">
+        © <span id="year"></span> TORBU, LLC. All rights reserved.
+        TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of
+        <span class="nowrap">TORBU, LLC.</span>
+      </div>
+
+      <div class="footer__legal-links" aria-label="Legal links">
+        <a href="./privacy.html">Privacy Policy</a>
+        <span class="footer__sep" aria-hidden="true">•</span>
+        <a href="./terms.html">Terms of Service</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const setText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    // Year
+    setText("year", new Date().getFullYear());
+
+    // Effective/Updated (set both to today by default; edit if you want)
+    const today = new Date();
+    const fmt = (d) =>
+      d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+
+    setText("termsEffective", fmt(today));
+    setText("termsUpdated", fmt(today));
+
+    // Smooth anchor scrolling (only for same-page anchors)
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.pushState(null, "", id);
+      });
+    });
+
+    // Mobile drawer toggle
+    const btn = document.getElementById("navToggle");
+    const drawer = document.getElementById("drawer");
+    if (btn && drawer) {
+      btn.addEventListener("click", () => {
+        const isOpen = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!isOpen));
+        drawer.hidden = isOpen;
+      });
+
+      drawer.addEventListener("click", (e) => {
+        if (e.target.closest("a")) {
+          drawer.hidden = true;
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
