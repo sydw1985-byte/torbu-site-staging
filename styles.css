@@ -811,83 +811,58 @@ Industries Accordion (stacked, centered)
 /* =========================
    Use Case (Water page)
 ========================= */
+.section--usecaseTight{ padding:72px 0; }            /* narrower gaps */
+.section--usecaseHero{ padding:84px 0 78px; }        /* slightly tighter hero */
+
+.hero__buttons--center{ justify-content:center; }
+
 .usecase{
-  max-width: 680px;
+  max-width: 760px;
   margin: 0 auto;
-  text-align: center; /* page reads centered */
+  text-align: center; /* center the block */
 }
 
-/* tighter vertical rhythm */
-.usecase__lead{
-  margin: 0 auto 10px;
-}
-.usecase__body{
-  margin: 14px auto 0;
-  max-width: 70ch;
-}
-.usecase__punch{
-  margin: 14px auto 0;
-  font-weight: 600;
-}
+.usecase--center{ text-align:center; }
 
-/* micro-kicker */
-.usecase__kicker{
-  display: inline-block;
-  font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(31,35,34,.55);
-  margin: 0 0 10px;
-}
-
-/* center the list block, but keep list text left */
+/* Center the list as a block, but keep list text left-aligned */
 .usecase__listWrap{
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
+  display: inline-block;   /* key: centers the list block */
+  text-align: left;        /* key: keeps bullets/text clean */
+  margin-top: 18px;
+  margin-bottom: 6px;
 }
 
 .usecase__list{
-  display: inline-block;          /* shrink to content width */
-  text-align: left;               /* list reads cleanly */
   margin: 0;
   padding-left: 18px;
-  line-height: 1.7;
-  max-width: 54ch;                /* prevents ultra-wide lines */
+  line-height: 1.75;
 }
 
-/* make bullets feel intentional */
-.usecase__list li{
-  margin: 6px 0;
-}
-.usecase__list li::marker{
-  color: rgba(3,81,87,.55);
+.usecase__lead{
+  margin: 22px 0 0;
+  font-weight: 600;
 }
 
-/* single visual emphasis block */
-.usecase__callout{
-  margin: 18px auto 0;
-  max-width: 760px;
+/* Visual emphasis blocks */
+.usecase__callout,
+.usecase__emphasis{
+  margin: 20px auto 0;
   padding: 14px 16px;
-  border: 1px solid var(--line);
   border-radius: 16px;
-  background: rgba(255,255,255,.70);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.72);
   box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  max-width: 560px;
 }
 
-.usecase__callout strong{
-  color: var(--midnight);
+.usecase__callout--soft{
+  background: rgba(255,255,255,.55);
 }
 
-/* center variants */
-.usecase--center{
-  text-align: center;
-}
-.usecase__close{
-  margin: 16px auto 0;
-}
+.usecase__body{ margin: 18px 0 0; }
+
 .usecase__proof{
-  margin: 14px auto 0;
+  margin: 18px 0 0;
   opacity: .72;
   font-size: .95rem;
 }
