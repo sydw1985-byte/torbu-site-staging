@@ -661,8 +661,9 @@ Industries Accordion (stacked, centered)
   background: rgba(214,252,73,.08);
   box-shadow: 0 10px 30px rgba(3,81,87,.10);
 }
-
-/* ---------- Ecosystem Model diagram ---------- */
+/* =====================
+   Ecosystem Model diagra
+===================== */
 .eco{ margin-top:26px; }
 
 .eco__divider{
