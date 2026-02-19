@@ -809,67 +809,68 @@ Industries Accordion (stacked, centered)
 }
 
 /* =========================
-   Use Case Pages (Water)
+   Use Case (Water page)
 ========================= */
-.page--usecase .section{
-  padding:72px 0;               /* tighter than homepage */
-}
-@media (max-width: 720px){
-  .page--usecase .section{
-    padding:56px 0;
-  }
-}
 
-.page--usecase .section__head{
-  margin:0 auto 22px;           /* tighter section head spacing */
-}
-
-.micro-kicker{
-  display:inline-block;
-  font-size:11px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(31,35,34,.55);
-  margin:0 0 10px;
-}
-
-/* Center overall, but keep bullets left-aligned */
 .usecase{
-  max-width:74ch;
+  max-width:720px;
   margin:0 auto;
   text-align:center;
 }
-.usecase__list{
-  max-width:58ch;
-  margin:14px auto 0;
-  padding-left:20px;
-  text-align:left;              /* key: bullets read clean */
-}
-.usecase__lead{
-  margin:0;
-  font-weight:500;
-  color:rgba(31,35,34,.78);
+
+/* micro-kicker above section title */
+.usecase__kicker{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(3,81,87,.6);
+  margin:0 0 10px;
 }
 
-/* Single visual emphasis block */
-.emphasis{
-  max-width:74ch;
-  margin:22px auto 0;
-  padding:18px 18px;
+/* left-aligned list inside centered block */
+.usecase__list{
+  margin:14px auto 0;
+  padding-left:18px;
+  max-width:560px;
+  text-align:left;
+  line-height:1.65;
+}
+
+/* tighter vertical rhythm */
+.usecase__lead{
+  margin:0 0 8px;
+  font-weight:500;
+}
+
+.usecase__body{
+  margin:14px auto 0;
+  max-width:640px;
+}
+
+.usecase__punch{
+  margin:14px auto 0;
+  font-weight:600;
+}
+
+.usecase__close{
+  margin:16px auto 0;
+}
+
+.usecase__proof{
+  margin:10px auto 0;
+  opacity:.65;
+  font-size:.92rem;
+}
+
+/* single visual emphasis block */
+.usecase__emphasis{
+  margin:26px auto 0;
+  padding:18px 22px;
+  max-width:620px;
+  background:rgba(3,81,87,.06);
   border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(255,255,255,.65);
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-  text-align:center;
-}
-.emphasis__title{
-  margin:0 0 6px;
-  font-weight:650;
-  color:var(--midnight);
-}
-.emphasis__text{
-  margin:0;
-  color:rgba(31,35,34,.82);
+  border-radius:16px;
+  font-weight:500;
 }
 
 /* -----------------------------------------
