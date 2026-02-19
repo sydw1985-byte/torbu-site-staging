@@ -92,34 +92,111 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* =============
-Buttons 
+   Buttons
 ============= */
+
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding:12px 16px;
+  padding:12px 18px;
   border-radius:999px;
-  border:1px solid var(--line);
+  border:1.5px solid var(--line2);
   background:#fff;
-  font-weight:600;
+  color:rgba(31,35,34,.9);
+  font-weight:500;
+  letter-spacing:.01em;
   cursor:pointer;
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, opacity .15s ease;
+  position:relative;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease,
+    border-color .15s ease,
+    color .15s ease;
 }
-.btn:hover{transform:translateY(-1px)}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+/* Primary button */
 .btn--primary{
   border-color:transparent;
   background:var(--midnight);
   color:#fff;
+  font-weight:600;
   box-shadow:0 10px 30px rgba(3,81,87,.10);
 }
+
+/* =========================
+   Adaptive Ghost Button
+========================= */
+
+/* Default (light backgrounds) */
 .btn--ghost{
-  background:transparent;
-  color:rgba(31,35,34,.85);
+  --ghost-bg: rgba(255,255,255,.65);
+  --ghost-border: rgba(31,35,34,.22);
+  --ghost-text: rgba(31,35,34,.85);
+
+  background:var(--ghost-bg);
+  border:1.5px solid var(--ghost-border);
+  color:var(--ghost-text);
+  font-weight:500;
 }
-.btn--ghost:hover{background:rgba(255,255,255,.35)}
-.btn--full{width:100%}
+
+.btn--ghost:hover{
+  background:rgba(255,255,255,.92);
+  border-color:rgba(3,81,87,.35);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+
+/* Auto-adapt on dark/gradient hero */
+.hero .btn--ghost{
+  --ghost-bg: rgba(255,255,255,.18);
+  --ghost-border: rgba(255,255,255,.42);
+  --ghost-text: rgba(255,255,255,.92);
+}
+
+.hero .btn--ghost:hover{
+  background:rgba(255,255,255,.26);
+  border-color:rgba(255,255,255,.60);
+  box-shadow:0 10px 28px rgba(0,0,0,.12);
+}
+
+.btn--full{ width:100%; }
+
+/* =========================
+   Button Spinner + States
+========================= */
+
+.btn__spinner{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid currentColor;
+  border-top-color:transparent;
+  opacity:.7;
+  display:none;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  animation:spin .7s linear infinite;
+}
+
+.btn.is-loading .btn__text{ visibility:hidden; }
+.btn.is-loading .btn__spinner{ display:inline-block; }
+
+.btn.is-loading{
+  pointer-events:none;
+  cursor:default;
+}
+
+@keyframes spin{
+  to{ transform:translate(-50%, -50%) rotate(360deg); }
+}
 
 /* =========================
    Button Spinner + States
