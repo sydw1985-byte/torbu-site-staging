@@ -853,7 +853,9 @@ Industries Accordion (stacked, centered)
 }
 
 .usecase__close{
-  margin:16px auto 0;
+  margin:24px 0 0;
+  font-weight:600;
+  letter-spacing:.01em;
 }
 
 .usecase__proof{
