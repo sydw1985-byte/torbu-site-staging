@@ -811,68 +811,85 @@ Industries Accordion (stacked, centered)
 /* =========================
    Use Case (Water page)
 ========================= */
-
 .usecase{
-  max-width:680px;
-  margin:0 auto;
-  text-align:center;
-}
-
-/* micro-kicker above section title */
-.usecase__kicker{
-  font-size:12px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:rgba(3,81,87,.6);
-  margin:0 0 10px;
-}
-
-/* left-aligned list inside centered block */
-.usecase__list{
-  margin:14px auto 0;
-  padding-left:18px;
-  max-width:560px;
-  text-align:left;
-  line-height:1.65;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center; /* page reads centered */
 }
 
 /* tighter vertical rhythm */
 .usecase__lead{
-  margin:0 0 8px;
-  font-weight:500;
+  margin: 0 auto 10px;
 }
-
 .usecase__body{
-  margin:14px auto 0;
-  max-width:640px;
+  margin: 14px auto 0;
+  max-width: 70ch;
 }
-
 .usecase__punch{
-  margin:14px auto 0;
-  font-weight:600;
+  margin: 14px auto 0;
+  font-weight: 600;
 }
 
-.usecase__close{
-  margin:24px 0 0;
-  font-weight:600;
-  letter-spacing:.01em;
+/* micro-kicker */
+.usecase__kicker{
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(31,35,34,.55);
+  margin: 0 0 10px;
 }
 
-.usecase__proof{
-  margin:10px auto 0;
-  opacity:.65;
-  font-size:.92rem;
+/* center the list block, but keep list text left */
+.usecase__listWrap{
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.usecase__list{
+  display: inline-block;          /* shrink to content width */
+  text-align: left;               /* list reads cleanly */
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.7;
+  max-width: 54ch;                /* prevents ultra-wide lines */
+}
+
+/* make bullets feel intentional */
+.usecase__list li{
+  margin: 6px 0;
+}
+.usecase__list li::marker{
+  color: rgba(3,81,87,.55);
 }
 
 /* single visual emphasis block */
-.usecase__emphasis{
-  margin:26px auto 0;
-  padding:18px 22px;
-  max-width:620px;
-  background:rgba(3,81,87,.06);
-  border:1px solid var(--line);
-  border-radius:16px;
-  font-weight:500;
+.usecase__callout{
+  margin: 18px auto 0;
+  max-width: 760px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255,255,255,.70);
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+
+.usecase__callout strong{
+  color: var(--midnight);
+}
+
+/* center variants */
+.usecase--center{
+  text-align: center;
+}
+.usecase__close{
+  margin: 16px auto 0;
+}
+.usecase__proof{
+  margin: 14px auto 0;
+  opacity: .72;
+  font-size: .95rem;
 }
 
 /* -----------------------------------------
