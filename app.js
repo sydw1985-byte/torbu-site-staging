@@ -66,6 +66,36 @@ const form = document.getElementById("contactForm");
   closeAll();
 })();
 
+/* Reads the hash and opens the Water accordion automatically (use case) */ 
+(() => {
+  // Auto-open a sector accordion from hash like #governance-open-water
+  const h = window.location.hash || "";
+  if (!h.includes("governance-open-water")) return;
+
+  const root = document.getElementById("industryAccordion");
+  if (!root) return;
+
+  // scroll to governance section
+  const gov = document.getElementById("governance");
+  if (gov) gov.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // open water panel
+  const btn = root.querySelector('.industryTrigger[aria-controls="panel-water"]');
+  const panel = document.getElementById("panel-water");
+  if (!btn || !panel) return;
+
+  // close others if your accordion is one-open-at-a-time
+  root.querySelectorAll('.industryTrigger[aria-expanded="true"]').forEach(b => {
+    b.setAttribute("aria-expanded", "false");
+    const pid = b.getAttribute("aria-controls");
+    const p = pid ? document.getElementById(pid) : null;
+    if (p) p.hidden = true;
+  });
+
+  btn.setAttribute("aria-expanded", "true");
+  panel.hidden = false;
+})();
+
 /* Contact form submit (Worker + Turnstile) */
 if (form) {
   form.addEventListener("submit", async (e) => {
