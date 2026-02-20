@@ -1142,61 +1142,40 @@ textarea:focus{
 /* =========================
    Credibility ribbon
 ========================= */
+
 .cred-ribbon{
-  position: relative;
+  margin-top: 0; /* remove accidental spacing */
   background: linear-gradient(
     180deg,
-    rgba(251,250,248,.95) 0%,
-    rgba(242,237,232,.95) 100%
+    rgba(251,250,248,.96) 0%,
+    rgba(242,237,232,.96) 100%
   );
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-
-  /* subtle depth */
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.70),
-    0 8px 22px rgba(0,0,0,.035);
-}
-
-/* optional: ultra-thin accent rule (keeps it “designed”, not “extra”) */
-.cred-ribbon::before{
-  content:"";
-  position:absolute;
-  left:0; right:0; top:0;
-  height:1px;
-  background: linear-gradient(
-    90deg,
-    rgba(214,252,73,.20) 0%,   /* lime */
-    rgba(252,124,87,.12) 55%,  /* orange */
-    rgba(214,252,73,.06) 100%
-  );
-  pointer-events:none;
+  border-top: 1px solid rgba(31,35,34,.06);
+  border-bottom: 1px solid rgba(31,35,34,.05);
 }
 
 .cred-ribbon__inner{
-  padding: 18px 0;
+  padding: 18px 0;   /* was 22 — tighter */
   text-align: center;
 }
 
 .cred-ribbon__text{
-  display: inline-block;
-  color: rgba(31,35,34,.72);
-  font-size: 13px;
-  letter-spacing: .10em;
+  color: rgba(31,35,34,.70);
+  font-size: 12.5px;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  line-height: 1.15;
-
-  /* gentle static “depth” */
-  text-shadow: 0 1px 0 rgba(255,255,255,.70);
 }
 
 /* Mobile */
 @media (max-width: 600px){
-  .cred-ribbon__inner{ padding: 16px 0; }
+  .cred-ribbon__inner{
+    padding: 20px 0;
+  }
+
   .cred-ribbon__text{
     font-size: 12px;
-    letter-spacing: .09em;
-    padding: 0 12px;
+    letter-spacing: .12em;
+    padding: 0 16px;          /* avoid edge crowding */
   }
 }
 
