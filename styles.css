@@ -1192,7 +1192,7 @@ textarea:focus{
 
 /* Mobile */
 @media (max-width: 600px){
-  .cred-ribbon__inner{ padding: 16px 0; }
+  .cred-ribbon__inner{ padding: 14px 0; }
   .cred-ribbon__text{
     font-size: 12px;
     letter-spacing: .09em;
