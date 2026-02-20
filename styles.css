@@ -1139,6 +1139,21 @@ textarea:focus{
   color:rgba(31,35,34,.70);
 }
 
+/* Credibility Ribbon */
+.credibility-ribbon{
+  padding:48px 0;
+  text-align:center;
+  background:var(--bg-soft);
+  border-top:1px solid var(--line);
+}
+
+.credibility-ribbon p{
+  margin:0;
+  font-size:14px;
+  letter-spacing:.02em;
+  color:rgba(31,35,34,.65);
+}
+
 /* Footer */
 .footer{
   padding:48px 0 56px;
