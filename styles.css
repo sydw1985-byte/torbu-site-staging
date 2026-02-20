@@ -685,6 +685,21 @@ Industries Accordion (stacked, centered)
   font-weight: 600;
   letter-spacing: .01em;
 }
+/* Keep use case link styles consistent */
+.industryCta{
+  margin-top: 12px;
+}
+.industryCta__link{
+  display:inline-block;
+  font-weight:500;
+  color: var(--midnight);
+  opacity:.9;
+}
+.industryCta__link:hover{
+  opacity:1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 /* =========================
    Governance Section Integration
