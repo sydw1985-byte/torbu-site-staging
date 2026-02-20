@@ -1143,64 +1143,40 @@ textarea:focus{
    Credibility ribbon
 ========================= */
 .cred-ribbon{
-  position:relative;
-  padding:16px 0;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  background: var(--isabelline-alt);
-  overflow:hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(251,250,248,.92) 0%,
+    rgba(242,237,232,.92) 100%
+  ); /* subtle, on-brand, static */
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .cred-ribbon__inner{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+  padding: 18px 0;
+  text-align: center;
 }
 
 .cred-ribbon__text{
-  font-size:13px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color: rgba(31,35,34,.55);
+  display: inline-block;
+  color: rgba(31,35,34,.74);
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+
+  /* gentle static “depth” */
+  text-shadow: 0 1px 0 rgba(255,255,255,.65);
 }
 
-/* Subtle animated “light sweep” */
-.cred-ribbon::before{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-30%;
-  width:40%;
-  height:180%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(3,81,87,.08),
-    transparent
-  );
-  transform: rotate(12deg) translateX(-120%);
-  animation: ribbonSweep 10s ease-in-out infinite;
-  pointer-events:none;
-  filter: blur(0.2px);
-}
-
-@keyframes ribbonSweep{
-  0%, 55% { transform: rotate(12deg) translateX(-120%); opacity:0; }
-  60%     { opacity:1; }
-  85%     { transform: rotate(12deg) translateX(320%); opacity:.9; }
-  100%    { transform: rotate(12deg) translateX(320%); opacity:0; }
-}
-
-/* Mobile tuning */
+/* Mobile */
 @media (max-width: 600px){
-  .cred-ribbon{ padding:14px 0; }
-  .cred-ribbon__text{ font-size:12px; letter-spacing:.07em; }
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .cred-ribbon::before{ animation:none; display:none; }
+  .cred-ribbon__inner{ padding: 16px 0; }
+  .cred-ribbon__text{
+    font-size: 12px;
+    letter-spacing: .07em;
+    padding: 0 10px; /* avoids edge collisions */
+  }
 }
 
 /* Footer */
