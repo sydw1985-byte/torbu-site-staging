@@ -571,9 +571,9 @@ Buttons
   line-height:1.5;
 }
 
-/* ========================= 
+/* ==================================== 
 Industries Accordion (stacked, centered) 
-========================== */
+===================================== */
 .industry-accordion{
   max-width: 520px;
   margin: 28px auto 0;
@@ -701,9 +701,9 @@ Industries Accordion (stacked, centered)
   text-underline-offset: 3px;
 }
 
-/* =========================
+/* ==============================
    Governance Section Integration
-========================= */
+=============================== */
 
 /* Reduce bottom spacing after gravity text */
 .sector-gravity {
@@ -794,9 +794,9 @@ Industries Accordion (stacked, centered)
   background: rgba(214,252,73,.08);
   box-shadow: 0 10px 30px rgba(3,81,87,.10);
 }
-/* =====================
-   Ecosystem Model diagra
-===================== */
+/* =======================
+   Ecosystem Model diagram
+======================== */
 .eco{ margin-top:26px; }
 
 .eco__divider{
@@ -948,7 +948,7 @@ Industries Accordion (stacked, centered)
 .section--usecaseTight{ padding:72px 0; }
 .section--usecaseHero{ padding:84px 0 78px; }
 
-@media (max-width: 720px){
+@media (max-width: 760px){
   .section--usecaseTight{ padding:56px 0; }
   .section--usecaseHero{ padding:64px 0 58px; }
 }
