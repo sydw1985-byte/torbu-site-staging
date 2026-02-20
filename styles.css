@@ -1174,7 +1174,7 @@ textarea:focus{
 }
 
 .cred-ribbon__inner{
-  padding: 22px 0;
+  padding: 16px 0;
   text-align: center;
 }
 
@@ -1192,12 +1192,23 @@ textarea:focus{
 
 /* Mobile */
 @media (max-width: 600px){
-  .cred-ribbon__inner{ padding: 14px 0; }
+  .cred-ribbon__inner{ padding: 12px 0; }
   .cred-ribbon__text{
     font-size: 12px;
     letter-spacing: .09em;
     padding: 0 12px;
   }
+}
+
+/* When a credibility ribbon is present, don’t double-separate */
+.has-ribbon .footer .container{
+  border-top:0;
+  padding-top:0;
+}
+
+/* Tighten perceived gap */
+.has-ribbon .footer{
+  padding:34px 0 56px; /* was 48px 0 56px */
 }
 
 /* Footer */
