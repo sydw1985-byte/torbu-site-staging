@@ -414,40 +414,76 @@ Buttons
   margin:0 auto;
   text-align:center;
 }
+
+/* Hierarchy: H1 clearly leads */
 .hero .h1{
   color:#fff;
-  text-shadow:0 10px 26px rgba(0,0,0,.22), 0 2px 0 rgba(0,0,0,.08);
+  line-height:1.02;
+  letter-spacing:-0.035em;
+  text-shadow:0 10px 24px rgba(0,0,0,.20), 0 2px 0 rgba(0,0,0,.06);
 }
+
+/* Lead line: lighter + slightly smaller so it reads as support */
 .hero .lead{
   margin:0 auto 18px;
   max-width:60ch;
-  font-size:19px;
-  color:rgba(255,255,255,.92);
-  text-shadow:0 6px 18px rgba(0,0,0,.14);
+  font-size:18px;
+  font-weight:400;
+  color:rgba(255,255,255,.90);
+  text-shadow:0 6px 16px rgba(0,0,0,.12);
 }
+
+/* Promise line: firm, but don’t out-shout the H1 */
+.lead--secondary{
+  margin-top:16px;
+}
+.lead--secondary strong{
+  font-weight:600;
+}
+
+/* Descriptor: slightly clearer */
 .hero__subline{
-  margin:18px auto 0;
+  margin:16px auto 0;
   max-width:62ch;
-  color:rgba(255,255,255,.88);
+  color:rgba(255,255,255,.92);
   font-size:14px;
   letter-spacing:.01em;
 }
-.lead--secondary{margin-top:18px}
 
+/* Buttons */
 .hero__buttons{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
   justify-content:center;
-  margin-top:10px;
+  margin-top:12px;
 }
+
+/* Your hero ghost style can stay, but slightly strengthen hover */
 .btn--ghost-on-hero{
   border-color:rgba(242,237,232,.52);
   color:rgba(242,237,232,.96);
   background:rgba(255,255,255,.10);
   backdrop-filter:blur(8px);
 }
-.btn--ghost-on-hero:hover{background:rgba(255,255,255,.14)}
+.btn--ghost-on-hero:hover{
+  background:rgba(255,255,255,.16);
+  border-color:rgba(242,237,232,.62);
+}
+
+/* Mobile tuning: reduce density, keep hierarchy */
+@media (max-width: 600px){
+  .hero{
+    padding:96px 0 78px;
+  }
+  .hero .lead{
+    font-size:16px;
+    margin-bottom:16px;
+  }
+  .hero__subline{
+    font-size:14px;
+  }
+}
 
 /* Sections */
 .section{
