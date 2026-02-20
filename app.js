@@ -75,16 +75,15 @@ const form = document.getElementById("contactForm");
   const root = document.getElementById("industryAccordion");
   if (!root) return;
 
-  // scroll to governance section
   const gov = document.getElementById("governance");
-  if (gov) gov.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  // open water panel
   const btn = root.querySelector('.industryTrigger[aria-controls="panel-water"]');
   const panel = document.getElementById("panel-water");
   if (!btn || !panel) return;
 
-  // close others if your accordion is one-open-at-a-time
+  // Jump to governance first (no smooth on first jump)
+  if (gov) gov.scrollIntoView({ behavior: "auto", block: "start" });
+
+  // Close others (single-open accordion behavior)
   root.querySelectorAll('.industryTrigger[aria-expanded="true"]').forEach(b => {
     b.setAttribute("aria-expanded", "false");
     const pid = b.getAttribute("aria-controls");
@@ -92,8 +91,15 @@ const form = document.getElementById("contactForm");
     if (p) p.hidden = true;
   });
 
+  // Open water
   btn.setAttribute("aria-expanded", "true");
   panel.hidden = false;
+
+  // Then scroll to the Water row so the user lands exactly there
+  // (delay lets layout settle)
+  setTimeout(() => {
+    btn.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 120);
 })();
 
 /* Contact form submit (Worker + Turnstile) */
