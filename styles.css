@@ -1011,6 +1011,48 @@ Industries Accordion (stacked, centered)
   font-size:.95rem;
 }
 
+/* =========================
+   Company page (match Use Case rhythm)
+========================= */
+.page--company .section--companyTight{ padding:72px 0; }
+.page--company .section--companyHero{ padding:84px 0 78px; }
+
+@media (max-width:760px){
+  .page--company .section--companyTight{ padding:56px 0; }
+  .page--company .section--companyHero{ padding:64px 0 58px; }
+}
+
+/* Narrow, centered content like Water */
+.page--company .company{
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
+}
+
+/* Lists: centered block, left aligned text */
+.page--company .company__listWrap{
+  display:inline-block;
+  text-align:left;
+  margin-top:16px;
+  margin-bottom:6px;
+}
+.page--company .company__list{
+  margin:0;
+  padding-left:18px;
+  line-height:1.75;
+}
+
+/* Callouts: match Water */
+.page--company .company__callout{
+  margin:18px auto 0;
+  padding:12px 14px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.70));
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+  max-width:560px;
+}
+
 /* -----------------------------------------
    Contact Section
 ------------------------------------------ */
