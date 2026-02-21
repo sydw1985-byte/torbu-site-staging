@@ -577,6 +577,11 @@ Buttons
   line-height:1.5;
 }
 
+.governance__statement{
+  max-width: 760px;   /* adjust 680–820 to taste */
+  margin: 24px auto 0;
+}
+
 /* ==================================== 
 Industries Accordion (stacked, centered) 
 ===================================== */
