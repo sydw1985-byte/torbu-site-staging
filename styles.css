@@ -1053,6 +1053,8 @@ Industries Accordion (stacked, centered)
   max-width:560px;
 }
 
+.company__body{ margin:16px 0 0; }
+
 /* -----------------------------------------
    Contact Section
 ------------------------------------------ */
