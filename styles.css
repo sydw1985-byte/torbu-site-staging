@@ -1029,7 +1029,7 @@ Industries Accordion (stacked, centered)
 
 /* Narrow, centered content like Water */
 .page--company .company{
-  max-width:720px;
+  max-width:740px;
   margin:0 auto;
   text-align:center;
 }
