@@ -1266,7 +1266,40 @@ textarea:focus{
   padding:34px 0 56px; /* was 48px 0 56px */
 }
 
-/* Footer */
+/* =========================
+   404.html Countdown
+========================= */
+.subhead--countdown {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--midnight); /* or #035157 */
+}
+
+#countdown {
+  font-weight: 700;
+  display: inline-block;
+  min-width: 1ch;
+}
+
+/* Tick animation */
+.countdown-tick {
+  animation: tickFade 220ms ease;
+}
+
+@keyframes tickFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   Footer
+========================= */
 .footer{
   padding:48px 0 56px;
 }
