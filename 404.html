@@ -119,14 +119,20 @@
       } catch {}
 
       // Countdown + redirect
-      const redirectDelay = 5; // seconds
+      const redirectDelay = 5;
       const countdownEl = document.getElementById("countdown");
       let remaining = redirectDelay;
-
+      
       const interval = setInterval(() => {
         remaining -= 1;
-        if (countdownEl) countdownEl.textContent = remaining;
-
+      
+        if (countdownEl) {
+          countdownEl.classList.remove("countdown-tick");
+          void countdownEl.offsetWidth; // restart animation
+          countdownEl.textContent = remaining;
+          countdownEl.classList.add("countdown-tick");
+        }
+      
         if (remaining <= 0) {
           clearInterval(interval);
           location.replace("/?from=404&path=" + encodeURIComponent(path));
