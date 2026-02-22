@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>TORBU — Page not found</title>
+
+  <link rel="stylesheet" href="/styles.css?v=9" />
+</head>
+
+<body class="has-ribbon">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="/#main" aria-label="TORBU home">
+        <img class="brand__logo" src="/assets/torbu-logo-horizontal-green.png" alt="TORBU" />
+      </a>
+
+      <div class="nav__actions">
+        <a class="btn btn--primary nav__cta" href="/#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <p class="micro-kicker">404</p>
+          <h1 class="h2">Page not found</h1>
+          <p class="subhead">This link may be outdated, or the page may have moved.</p>
+        </div>
+
+        <div class="hero__buttons hero__buttons--center">
+          <a class="btn btn--ghost" href="/#main">Home</a>
+          <a class="btn btn--ghost" href="/#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cred-ribbon" aria-label="Credibility">
+    <div class="container cred-ribbon__inner">
+      <span class="cred-ribbon__text">Built for accountability at scale.</span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__left">
+          <div class="footer__brand">
+            TORBU<span class="reg reg--brand" aria-hidden="true">®</span>
+          </div>
+          <div class="footer__tag">Operating Intelligence for Regulated Systems.</div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="/#governance">Governance</a>
+          <a href="/#model">Model</a>
+          <a href="/#architecture">Architecture</a>
+          <a href="/#why">Why now</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__legal">
+          © <span id="year"></span> TORBU, LLC. All rights reserved.
+          TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.
+        </div>
+        <div class="footer__legal-links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <span class="footer__sep">•</span>
+          <a href="/terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function () {
+      const path = location.pathname + location.search + location.hash;
+
+      const payload = {
+        href: location.href,
+        path,
+        referrer: document.referrer || "",
+        ua: navigator.userAgent || "",
+        ts: Date.now()
+      };
+
+      // Set this to your production Worker origin (same as your /submit host)
+      const LOG_URL = "https://orange-wind-4bed.syd-ab8.workers.dev/log404";
+
+      try {
+        const body = JSON.stringify(payload);
+
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(LOG_URL, new Blob([body], { type: "application/json" }));
+        } else {
+          fetch(LOG_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body,
+            keepalive: true
+          });
+        }
+      } catch {}
+
+      // Redirect to home (preserve original path for debugging)
+      setTimeout(() => {
+        location.replace("/?from=404&path=" + encodeURIComponent(path));
+      }, 700);
+    })();
+  </script>
+</body>
+</html>
