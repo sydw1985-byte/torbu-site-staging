@@ -760,7 +760,9 @@ Industries Accordion (stacked, centered)
   margin:0 auto 10px;
 }
 
-/* ARCHITECTURE layer stack */
+/* =========================
+   ARCHITECTURE layer stack
+========================== */
 .integrate__stack{
   max-width:900px;
   margin:0 auto;
@@ -796,6 +798,15 @@ Industries Accordion (stacked, centered)
 }
 .integrate__arrow{opacity:.75}
 .integrate__meta{opacity:.85}
+
+/* NEW — model function annotations inside cards only */
+.integrate__card .integrate__meta {
+  color: var(--midnight);
+  font-weight: 550;
+  opacity: 0.75;
+  font-size: 0.875em;
+  margin-top: 6px;
+}
 
 /* Subtle hover/focus highlight */
 .integrate__card:hover,
