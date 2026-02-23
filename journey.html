@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Torbu — Company Journey</title>
+  <meta name="description" content="Torbu company journey: foundation, architecture, expansion, and statutory modernization." />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;650&display=swap" rel="stylesheet">
+</head>
+
+<body class="page--company page--journey">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="./index.html" aria-label="Torbu home">
+        <img class="brand__logo" src="./assets/torbu-logo.svg" alt="Torbu" />
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <div class="nav__links--desktop">
+          <a class="nav__link" href="./index.html#governance">Governance</a>
+          <a class="nav__link" href="./water.html">Water</a>
+          <a class="nav__link" href="./company.html">Company</a>
+          <a class="nav__link" href="./journey.html" aria-current="page">Journey</a>
+        </div>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--primary nav__cta" href="./index.html#contact">Contact</a>
+
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Open menu"
+          aria-controls="drawer"
+          aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Drawer -->
+    <div class="drawer" id="drawer" hidden>
+      <nav class="drawer__nav" aria-label="Mobile">
+        <a class="drawer__link" href="./index.html#governance">Governance</a>
+        <a class="drawer__link" href="./water.html">Water</a>
+        <a class="drawer__link" href="./company.html">Company</a>
+        <a class="drawer__link" href="./journey.html" aria-current="page">Journey</a>
+        <a class="drawer__link" href="./index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="section section--usecaseHero">
+      <div class="container">
+        <div class="company">
+          <h1 class="h1">Company Journey</h1>
+          <p class="subhead">
+            A structured timeline of how Torbu evolved from core governance logic to statutory modernization.
+          </p>
+
+          <div class="hero__buttons hero__buttons--center" style="margin-top:18px;">
+            <a class="btn btn--primary" href="./company.html">Back to Company</a>
+            <a class="btn btn--ghost" href="./index.html#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section section--usecaseTight">
+      <div class="container">
+        <div class="journey">
+
+          <!-- Sticky Rail -->
+          <div class="journey__rail" aria-label="Timeline navigation">
+            <div class="journey__track">
+              <div class="journey__fill" id="journeyFill"></div>
+              <div class="journey__nodes" id="journeyNodes"></div>
+            </div>
+            <div class="journey__phase" id="journeyPhase" aria-live="polite"></div>
+          </div>
+
+          <!-- Panels (JS renders these into #journeyPanels) -->
+          <div class="journey__panels" id="journeyPanels"></div>
+
+          <!-- Throughline -->
+          <div class="journey__throughline">
+            <div class="eco__title" style="margin:0 0 6px;">The Throughline</div>
+            <p class="eco__subhead" style="margin:0;">
+              Torbu coordinates accountability without replacing existing systems.
+            </p>
+
+            <div class="journey__layers">
+              <div class="journey__layer" id="jGov">
+                <strong>Governance Layer</strong>
+                <span>Standards, oversight, reporting, and authority.</span>
+              </div>
+
+              <div class="journey__layer" id="jExec">
+                <strong>Execution Layer</strong>
+                <span>Roles, workflows, training paths, certification, and operational continuity.</span>
+              </div>
+
+              <div class="journey__layer journey__layer--accent" id="jInfra">
+                <strong>Physical Layer</strong>
+                <span>Assets, field work, engineering, and regulated infrastructure operations.</span>
+              </div>
+            </div>
+
+            <p class="journey__close">
+              As execution becomes cheap, value concentrates in verified records and domain governance.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__left">
+          <div class="footer__brand">TORBU</div>
+          <div class="footer__tag">Governance software for high-accountability organizations.</div>
+        </div>
+
+        <div class="footer__nav">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__legal">
+          © <span class="nowrap">TORBU, LLC.</span> All rights reserved.
+        </div>
+        <div class="footer__legal-links">
+          <a href="./privacy.html">Privacy</a>
+          <span class="footer__sep">•</span>
+          <a href="./terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
