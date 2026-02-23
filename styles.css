@@ -1608,7 +1608,7 @@ html{
    If we only change padding-top, the bottom stays huge and spacing feels “gappy”.
    So override the full padding for the Journey body section. */
 .page--journey .section--usecaseTight{
-  padding: 48px 0 72px; /* tighter top, normal bottom */
+  padding: 48px 0 48px; /* tighter top, normal bottom */
 }
 
 @media (max-width:760px){
