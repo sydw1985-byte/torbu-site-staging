@@ -128,28 +128,36 @@
 
   </main>
 
+   <!-- Footer (match company.html / index.html) -->
   <footer class="footer">
     <div class="container">
       <div class="footer__top">
         <div class="footer__left">
-          <div class="footer__brand">TORBU</div>
-          <div class="footer__tag">Governance software for high-accountability organizations.</div>
+          <div class="footer__brand">
+            TORBU<span class="reg reg--brand" aria-hidden="true">®</span>
+          </div>
+          <div class="footer__tag">Operating Intelligence for Regulated Systems.</div>
         </div>
 
-        <div class="footer__nav">
-          <a href="./privacy.html">Privacy</a>
-          <a href="./terms.html">Terms</a>
-        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="./index.html#governance">Governance</a>
+          <a href="./index.html#model">Model</a>
+          <a href="./index.html#architecture">Architecture</a>
+          <a href="./index.html#why">Why now</a>
+          <a href="company.html">Company</a>
+          <a href="./index.html#contact">Contact</a>
+        </nav>
       </div>
 
       <div class="footer__bottom">
         <div class="footer__legal">
-          © <span class="nowrap">TORBU, LLC.</span> All rights reserved.
+          © <span id="year"></span> TORBU, LLC. All rights reserved.
+          TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.
         </div>
         <div class="footer__legal-links">
-          <a href="./privacy.html">Privacy</a>
+          <a href="privacy.html">Privacy Policy</a>
           <span class="footer__sep">•</span>
-          <a href="./terms.html">Terms</a>
+          <a href="terms.html">Terms of Service</a>
         </div>
       </div>
     </div>
