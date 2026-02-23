@@ -1598,6 +1598,23 @@ html{
   margin: 0 auto;
 }
 
+/* Journey page should match Company page hero + section rhythm */
+.page--journey .section--companyHero{
+  padding: 84px 0 78px;
+}
+.page--journey .section--usecaseTight{
+  padding: 72px 0;
+}
+
+@media (max-width:760px){
+  .page--journey .section--companyHero{
+    padding: 64px 0 58px;
+  }
+  .page--journey .section--usecaseTight{
+    padding: 56px 0;
+  }
+}
+
 /* Sticky rail: match header blur + your card surfaces */
 .journey__rail{
   position: sticky;
