@@ -1591,7 +1591,7 @@ html{
 
 /* =========================
    Company Journey (scoped)
-   ========================= */
+========================= */
 
 .journey{
   max-width: 920px;
@@ -1602,8 +1602,13 @@ html{
 .page--journey .section--companyHero{
   padding: 84px 0 78px;
 }
+
+/* IMPORTANT:
+   .section sets padding: 96px 0 globally.
+   If we only change padding-top, the bottom stays huge and spacing feels “gappy”.
+   So override the full padding for the Journey body section. */
 .page--journey .section--usecaseTight{
-  padding-top: 48px;
+  padding: 48px 0 72px; /* tighter top, normal bottom */
 }
 
 @media (max-width:760px){
@@ -1611,7 +1616,7 @@ html{
     padding: 64px 0 58px;
   }
   .page--journey .section--usecaseTight{
-    padding: 56px 0;
+    padding: 40px 0 56px;
   }
 }
 
