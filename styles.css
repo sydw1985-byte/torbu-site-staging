@@ -2318,74 +2318,86 @@ html{
   letter-spacing: .04em;
 }
 
-/* ── Mobile: stack vertically ── */
+/* ── Mobile: stacked timeline cards, no separate nav ── */
 @media (max-width: 640px) {
+
+  /* Switch to single column, hide the nav rail and prev/next */
   .journey-inline {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 16px 0;
+    display: block;
   }
 
-  /* Rail becomes horizontal scroll row on mobile */
-  .ji__rail {
-    grid-column: 1;
-    grid-row: 1;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 6px;
-    padding: 0 0 4px;
-    scrollbar-width: none;
-  }
-
-  .ji__rail::-webkit-scrollbar { display: none; }
-
-  .ji__rail::before { display: none; }
-
-  .ji__navItem {
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 10px;
-    min-width: 72px;
-    text-align: center;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: rgba(255,255,255,.6);
-  }
-
-  .ji__navItem.is-active {
-    background: rgba(3,81,87,.05);
-    border-color: rgba(3,81,87,.22);
-  }
-
-  .ji__navText {
-    align-items: center;
-  }
-
-  .ji__navPhase {
-    font-size: 10px;
-    letter-spacing: .06em;
-  }
-
-  .ji__navYear {
-    font-size: 10px;
-  }
-
-  .ji__navDot {
-    margin-top: 0;
-  }
-
-  .ji__panel {
-    grid-column: 1;
-    grid-row: 2;
-    min-height: 160px;
-  }
-
+  .ji__rail,
   .ji__nav {
-    grid-column: 1;
-    grid-row: 3;
+    display: none;
   }
 
-  .ji__title { font-size: 17px; }
-  .ji__narrative { font-size: 13px; }
+  /* Panel becomes a stacked list of all cards */
+  .ji__panel {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-height: 0;
+  }
+
+  .ji__panel::before {
+    display: none;
+  }
+
+  /* Each rendered card becomes its own block */
+  .ji__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Individual card */
+  .ji__card {
+    border: 1px solid rgba(3,81,87,.10);
+    border-radius: 16px;
+    background: #ffffff;
+    padding: 18px 18px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    text-align: left;
+    position: relative;
+  }
+
+  .ji__card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 16px 0 0 16px;
+    background: var(--midnight);
+  }
+
+  .ji__card.is-final::before {
+    background: var(--lime);
+  }
+
+  /* Year label leads each card */
+  .ji__cardYear {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(3,81,87,.65);
+    margin-bottom: 4px;
+  }
+
+  .ji__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .ji__narrative {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .ji__takeaway {
+    font-size: 12px;
+    padding-top: 10px;
+  }
 }
