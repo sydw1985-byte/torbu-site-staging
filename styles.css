@@ -1935,39 +1935,69 @@ html{
 .journey__layer {
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 14px;
-  background: rgba(3,81,87,.02);
-  opacity: .25;
-  transform: translateY(4px);
-  transition: opacity .45s ease, transform .45s ease, border-color .45s ease, background .45s ease;
+  padding: 16px 18px;
+  background: rgba(255,255,255,.5);
+  text-align: center;
+  opacity: .2;
+  transform: translateY(6px);
+  transition: opacity .45s ease, transform .45s ease, border-color .45s ease, background .45s ease, box-shadow .45s ease;
 }
 
 .journey__layer strong {
   display: block;
   font-size: 15px;
-  font-weight: 650;
+  font-weight: 700;
   color: var(--midnight);
   letter-spacing: -.01em;
+  margin-bottom: 5px;
 }
 
 .journey__layer span {
   display: block;
-  margin-top: 6px;
-  font-size: 14px;
-  color: rgba(31,35,34,.72);
+  font-size: 13px;
+  color: rgba(31,35,34,.65);
   line-height: 1.5;
+  letter-spacing: .01em;
+}
+
+.journey__layer em {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(3,81,87,.70);
 }
 
 .journey__layer.is-reveal {
   opacity: 1;
   transform: none;
-  border-color: rgba(3,81,87,.22);
-  background: rgba(3,81,87,.04);
+  border-color: rgba(3,81,87,.18);
+  background: #ffffff;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 4px 10px rgba(0,0,0,.05);
 }
 
+/* Execution layer — stays teal, slightly warmer */
+.journey__layer.is-exec.is-reveal {
+  border-color: rgba(3,81,87,.14);
+  background: rgba(3,81,87,.03);
+}
+
+/* Supervisory layer — lime accent, TORBU's layer */
 .journey__layer--accent.is-reveal {
-  border-color: rgba(214,252,73,.40);
-  background: rgba(214,252,73,.06);
+  border-color: rgba(214,252,73,.50);
+  background: rgba(214,252,73,.07);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 4px 14px rgba(214,252,73,.15);
+}
+
+.journey__layer--accent.is-reveal em {
+  color: rgba(100,130,0,.80);
 }
 
 .journey__close {
