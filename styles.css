@@ -2244,20 +2244,6 @@ html{
     0 12px 28px rgba(0,0,0,.06);
 }
 
-.jia__takeawayLabel {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(3,81,87,.65);
-  margin-bottom: 6px;
-  transition: color .18s ease;
-}
-
-.jia__takeaway:hover .jia__takeawayLabel {
-  color: rgba(3,81,87,.90);
-}
-
 .jia__takeawayText {
   margin: 0;
   font-size: 15px;
@@ -2279,14 +2265,6 @@ html{
   box-shadow:
     0 4px 12px rgba(214,252,73,.18),
     0 12px 28px rgba(0,0,0,.05);
-}
-
-.jia__item.is-final .jia__takeawayLabel {
-  color: rgba(100,130,0,.72);
-}
-
-.jia__item.is-final .jia__takeaway:hover .jia__takeawayLabel {
-  color: rgba(80,110,0,.90);
 }
 
 .jia__item.is-final .jia__takeawayText {
