@@ -218,7 +218,7 @@
       years: "2022–2024",
       phase: "Expansion",
       title: "The same logic applies across domains.",
-      narrative: "We expanded into K–12, CTE programs, and structured learning environments. Training tracking, compliance workflows, and hierarchical oversight translated directly.",
+      narrative: "We expanded into K 12, CTE programs, and structured learning environments. Instructional oversight, documented activity, and tiered accountability translated directly.",
       takeaway: "Supervisory architecture transcends domain.",
       final: false,
     },
