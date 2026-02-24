@@ -1624,9 +1624,8 @@ html{
   padding: 16px 18px 12px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: rgba(242,237,232,.90);
-  backdrop-filter: saturate(140%) blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(3,81,87,.08), 0 1px 0 rgba(3,81,87,.06);
 }
 
 .journey__track {
@@ -1748,14 +1747,16 @@ html{
 
 .journey__panel {
   position: relative;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(3,81,87,.10);
   border-radius: 18px;
-  background: rgba(255,255,255,.78);
+  background: #ffffff;
   padding: 20px 20px 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
-  backdrop-filter: saturate(120%) blur(8px);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 4px 10px rgba(0,0,0,.06),
+    0 16px 32px rgba(0,0,0,.05);
   text-align: left;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
 
 .journey__panel::before {
@@ -1770,9 +1771,12 @@ html{
 }
 
 .journey__panel[data-active="true"] {
-  border-color: rgba(3,81,87,.30);
-  background: rgba(255,255,255,.86);
-  box-shadow: 0 10px 30px rgba(3,81,87,.10);
+  border-color: rgba(3,81,87,.25);
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.04),
+    0 8px 20px rgba(3,81,87,.10),
+    0 24px 48px rgba(0,0,0,.07);
 }
 
 .journey__panel[data-active="true"]::before {
@@ -1907,10 +1911,12 @@ html{
   margin-top: 16px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: rgba(255,255,255,.78);
+  background: #ffffff;
   padding: 20px 20px 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
-  backdrop-filter: saturate(120%) blur(8px);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 4px 10px rgba(0,0,0,.06),
+    0 16px 32px rgba(0,0,0,.05);
   text-align: center;
 }
 
