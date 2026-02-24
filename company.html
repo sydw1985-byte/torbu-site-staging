@@ -31,8 +31,7 @@
   <link rel="manifest" href="site.webmanifest?v=20260219">
   <meta name="theme-color" content="#035157">
 
-  <link rel="stylesheet" href="styles.css?v=10" />
-  <link rel="stylesheet" href="journey-inline.css" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 
 <body class="page--company has-ribbon">
@@ -234,29 +233,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Nav drawer -->
-  <script>
-    (() => {
-      const navBtn = document.getElementById("navToggle");
-      const drawer = document.getElementById("drawer");
-      if (!navBtn || !drawer) return;
-
-      navBtn.addEventListener("click", () => {
-        const isOpen = navBtn.getAttribute("aria-expanded") === "true";
-        navBtn.setAttribute("aria-expanded", String(!isOpen));
-        drawer.hidden = isOpen;
-      });
-
-      drawer.addEventListener("click", (e) => {
-        if (e.target.closest("a")) {
-          drawer.hidden = true;
-          navBtn.setAttribute("aria-expanded", "false");
-        }
-      });
-    })();
-  </script>
-
-  <!-- Company Journey inline component -->
+  <script src="./app.js" defer></script>
   <script src="./journey-inline.js" defer></script>
 
 </body>
