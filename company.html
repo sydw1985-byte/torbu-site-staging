@@ -32,6 +32,7 @@
   <meta name="theme-color" content="#035157">
 
   <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="journey-inline.css" />
 </head>
 
 <body class="page--company has-ribbon">
@@ -74,6 +75,7 @@
   </header>
 
   <main id="main">
+
     <!-- PAGE HERO -->
     <section class="section section--companyHero" id="company">
       <div class="container">
@@ -81,11 +83,10 @@
           <p class="micro-kicker">Company</p>
           <h1 class="h2">Supervisory infrastructure</h1>
           <p class="subhead">
-            Delivered as secure enterprise software, TORBU integrates alongside existing systems — without replacing them — 
-            to preserve supervisory authority across complex, regulated environments
+            Delivered as secure enterprise software, TORBU integrates alongside existing systems — without replacing them —
+            to preserve supervisory authority across complex, regulated environments.
           </p>
         </div>
-
         <div class="hero__buttons hero__buttons--center">
           <a class="btn btn--ghost" href="./index.html#contact">Contact</a>
         </div>
@@ -156,9 +157,38 @@
         </div>
       </div>
     </section>
+
+    <!-- COMPANY JOURNEY -->
+    <section class="section section--companyTight" id="company-journey">
+      <div class="container">
+        <div class="company">
+          <p class="micro-kicker">Seven years</p>
+          <h2 class="h2">Built through stress tests</h2>
+          <p class="subhead">
+            The platform wasn't designed for one environment. It was refined across seven years
+            and three distinct proving grounds — each one demanding something the next required.
+          </p>
+        </div>
+
+        <div class="journey-inline">
+          <div class="ji__rail" id="jiRail" role="tablist" aria-label="Company journey timeline"></div>
+
+          <div class="ji__panel" id="jiPanel">
+            <div class="ji__content" id="jiContent"></div>
+          </div>
+
+          <div class="ji__nav">
+            <button class="ji__navBtn" id="jiPrev" aria-label="Previous phase">← Previous</button>
+            <span class="ji__counter" id="jiCounter"></span>
+            <button class="ji__navBtn" id="jiNext" aria-label="Next phase">Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-   <!-- Credibility ribbon -->
+  <!-- Credibility ribbon -->
   <section class="cred-ribbon" aria-label="Credibility">
     <div class="container cred-ribbon__inner">
       <span class="cred-ribbon__text">Built for accountability at scale.</span>
@@ -204,7 +234,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Minimal JS: nav drawer -->
+  <!-- Nav drawer -->
   <script>
     (() => {
       const navBtn = document.getElementById("navToggle");
@@ -225,5 +255,9 @@
       });
     })();
   </script>
+
+  <!-- Company Journey inline component -->
+  <script src="./journey-inline.js" defer></script>
+
 </body>
 </html>
