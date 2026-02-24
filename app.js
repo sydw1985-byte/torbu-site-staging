@@ -293,7 +293,6 @@
           <span class="journey__date">${esc(d.years)}</span>
         </div>
         <h3 class="journey__title">${esc(d.title)}</h3>
-        <p class="journey__summary">${esc(d.summary)}</p>
         <ul class="journey__bullets">
           ${d.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}
         </ul>
