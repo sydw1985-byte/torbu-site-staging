@@ -263,7 +263,7 @@
         "Long-horizon mandates replacing discretionary programs",
         "The same governance logic scales across every regulated sector",
       ],
-      takeaway: "When oversight becomes law, governance software becomes essential infrastructure.",
+      takeaway: "When oversight becomes law, the systems that run it become infrastructure.",
       final: true,
     },
   ];
