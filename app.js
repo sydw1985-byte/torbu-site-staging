@@ -250,7 +250,7 @@
     },
   ];
 
-  let current = 0;
+  let current = -1;
 
   /* ── Build rail nodes ── */
   rail.innerHTML = DATA.map((d, i) => `
@@ -281,7 +281,8 @@
 
   /* ── Activate a node with crossfade ── */
   function activate(idx, direction = 1) {
-    if (idx === current && content.innerHTML !== "") return;
+    if (idx === current) return;
+    const prev = current;
     current = Math.max(0, Math.min(DATA.length - 1, idx));
     const d = DATA[current];
 
@@ -297,18 +298,23 @@
     /* Panel final state */
     panel.classList.toggle("is-final", d.final);
 
-    /* Crossfade */
-    content.classList.add("is-leaving");
-    setTimeout(() => {
+    /* First render: no crossfade */
+    if (prev === -1) {
       content.innerHTML = renderContent(current);
-      content.classList.remove("is-leaving");
-      content.classList.add("is-entering");
-      requestAnimationFrame(() => {
+    } else {
+      /* Crossfade */
+      content.classList.add("is-leaving");
+      setTimeout(() => {
+        content.innerHTML = renderContent(current);
+        content.classList.remove("is-leaving");
+        content.classList.add("is-entering");
         requestAnimationFrame(() => {
-          content.classList.remove("is-entering");
+          requestAnimationFrame(() => {
+            content.classList.remove("is-entering");
+          });
         });
-      });
-    }, 180);
+      }, 180);
+    }
 
     /* Nav buttons */
     if (prevBtn) prevBtn.disabled = current === 0;
