@@ -19,7 +19,6 @@
     drawer.hidden = isOpen;
   });
 
-  // Close drawer when a link is clicked
   drawer.addEventListener("click", (e) => {
     if (e.target.closest("a")) {
       drawer.hidden = true;
@@ -58,24 +57,17 @@
 
     const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-    // Close others first
     closeAll(btn);
 
-    // Toggle this one
     btn.setAttribute("aria-expanded", String(!isOpen));
     panel.hidden = isOpen;
-
-    // IMPORTANT: do NOT change the "+" text here.
-    // Keep "+" in markup and let CSS rotate it to form an "x".
   });
 
-  // Ensure everything starts closed and consistent
   closeAll();
 })();
 
 /* Reads the hash and opens the Water accordion automatically (use case) */
 (() => {
-  // Auto-open a sector accordion from hash like #governance-open-water
   const h = window.location.hash || "";
   if (!h.includes("governance-open-water")) return;
 
@@ -87,10 +79,8 @@
   const panel = document.getElementById("panel-water");
   if (!btn || !panel) return;
 
-  // Jump to governance first (no smooth on first jump)
   if (gov) gov.scrollIntoView({ behavior: "auto", block: "start" });
 
-  // Close others (single-open accordion behavior)
   root.querySelectorAll('.industryTrigger[aria-expanded="true"]').forEach((b) => {
     b.setAttribute("aria-expanded", "false");
     const pid = b.getAttribute("aria-controls");
@@ -98,11 +88,9 @@
     if (p) p.hidden = true;
   });
 
-  // Open water
   btn.setAttribute("aria-expanded", "true");
   panel.hidden = false;
 
-  // Then scroll to the Water row so the user lands exactly there
   setTimeout(() => {
     btn.scrollIntoView({ behavior: "smooth", block: "start" });
   }, 120);
@@ -116,7 +104,6 @@
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Honeypot
     if (form.company && form.company.value.trim() !== "") return;
 
     if (!window.turnstile) {
@@ -134,14 +121,12 @@
     const label = submitBtn ? submitBtn.querySelector(".btn__text") : null;
     const originalLabel = label ? label.textContent : null;
 
-    // Loading state
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.classList.remove("is-success");
       submitBtn.classList.add("is-loading");
     }
 
-    // Required fields
     const name = (form.name?.value || "").trim();
     const org = (form.org?.value || "").trim();
     const email = (form.email?.value || "").trim();
@@ -176,7 +161,6 @@
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error || "Could not send.");
 
-      // Success micro-state before redirect
       if (submitBtn) {
         submitBtn.classList.remove("is-loading");
         submitBtn.classList.add("is-success");
@@ -193,12 +177,10 @@
         window.turnstile.reset(widget);
       } catch {}
 
-      // Restore button if we didn't navigate away
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.classList.remove("is-loading");
 
-        // If we didn't succeed, restore label
         if (!submitBtn.classList.contains("is-success") && label && originalLabel != null) {
           label.textContent = originalLabel;
         }
@@ -214,80 +196,74 @@
   const fillEl = document.getElementById("journeyFill");
   const phaseEl = document.getElementById("journeyPhase");
 
-  // Throughline reveals
   const jGov = document.getElementById("jGov");
   const jExec = document.getElementById("jExec");
   const jInfra = document.getElementById("jInfra");
 
-  // If the section isn't on this page, do nothing
   if (!nodesEl || !panelsEl || !fillEl || !phaseEl) return;
 
   const DATA = [
     {
       years: "2018–2019",
-      phase: "Foundation",
-      title: "Structure first",
-      summary: "We built on a simple principle: accountability flows from structure.",
+      phase: "Sports",
+      title: "Every team needs a system.",
+      summary: "We started in academic sports — real chains of command, real oversight requirements. We learned quickly that accountability isn't a culture problem. It's a structure problem.",
       bullets: [
-        "Designed role-based oversight for hierarchical systems",
-        "Embedded verified records into daily workflow",
-        "Modeled chains of command as governance flows",
-        "Established the core logic that still runs the system",
+        "Built role-based oversight for coaches, athletes, and administrators",
+        "Replaced scattered records with structured, verifiable daily logs",
+        "Designed the chain-of-command logic the platform still runs on",
       ],
-      takeaway: "Structure drives accountability.",
+      takeaway: "Structure is what makes accountability real.",
     },
     {
       years: "2022",
       phase: "Architecture",
-      title: "Architectural control",
-      summary: "We rebuilt the system end to end and assumed full architectural ownership.",
+      title: "We rebuilt it to last.",
+      summary: "We moved engineering in-house and rebuilt the platform from the ground up — designed for institutional scale, not just sports teams.",
       bullets: [
-        "Consolidated engineering under direct control",
-        "Implemented multi-level permissions and reporting",
-        "Made stability and auditability design requirements",
-        "Mirrored institutional hierarchy in software",
+        "Full rebuild under direct engineering ownership",
+        "Multi-level permissions that mirror real organizational hierarchy",
+        "Stability and audit-readiness designed in from the start",
       ],
-      takeaway: "Governance requires architectural ownership.",
+      takeaway: "If you want to govern at scale, you have to own the architecture.",
     },
     {
-      years: "2023",
-      phase: "Expansion",
-      title: "Certification & readiness",
-      summary:
-        "We expanded into certification systems and workforce readiness, deepening compliance logic in regulated environments.",
+      years: "2022–2024",
+      phase: "Education",
+      title: "Schools run on the same logic.",
+      summary: "We expanded into structured learning environments and found that the same system that worked for coaches worked for teachers, districts, and certification programs.",
       bullets: [
-        "Built adaptive learning and assessment engines",
-        "Strengthened milestone validation and certification tracking",
-        "Operationalized readiness analytics",
+        "Adaptive learning paths and assessment tools built out",
+        "Deployed across K–12, CTE, and enrichment programs",
+        "Compliance infrastructure validated across structured learning environments",
       ],
-      takeaway: "Certification and compliance run on the same operating system.",
+      takeaway: "Certification and compliance are the same operating problem.",
     },
     {
       years: "2024–2025",
-      phase: "Rigor",
-      title: "High-accountability environments",
-      summary:
-        "We prepared the system for enterprise modernization environments that demand documentation discipline and audit resilience.",
+      phase: "Regulated Systems",
+      title: "Proven where the stakes are highest.",
+      summary: "We took the platform into high-accountability federal training environments — and confirmed it holds under the most demanding oversight conditions.",
       bullets: [
-        "Structured large-scale curriculum digitization",
-        "Strengthened compliance and reporting infrastructure",
-        "Demonstrated hierarchical oversight at enterprise scale",
-        "Added elastic, AI-specialized engineering capacity",
+        "Large-scale curriculum digitization across regulated programs",
+        "Readiness analytics deployed in high-accountability settings",
+        "Hierarchical oversight validated at enterprise scale",
+        "Engineering capacity scaled for government-grade deployment",
       ],
-      takeaway: "High-accountability environments sharpen architecture.",
+      takeaway: "The platform held. That's the point.",
     },
     {
       years: "2025 →",
-      phase: "Infrastructure",
-      title: "Statutory modernization",
-      summary:
-        "State legislatures are formalizing operator training, certification, and oversight into law. Modernization is shifting from discretionary programs to statutory mandate.",
+      phase: "Public Infrastructure",
+      title: "The landscape is shifting.",
+      summary: "Across regulated infrastructure — utilities, public works, critical systems — operator training and oversight are moving from best practice to legal requirement. The platform was built for exactly this transition.",
       bullets: [
-        "Standardized training and certification requirements",
-        "Unified authority and defined accountability",
-        "Long-horizon compliance environments",
+        "Workforce certification and oversight becoming statutory in key sectors",
+        "Unified accountability replacing fragmented, paper-based compliance",
+        "Long-horizon mandates replacing discretionary programs",
+        "The same governance logic scales across every regulated sector",
       ],
-      takeaway: "When modernization becomes law, governance software becomes essential infrastructure.",
+      takeaway: "When oversight becomes law, governance software becomes essential infrastructure.",
       final: true,
     },
   ];
@@ -300,7 +276,6 @@
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
 
-  // Render nodes
   nodesEl.innerHTML = DATA.map(
     (d, i) => `
       <div class="journey__node" data-index="${i}" role="button" tabindex="0" aria-label="Jump to ${esc(d.years)}">
@@ -310,7 +285,6 @@
     `
   ).join("");
 
-  // Render panels
   panelsEl.innerHTML = DATA.map(
     (d, i) => `
       <article class="journey__panel ${d.final ? "is-final" : ""}" id="journeyPanel-${i}" data-index="${i}" data-active="false">
@@ -318,14 +292,11 @@
           <span class="journey__tag">${esc(d.phase)}</span>
           <span class="journey__date">${esc(d.years)}</span>
         </div>
-
         <h3 class="journey__title">${esc(d.title)}</h3>
         <p class="journey__summary">${esc(d.summary)}</p>
-
         <ul class="journey__bullets">
           ${d.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}
         </ul>
-
         <div class="journey__takeaway">
           <div class="journey__takeawayLabel">Strategic takeaway</div>
           <p class="journey__takeawayText">${esc(d.takeaway)}</p>
@@ -342,10 +313,9 @@
     });
   }
 
-  // Header-aware scroll offset
   function scrollToPanel(panelEl) {
     if (!panelEl) return;
-    const headerOffset = 92; // matches your :target scroll-margin-top
+    const headerOffset = 92;
     const y = panelEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
     window.scrollTo({ top: y, behavior: "smooth" });
   }
@@ -371,13 +341,11 @@
 
     setPhaseText(DATA[idx].phase);
 
-    // Crescendo reveals
     jGov?.classList.toggle("is-reveal", idx >= 1);
     jExec?.classList.toggle("is-reveal", idx >= 2);
     jInfra?.classList.toggle("is-reveal", idx >= 4);
   }
 
-  // Node click -> scroll
   document.querySelectorAll(".journey__node").forEach((node) => {
     const jump = () => {
       const i = Number(node.dataset.index);
@@ -392,7 +360,6 @@
     });
   });
 
-  // Scroll activation: pick most visible panel
   const panels = Array.from(document.querySelectorAll(".journey__panel"));
   const io = new IntersectionObserver(
     (entries) => {
@@ -411,6 +378,5 @@
 
   panels.forEach((p) => io.observe(p));
 
-  // Init
   activate(0);
 })();
