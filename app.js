@@ -267,7 +267,12 @@
     </button>
   `).join("");
 
-  /* ── Render panel content ── */
+  /* ── Detect mobile ── */
+  function isMobile() {
+    return window.innerWidth <= 640;
+  }
+
+  /* ── Render single panel (desktop) ── */
   function renderContent(idx) {
     const d = DATA[idx];
     return `
@@ -281,7 +286,29 @@
     `;
   }
 
-  /* ── Activate ── */
+  /* ── Render all cards stacked (mobile) ── */
+  function renderAllCards() {
+    return DATA.map((d) => `
+      <div class="ji__card${d.final ? " is-final" : ""}">
+        <div class="ji__cardYear">${d.years} · ${d.phase}</div>
+        <h3 class="ji__title">${d.title}</h3>
+        <p class="ji__narrative">${d.narrative}</p>
+        <div class="ji__takeaway">${d.takeaway}</div>
+      </div>
+    `).join("");
+  }
+
+  /* ── Init based on viewport ── */
+  function init() {
+    if (isMobile()) {
+      content.innerHTML = renderAllCards();
+      current = 0; /* satisfy guard */
+    } else {
+      activate(0);
+    }
+  }
+
+  /* ── Activate (desktop only) ── */
   function activate(idx) {
     if (idx === current) return;
     const prev = current;
@@ -331,5 +358,12 @@
   if (nextBtn) nextBtn.addEventListener("click", () => activate(current + 1));
 
   /* ── Init ── */
-  activate(0);
+  init();
+
+  /* Re-init on resize crossing the breakpoint */
+  let wasM = isMobile();
+  window.addEventListener("resize", () => {
+    const isM = isMobile();
+    if (isM !== wasM) { wasM = isM; current = -1; init(); }
+  });
 })();
