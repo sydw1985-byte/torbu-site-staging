@@ -206,7 +206,9 @@
     {
       years: "2018–2019",
       phase: "Sports",
+      phaseDetail: "Chain of Command",
       title: "Every team needs a system.",
+      context: "Stress test: hierarchy",
       summary: "We started in academic sports — real chains of command, real oversight requirements. We learned quickly that accountability isn't a culture problem. It's a structure problem.",
       bullets: [
         "Built role-based oversight for coaches, athletes, and administrators",
@@ -218,6 +220,7 @@
     {
       years: "2022",
       phase: "Architecture",
+      phaseDetail: "Platform Ownership",
       title: "We rebuilt it to last.",
       summary: "We moved engineering in-house and rebuilt the platform from the ground up — designed for institutional scale, not just sports teams.",
       bullets: [
@@ -230,7 +233,9 @@
     {
       years: "2022–2024",
       phase: "Education",
+      phaseDetail: "Certification Logic",
       title: "Schools run on the same logic.",
+      context: "Stress test: certification",
       summary: "We expanded into structured learning environments and found that the same system that worked for coaches worked for teachers, districts, and certification programs.",
       bullets: [
         "Adaptive learning paths and assessment tools built out",
@@ -242,7 +247,9 @@
     {
       years: "2024–2025",
       phase: "Regulated Systems",
+      phaseDetail: "Government-Grade Rigor",
       title: "Proven where the stakes are highest.",
+      context: "Stress test: government-grade security",
       summary: "We took the platform into high-accountability federal training environments — and confirmed it holds under the most demanding oversight conditions.",
       bullets: [
         "Large-scale curriculum digitization across regulated programs",
@@ -255,6 +262,7 @@
     {
       years: "2025 →",
       phase: "Public Infrastructure",
+      phaseDetail: "Statutory Mandate",
       title: "The landscape is shifting.",
       summary: "Across regulated infrastructure — utilities, public works, critical systems — operator training and oversight are moving from best practice to legal requirement. The platform was built for exactly this transition.",
       bullets: [
@@ -289,7 +297,7 @@
     (d, i) => `
       <article class="journey__panel ${d.final ? "is-final" : ""}" id="journeyPanel-${i}" data-index="${i}" data-active="false">
         <div class="journey__meta">
-          <span class="journey__tag">${esc(d.phase)}</span>
+          <span class="journey__tag">${esc(d.phase)}${d.phaseDetail ? `<span class="journey__tagDetail"> — ${esc(d.phaseDetail)}</span>` : ""}</span>
           <span class="journey__date">${esc(d.years)}</span>
         </div>
         <h3 class="journey__title">${esc(d.title)}</h3>
