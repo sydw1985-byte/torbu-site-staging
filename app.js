@@ -189,24 +189,14 @@
   });
 })();
 
-/* Company Journey — inline component for company.html
-   Replaces the full journey page.
-   Paste this IIFE at the end of app.js.
-   Add the HTML snippet (below) to company.html.
-   Add journey-inline.css to the <head>.
+/* Company Journey — accordion, company.html
+   Single interaction model across desktop + mobile.
 ============================================================ */
 
 (() => {
-  const rail    = document.getElementById("jiRail");
-  const panel   = document.getElementById("jiPanel");
-  const content = document.getElementById("jiContent");
-  const prevBtn = document.getElementById("jiPrev");
-  const nextBtn = document.getElementById("jiNext");
-  const counter = document.getElementById("jiCounter");
+  const wrap = document.getElementById("jiAccordion");
+  if (!wrap) return;
 
-  if (!rail || !panel || !content) return;
-
-  /* ── Data: corrected arc from actual timeline ── */
   const DATA = [
     {
       years: "2018–2019",
@@ -250,120 +240,98 @@
     },
   ];
 
-  let current = -1;
+  const esc = (s) => String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 
-  /* ── Build vertical nav items ── */
-  rail.innerHTML = DATA.map((d, i) => `
-    <button
-      class="ji__navItem${d.final ? " is-final" : ""}"
-      data-index="${i}"
-      aria-label="${d.years}: ${d.phase}"
-    >
-      <div class="ji__navDot"></div>
-      <div class="ji__navText">
-        <span class="ji__navPhase">${d.phase}</span>
-        <span class="ji__navYear">${d.years}</span>
+  /* ── Build accordion HTML ── */
+  wrap.innerHTML = DATA.map((d, i) => `
+    <div class="jia__item${d.final ? " is-final" : ""}" data-index="${i}">
+      <button
+        class="jia__trigger"
+        aria-expanded="false"
+        aria-controls="jia-panel-${i}"
+        id="jia-btn-${i}"
+      >
+        <div class="jia__triggerLeft">
+          <span class="jia__years">${esc(d.years)}</span>
+          <span class="jia__phase">${esc(d.phase)}</span>
+        </div>
+        <div class="jia__chevron" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </button>
+      <div
+        class="jia__body"
+        id="jia-panel-${i}"
+        role="region"
+        aria-labelledby="jia-btn-${i}"
+        hidden
+      >
+        <div class="jia__bodyInner">
+          <h3 class="jia__title">${esc(d.title)}</h3>
+          <p class="jia__narrative">${esc(d.narrative)}</p>
+          <div class="jia__takeaway">${esc(d.takeaway)}</div>
+        </div>
       </div>
-    </button>
+    </div>
   `).join("");
 
-  /* ── Detect mobile ── */
-  function isMobile() {
-    return window.innerWidth <= 640;
+  /* ── Open / close logic ── */
+  function open(item) {
+    const btn = item.querySelector(".jia__trigger");
+    const body = item.querySelector(".jia__body");
+    btn.setAttribute("aria-expanded", "true");
+    item.classList.add("is-open");
+    body.hidden = false;
+    /* Animate height */
+    const inner = body.querySelector(".jia__bodyInner");
+    body.style.maxHeight = inner.offsetHeight + "px";
   }
 
-  /* ── Render single panel (desktop) ── */
-  function renderContent(idx) {
-    const d = DATA[idx];
-    return `
-      <div class="ji__header">
-        <span class="ji__tag">${d.phase}</span>
-        <span class="ji__date">${d.years}</span>
-      </div>
-      <h3 class="ji__title">${d.title}</h3>
-      <p class="ji__narrative">${d.narrative}</p>
-      <div class="ji__takeaway">${d.takeaway}</div>
-    `;
+  function close(item) {
+    const btn = item.querySelector(".jia__trigger");
+    const body = item.querySelector(".jia__body");
+    btn.setAttribute("aria-expanded", "false");
+    item.classList.remove("is-open");
+    body.style.maxHeight = "0";
+    /* Hide after transition */
+    body.addEventListener("transitionend", () => {
+      if (!item.classList.contains("is-open")) body.hidden = true;
+    }, { once: true });
   }
 
-  /* ── Render all cards stacked (mobile) ── */
-  function renderAllCards() {
-    return DATA.map((d) => `
-      <div class="ji__card${d.final ? " is-final" : ""}">
-        <div class="ji__cardYear">${d.years} · ${d.phase}</div>
-        <h3 class="ji__title">${d.title}</h3>
-        <p class="ji__narrative">${d.narrative}</p>
-        <div class="ji__takeaway">${d.takeaway}</div>
-      </div>
-    `).join("");
+  function toggle(item) {
+    const isOpen = item.classList.contains("is-open");
+    /* Close all */
+    wrap.querySelectorAll(".jia__item.is-open").forEach(close);
+    /* Open clicked if it was closed */
+    if (!isOpen) open(item);
   }
 
-  /* ── Init based on viewport ── */
-  function init() {
-    if (isMobile()) {
-      content.innerHTML = renderAllCards();
-      current = 0; /* satisfy guard */
-    } else {
-      activate(0);
-    }
-  }
-
-  /* ── Activate (desktop only) ── */
-  function activate(idx) {
-    if (idx === current) return;
-    const prev = current;
-    current = Math.max(0, Math.min(DATA.length - 1, idx));
-    const d = DATA[current];
-
-    /* Update nav items */
-    document.querySelectorAll(".ji__navItem").forEach((n, i) => {
-      n.classList.toggle("is-active", i === current);
-    });
-
-    /* Panel final state */
-    panel.classList.toggle("is-final", d.final);
-
-    /* First render: no crossfade */
-    if (prev === -1) {
-      content.innerHTML = renderContent(current);
-    } else {
-      content.classList.add("is-leaving");
-      setTimeout(() => {
-        content.innerHTML = renderContent(current);
-        content.classList.remove("is-leaving");
-        content.classList.add("is-entering");
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            content.classList.remove("is-entering");
-          });
-        });
-      }, 160);
-    }
-
-    /* Nav buttons */
-    if (prevBtn) prevBtn.disabled = current === 0;
-    if (nextBtn) nextBtn.disabled = current === DATA.length - 1;
-    if (counter) counter.textContent = `${current + 1} / ${DATA.length}`;
-  }
-
-  /* ── Clicks ── */
-  rail.addEventListener("click", (e) => {
-    const btn = e.target.closest(".ji__navItem");
-    if (!btn) return;
-    activate(Number(btn.dataset.index));
+  /* ── Event delegation ── */
+  wrap.addEventListener("click", (e) => {
+    const trigger = e.target.closest(".jia__trigger");
+    if (!trigger) return;
+    const item = trigger.closest(".jia__item");
+    if (item) toggle(item);
   });
 
-  /* ── Arrow nav ── */
-  if (prevBtn) prevBtn.addEventListener("click", () => activate(current - 1));
-  if (nextBtn) nextBtn.addEventListener("click", () => activate(current + 1));
-
-  /* ── Init ── */
-  init();
-
-  /* Re-init on resize crossing the breakpoint */
-  let wasM = isMobile();
-  window.addEventListener("resize", () => {
-    const isM = isMobile();
-    if (isM !== wasM) { wasM = isM; current = -1; init(); }
+  /* ── Keyboard support ── */
+  wrap.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const trigger = e.target.closest(".jia__trigger");
+    if (!trigger) return;
+    e.preventDefault();
+    const item = trigger.closest(".jia__item");
+    if (item) toggle(item);
   });
+
+  /* ── Open first on load ── */
+  const first = wrap.querySelector(".jia__item");
+  if (first) open(first);
 })();
