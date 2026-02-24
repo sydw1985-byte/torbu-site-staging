@@ -2039,3 +2039,276 @@ html{
     padding: 16px 16px 14px;
   }
 }
+/* =========================
+   Journey Component (inline, company page)
+   Replaces the full journey page scroll experience.
+   Add to company.html; no separate page needed.
+========================= */
+
+/* ── Wrapper ── */
+.journey-inline {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* ── Node rail ── */
+.ji__rail {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+
+/* Connecting line behind nodes */
+.ji__rail::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 20px;
+  height: 1px;
+  background: var(--line);
+  z-index: 0;
+}
+
+/* Fill line (JS sets width via --fill custom property) */
+.ji__rail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20px;
+  height: 2px;
+  width: var(--fill, 0%);
+  background: linear-gradient(90deg, var(--midnight), rgba(3,81,87,.5));
+  border-radius: 2px;
+  transition: width .4s cubic-bezier(.2,.8,.2,1);
+  z-index: 0;
+}
+
+/* ── Individual node ── */
+.ji__node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: center;
+}
+
+.ji__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--isabelline);
+  border: 1.5px solid rgba(31,35,34,.25);
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .2s;
+  flex-shrink: 0;
+}
+
+.ji__node.is-active .ji__dot {
+  background: var(--midnight);
+  border-color: var(--midnight);
+  box-shadow: 0 0 0 4px rgba(3,81,87,.12);
+  transform: scale(1.15);
+}
+
+.ji__node.is-final.is-active .ji__dot {
+  background: var(--lime);
+  border-color: #8aac00;
+  box-shadow: 0 0 0 4px rgba(214,252,73,.28);
+}
+
+.ji__year {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(31,35,34,.55);
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: color .2s, font-weight .2s;
+}
+
+.ji__phase {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(3,81,87,.60);
+  line-height: 1.2;
+  transition: color .2s;
+}
+
+.ji__node.is-active .ji__year {
+  color: var(--midnight);
+  font-weight: 700;
+}
+
+.ji__node.is-active .ji__phase {
+  color: var(--midnight);
+}
+
+/* ── Content panel ── */
+.ji__panel {
+  border: 1px solid rgba(3,81,87,.12);
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 22px 22px 18px;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 4px 12px rgba(0,0,0,.06),
+    0 16px 32px rgba(0,0,0,.05);
+  position: relative;
+  min-height: 180px;
+  text-align: left;
+}
+
+/* Active state: left accent bar */
+.ji__panel::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 18px 0 0 18px;
+  background: var(--midnight);
+  transition: background .3s;
+}
+
+.ji__panel.is-final::before {
+  background: var(--lime);
+}
+
+/* Content swap animation */
+.ji__content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.ji__content.is-leaving {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.ji__content.is-entering {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+/* Panel header */
+.ji__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ji__tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(3,81,87,.80);
+  background: rgba(3,81,87,.07);
+  border: 1px solid rgba(3,81,87,.10);
+  padding: 2px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.ji__panel.is-final .ji__tag {
+  color: rgba(31,35,34,.80);
+  background: rgba(214,252,73,.18);
+  border-color: rgba(214,252,73,.30);
+}
+
+.ji__date {
+  font-size: 11px;
+  color: rgba(31,35,34,.50);
+}
+
+/* Panel title */
+.ji__title {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--midnight);
+}
+
+/* Narrative — single paragraph, no bullets */
+.ji__narrative {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(31,35,34,.78);
+}
+
+/* Takeaway */
+.ji__takeaway {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(31,35,34,.88);
+  line-height: 1.5;
+}
+
+.ji__takeaway::before {
+  content: "↳ ";
+  color: var(--midnight);
+  font-weight: 700;
+}
+
+/* Nav arrows */
+.ji__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.ji__navBtn {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(31,35,34,.70);
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+  font-family: inherit;
+}
+
+.ji__navBtn:hover {
+  border-color: rgba(3,81,87,.35);
+  color: var(--midnight);
+  background: rgba(3,81,87,.04);
+}
+
+.ji__navBtn:disabled {
+  opacity: .3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.ji__counter {
+  font-size: 11px;
+  color: rgba(31,35,34,.45);
+  letter-spacing: .04em;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ji__year { font-size: 10px; }
+  .ji__phase { display: none; }
+  .ji__title { font-size: 17px; }
+  .ji__narrative { font-size: 13px; }
+  .ji__panel { padding: 18px 16px 14px; }
+}
