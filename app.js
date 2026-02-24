@@ -226,7 +226,7 @@
       years: "2022–2025",
       phase: "Refinement",
       title: "Enterprise supervision.",
-      narrative: "We deployed chain-of-command architecture at scale in federal training environments. We digitized large curriculum systems and structured readiness analytics. Multi-level oversight operated across complex institutions.",
+      narrative: "We validated chain-of-command architecture in federal training environments. We digitized large curriculum systems and structured readiness analytics.",
       takeaway: "Supervisory systems must hold under stress.",
       final: false,
     },
