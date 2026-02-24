@@ -1833,6 +1833,14 @@ html{
   border-color: rgba(214,252,73,.22);
 }
 
+.journey__tagDetail {
+  font-weight: 500;
+  letter-spacing: .06em;
+  opacity: .75;
+  text-transform: none;
+  font-size: 10px;
+}
+
 .journey__date {
   font-size: 12px;
   color: rgba(31,35,34,.62);
