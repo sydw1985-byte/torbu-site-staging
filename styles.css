@@ -2040,364 +2040,209 @@ html{
   }
 }
 /* =========================
-   Journey Component (inline, company page)
-   Vertical nav — left column items, right column panel
+   Journey Accordion (company page)
+   Single interaction model, desktop + mobile.
 ========================= */
 
-/* ── Wrapper: two-column on desktop, stacked on mobile ── */
-.journey-inline {
-  max-width: 860px;
-  margin: 24px auto 0;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 1fr auto;
-  gap: 0 28px;
-  align-items: start;
+.jia__wrap {
+  max-width: 720px;
+  margin: 28px auto 0;
 }
 
-/* ── Vertical nav column ── */
-.ji__rail {
-  grid-column: 1;
-  grid-row: 1 / 3;
+/* ── Each row ── */
+.jia__item {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding-top: 2px;
+  border-top: 1px solid var(--line);
+  padding-left: 4px;
+  transition: padding-left .2s ease;
 }
 
-/* Connecting line down the left */
-.ji__rail::before {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 12px;
-  bottom: 12px;
-  width: 1px;
-  background: var(--line);
-  z-index: 0;
+.jia__item:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
-/* ── Nav item ── */
-.ji__navItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 10px 0 10px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
-  position: relative;
-  z-index: 1;
-  border-radius: 12px;
-  transition: background .15s;
-  width: 100%;
-}
-
-.ji__navItem:hover {
-  background: rgba(3,81,87,.04);
-}
-
-.ji__navItem:focus-visible {
-  outline: 2px solid rgba(214,252,73,.5);
-  outline-offset: 2px;
-}
-
-/* Dot */
-.ji__navDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--isabelline);
-  border: 1.5px solid rgba(31,35,34,.22);
-  flex-shrink: 0;
-  margin-top: 4px;
-  transition: background .2s, border-color .2s, box-shadow .2s, transform .2s;
-}
-
-.ji__navItem.is-active .ji__navDot {
-  background: var(--midnight);
-  border-color: var(--midnight);
-  box-shadow: 0 0 0 3px rgba(3,81,87,.14);
-  transform: scale(1.2);
-}
-
-.ji__navItem.is-final.is-active .ji__navDot {
-  background: var(--lime);
-  border-color: #8aac00;
-  box-shadow: 0 0 0 3px rgba(214,252,73,.35);
-}
-
-/* Text labels */
-.ji__navText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.ji__navPhase {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(31,35,34,.65);
-  line-height: 1.2;
-  transition: color .2s;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-
-.ji__navYear {
-  font-size: 11px;
-  color: rgba(31,35,34,.40);
-  line-height: 1.2;
-  transition: color .2s;
-}
-
-.ji__navItem.is-active .ji__navPhase {
-  color: var(--midnight);
-  font-weight: 700;
-}
-
-.ji__navItem.is-active .ji__navYear {
-  color: rgba(3,81,87,.65);
-}
-
-/* ── Content panel ── */
-.ji__panel {
-  grid-column: 2;
-  grid-row: 1;
-  border: 1px solid rgba(3,81,87,.12);
-  border-radius: 18px;
-  background: #ffffff;
-  padding: 22px 22px 20px;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.04),
-    0 4px 12px rgba(0,0,0,.06),
-    0 16px 32px rgba(0,0,0,.05);
-  position: relative;
-  min-height: 200px;
-  text-align: left;
-  color: var(--eerie);
-}
-
-.ji__panel::before {
+/* Active left bar */
+.jia__item::before {
   content: "";
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 4px;
-  border-radius: 18px 0 0 18px;
+  width: 3px;
+  border-radius: 2px;
   background: var(--midnight);
-  transition: background .3s;
+  opacity: 0;
+  transition: opacity .2s ease;
 }
 
-.ji__panel.is-final::before {
+.jia__item.is-open::before {
+  opacity: 1;
+}
+
+.jia__item.is-final.is-open::before {
   background: var(--lime);
 }
 
-/* ── Content swap animation ── */
-.ji__content {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-.ji__content.is-leaving {
-  opacity: 0;
-  transform: translateY(-5px);
-}
-
-.ji__content.is-entering {
-  opacity: 0;
-  transform: translateY(5px);
-}
-
-/* ── Panel internals ── */
-.ji__header {
+/* ── Trigger row ── */
+.jia__trigger {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 4px 18px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background .15s;
+  border-radius: 12px;
 }
 
-.ji__tag {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(3,81,87,.80);
-  background: rgba(3,81,87,.07);
-  border: 1px solid rgba(3,81,87,.10);
-  padding: 2px 9px;
-  border-radius: 999px;
-  white-space: nowrap;
+.jia__trigger:hover {
+  background: rgba(3,81,87,.03);
 }
 
-.ji__panel.is-final .ji__tag {
-  color: rgba(31,35,34,.80);
-  background: rgba(214,252,73,.18);
-  border-color: rgba(214,252,73,.30);
+.jia__trigger:focus-visible {
+  outline: 2px solid rgba(214,252,73,.5);
+  outline-offset: 2px;
+  border-radius: 10px;
 }
 
-.ji__date {
+.jia__triggerLeft {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Year pill */
+.jia__years {
   font-size: 11px;
-  color: rgba(31,35,34,.45);
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(3,81,87,.65);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.ji__title {
+.jia__item.is-open .jia__years {
+  color: var(--midnight);
+}
+
+/* Phase name */
+.jia__phase {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(31,35,34,.75);
+  letter-spacing: -.01em;
+  transition: color .2s;
+}
+
+.jia__item.is-open .jia__phase {
+  color: var(--midnight);
+}
+
+/* Chevron */
+.jia__chevron {
+  color: rgba(31,35,34,.35);
+  flex-shrink: 0;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), color .2s;
+}
+
+.jia__item.is-open .jia__chevron {
+  transform: rotate(180deg);
+  color: var(--midnight);
+}
+
+/* ── Collapsible body ── */
+.jia__body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.jia__body[hidden] {
+  display: block !important; /* override hidden so CSS transition works */
+  visibility: hidden;
+}
+
+.jia__item.is-open .jia__body {
+  visibility: visible;
+}
+
+.jia__bodyInner {
+  padding: 0 14px 22px 14px;
+}
+
+/* ── Content ── */
+.jia__title {
   margin: 0 0 10px;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -.02em;
   line-height: 1.25;
-  color: var(--midnight) !important;
+  color: var(--midnight);
 }
 
-.ji__narrative {
+.jia__narrative {
   margin: 0 0 14px;
   font-size: 14px;
   line-height: 1.75;
   color: rgba(31,35,34,.78);
 }
 
-.ji__takeaway {
+.jia__takeaway {
   border-top: 1px solid var(--line);
   padding-top: 12px;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(31,35,34,.85);
-  line-height: 1.5;
   font-style: italic;
+  color: rgba(31,35,34,.82);
+  line-height: 1.55;
 }
 
-.ji__takeaway::before {
+.jia__takeaway::before {
   content: "↳ ";
   color: var(--midnight);
   font-weight: 700;
   font-style: normal;
 }
 
-/* ── Prev/Next nav ── */
-.ji__nav {
-  grid-column: 2;
-  grid-row: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
+.jia__item.is-final .jia__takeaway::before {
+  color: #6e8a00;
 }
 
-.ji__navBtn {
-  background: none;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(31,35,34,.65);
-  cursor: pointer;
-  transition: border-color .15s, color .15s, background .15s;
-  font-family: inherit;
-}
-
-.ji__navBtn:hover {
-  border-color: rgba(3,81,87,.35);
-  color: var(--midnight);
-  background: rgba(3,81,87,.04);
-}
-
-.ji__navBtn:disabled {
-  opacity: .28;
-  cursor: default;
-  pointer-events: none;
-}
-
-.ji__counter {
-  font-size: 11px;
-  color: rgba(31,35,34,.40);
-  letter-spacing: .04em;
-}
-
-/* ── Mobile: stacked timeline cards, no separate nav ── */
+/* ── Mobile ── */
 @media (max-width: 640px) {
-
-  /* Switch to single column, hide the nav rail and prev/next */
-  .journey-inline {
-    display: block;
+  .jia__wrap {
+    margin-top: 20px;
   }
 
-  .ji__rail,
-  .ji__nav {
-    display: none;
+  .jia__trigger {
+    padding: 16px 4px 16px 12px;
   }
 
-  /* Panel becomes a stacked list of all cards */
-  .ji__panel {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    min-height: 0;
-  }
-
-  .ji__panel::before {
-    display: none;
-  }
-
-  /* Each rendered card becomes its own block */
-  .ji__content {
-    display: flex;
+  .jia__triggerLeft {
     flex-direction: column;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 3px;
   }
 
-  /* Individual card */
-  .ji__card {
-    border: 1px solid rgba(3,81,87,.10);
-    border-radius: 16px;
-    background: #ffffff;
-    padding: 18px 18px 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
-    text-align: left;
-    position: relative;
+  .jia__phase {
+    font-size: 14px;
   }
 
-  .ji__card::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    border-radius: 16px 0 0 16px;
-    background: var(--midnight);
-  }
-
-  .ji__card.is-final::before {
-    background: var(--lime);
-  }
-
-  /* Year label leads each card */
-  .ji__cardYear {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: rgba(3,81,87,.65);
-    margin-bottom: 4px;
-  }
-
-  .ji__title {
+  .jia__title {
     font-size: 16px;
-    margin-bottom: 8px;
   }
 
-  .ji__narrative {
+  .jia__narrative {
     font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 10px;
   }
 
-  .ji__takeaway {
-    font-size: 12px;
-    padding-top: 10px;
+  .jia__bodyInner {
+    padding: 0 10px 18px 12px;
   }
 }
