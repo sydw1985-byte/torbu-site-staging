@@ -4,7 +4,7 @@
    - Industry accordion (single-open)
    - Hash auto-open for Water accordion
    - Contact form submit (Worker + Turnstile) [only if form exists]
-   - Company Journey (scroll-activated + clickable nodes) [only if journey exists]
+   - Company Journey inline component (click-to-swap, company page)
 ============================================================ */
 
 /* Mobile drawer toggle */
@@ -189,201 +189,144 @@
   });
 })();
 
-/* Company Journey (scroll-activated + clickable nodes) */
+/* Company Journey — inline component for company.html
+   Replaces the full journey page.
+   Paste this IIFE at the end of app.js.
+   Add the HTML snippet (below) to company.html.
+   Add journey-inline.css to the <head>.
+============================================================ */
+
 (() => {
-  const nodesEl = document.getElementById("journeyNodes");
-  const panelsEl = document.getElementById("journeyPanels");
-  const fillEl = document.getElementById("journeyFill");
-  const phaseEl = document.getElementById("journeyPhase");
+  const rail    = document.getElementById("jiRail");
+  const panel   = document.getElementById("jiPanel");
+  const content = document.getElementById("jiContent");
+  const prevBtn = document.getElementById("jiPrev");
+  const nextBtn = document.getElementById("jiNext");
+  const counter = document.getElementById("jiCounter");
 
-  const jGov = document.getElementById("jGov");
-  const jExec = document.getElementById("jExec");
-  const jInfra = document.getElementById("jInfra");
+  if (!rail || !panel || !content) return;
 
-  if (!nodesEl || !panelsEl || !fillEl || !phaseEl) return;
-
+  /* ── Data: corrected arc from actual timeline ── */
   const DATA = [
     {
       years: "2018–2019",
-      phase: "Sports",
-      phaseDetail: "Chain of Command",
-      title: "Every team needs a system.",
-      context: "Stress test: hierarchy",
-      summary: "We started in academic sports — real chains of command, real oversight requirements. We learned quickly that accountability isn't a culture problem. It's a structure problem.",
-      bullets: [
-        "Built role-based oversight for coaches, athletes, and administrators",
-        "Replaced scattered records with structured, verifiable daily logs",
-        "Designed the chain-of-command logic the platform still runs on",
-      ],
-      takeaway: "Structure is what makes accountability real.",
+      phase: "Foundation",
+      title: "Accountability needs structure.",
+      narrative: "STRIDE launched as a supervision platform for academic sports — a domain with real chains of command, compliance obligations, and outcome tracking. We built role-based oversight, structured daily records, and supervisor visibility into the platform from day one. The operating principle that emerged: you can't enforce accountability without first defining structure.",
+      takeaway: "Structure before content. That principle still runs the platform.",
+      final: false,
     },
     {
       years: "2022",
-      phase: "Architecture",
-      phaseDetail: "Platform Ownership",
-      title: "We rebuilt it to last.",
-      summary: "We moved engineering in-house and rebuilt the platform from the ground up — designed for institutional scale, not just sports teams.",
-      bullets: [
-        "Full rebuild under direct engineering ownership",
-        "Multi-level permissions that mirror real organizational hierarchy",
-        "Stability and audit-readiness designed in from the start",
-      ],
-      takeaway: "If you want to govern at scale, you have to own the architecture.",
+      phase: "Rebuild",
+      title: "We built it to institutional grade.",
+      narrative: "Early prototyping taught us what regulated environments actually require. We moved engineering in-house and rebuilt the platform from the ground up — establishing direct architectural control, stable multi-level permissions, and audit-grade recordkeeping. This wasn't a course correction; it was the R&D phase that made everything after it possible.",
+      takeaway: "You can't govern at scale without owning the architecture beneath it.",
+      final: false,
     },
     {
       years: "2022–2024",
       phase: "Education",
-      phaseDetail: "Certification Logic",
-      title: "Schools run on the same logic.",
-      context: "Stress test: certification",
-      summary: "We expanded into structured learning environments and found that the same system that worked for coaches worked for teachers, districts, and certification programs.",
-      bullets: [
-        "Adaptive learning paths and assessment tools built out",
-        "Deployed across K–12, CTE, and enrichment programs",
-        "Compliance infrastructure validated across structured learning environments",
-      ],
-      takeaway: "Certification and compliance are the same operating problem.",
+      title: "Certification runs on the same logic.",
+      narrative: "We expanded into K–12, CTE programs, and structured learning environments. Certification tracking, compliance workflows, and hierarchical oversight all translated directly from sports. This phase deepened the platform's compliance logic and confirmed a pattern: the same governance architecture that works for coaches works for teachers, program directors, and certification bodies.",
+      takeaway: "Certification and compliance run on identical operating logic.",
+      final: false,
     },
     {
-      years: "2024–2025",
+      years: "2022–2025",
       phase: "Regulated Systems",
-      phaseDetail: "Government-Grade Rigor",
-      title: "Proven where the stakes are highest.",
-      context: "Stress test: government-grade security",
-      summary: "We took the platform into high-accountability federal training environments — and confirmed it holds under the most demanding oversight conditions.",
-      bullets: [
-        "Large-scale curriculum digitization across regulated programs",
-        "Readiness analytics deployed in high-accountability settings",
-        "Hierarchical oversight validated at enterprise scale",
-        "Engineering capacity scaled for government-grade deployment",
-      ],
-      takeaway: "The platform held. That's the point.",
+      title: "High-accountability environments built the architecture.",
+      narrative: "We took the platform into federal training environments — and this is where chain-of-command architecture was genuinely built and stress-tested. Large-scale curriculum digitization, hierarchical readiness analytics, multi-level oversight at enterprise scale. The operating conditions were the most demanding we'd encountered, and the platform held. This phase produced the architecture that regulated infrastructure deployment requires.",
+      takeaway: "Seven years of R&D. The platform held under federal-grade scrutiny.",
+      final: false,
     },
     {
       years: "2025 →",
-      phase: "Public Infrastructure",
-      phaseDetail: "Statutory Mandate",
-      title: "The landscape is shifting.",
-      summary: "Across regulated infrastructure — utilities, public works, critical systems — operator training and oversight are moving from best practice to legal requirement. The platform was built for exactly this transition.",
-      bullets: [
-        "Workforce certification and oversight becoming statutory in key sectors",
-        "Unified accountability replacing fragmented, paper-based compliance",
-        "Long-horizon mandates replacing discretionary programs",
-        "The same governance logic scales across every regulated sector",
-      ],
+      phase: "Infrastructure",
+      title: "The landscape is shifting toward mandate.",
+      narrative: "Across regulated infrastructure — utilities, public works, critical systems — operator training and oversight are moving from best practice to legal requirement. The governance logic we built across seven years maps directly to what these mandates require: defined authority, structured certification, and verified records. The platform was built for exactly this transition.",
       takeaway: "When oversight becomes law, the systems that run it become infrastructure.",
       final: true,
     },
   ];
 
-  const esc = (s) =>
-    String(s)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+  let current = 0;
 
-  nodesEl.innerHTML = DATA.map(
-    (d, i) => `
-      <div class="journey__node" data-index="${i}" role="button" tabindex="0" aria-label="Jump to ${esc(d.years)}">
-        <div class="journey__dot ${d.final ? "is-final" : ""}" id="journeyDot-${i}"></div>
-        <div class="journey__year" id="journeyYear-${i}">${esc(d.years)}</div>
+  /* ── Build rail nodes ── */
+  rail.innerHTML = DATA.map((d, i) => `
+    <button
+      class="ji__node${d.final ? " is-final" : ""}"
+      data-index="${i}"
+      aria-label="${d.years}: ${d.phase}"
+    >
+      <div class="ji__dot"></div>
+      <div class="ji__year">${d.years}</div>
+      <div class="ji__phase">${d.phase}</div>
+    </button>
+  `).join("");
+
+  /* ── Render panel content ── */
+  function renderContent(idx) {
+    const d = DATA[idx];
+    return `
+      <div class="ji__header">
+        <span class="ji__tag">${d.phase}</span>
+        <span class="ji__date">${d.years}</span>
       </div>
-    `
-  ).join("");
-
-  panelsEl.innerHTML = DATA.map(
-    (d, i) => `
-      <article class="journey__panel ${d.final ? "is-final" : ""}" id="journeyPanel-${i}" data-index="${i}" data-active="false">
-        <div class="journey__meta">
-          <span class="journey__tag">${esc(d.phase)}${d.phaseDetail ? `<span class="journey__tagDetail"> — ${esc(d.phaseDetail)}</span>` : ""}</span>
-          <span class="journey__date">${esc(d.years)}</span>
-        </div>
-        <h3 class="journey__title">${esc(d.title)}</h3>
-        <ul class="journey__bullets">
-          ${d.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}
-        </ul>
-        <div class="journey__takeaway">
-          <div class="journey__takeawayLabel">Strategic takeaway</div>
-          <p class="journey__takeawayText">${esc(d.takeaway)}</p>
-        </div>
-      </article>
-    `
-  ).join("");
-
-  function setPhaseText(text) {
-    phaseEl.classList.remove("is-show");
-    requestAnimationFrame(() => {
-      phaseEl.textContent = text;
-      phaseEl.classList.add("is-show");
-    });
+      <h3 class="ji__title">${d.title}</h3>
+      <p class="ji__narrative">${d.narrative}</p>
+      <div class="ji__takeaway">${d.takeaway}</div>
+    `;
   }
 
-  function scrollToPanel(panelEl) {
-    if (!panelEl) return;
-    const headerOffset = 92;
-    const y = panelEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  }
+  /* ── Activate a node with crossfade ── */
+  function activate(idx, direction = 1) {
+    if (idx === current && content.innerHTML !== "") return;
+    current = Math.max(0, Math.min(DATA.length - 1, idx));
+    const d = DATA[current];
 
-  let current = -1;
-
-  function activate(idx) {
-    if (idx === current) return;
-    current = idx;
-
-    DATA.forEach((_, i) => {
-      const dot = document.getElementById(`journeyDot-${i}`);
-      const yr = document.getElementById(`journeyYear-${i}`);
-      const pn = document.getElementById(`journeyPanel-${i}`);
-
-      dot?.classList.toggle("is-active", i === idx);
-      yr?.classList.toggle("is-active", i === idx);
-      if (pn) pn.dataset.active = i === idx ? "true" : "false";
+    /* Update nodes */
+    document.querySelectorAll(".ji__node").forEach((n, i) => {
+      n.classList.toggle("is-active", i === current);
     });
 
-    const pct = DATA.length <= 1 ? 1 : idx / (DATA.length - 1);
-    fillEl.style.width = `${pct * 100}%`;
+    /* Rail fill */
+    const pct = DATA.length <= 1 ? 100 : (current / (DATA.length - 1)) * 100;
+    rail.style.setProperty("--fill", `${pct}%`);
 
-    setPhaseText(DATA[idx].phase);
+    /* Panel final state */
+    panel.classList.toggle("is-final", d.final);
 
-    jGov?.classList.toggle("is-reveal", idx >= 1);
-    jExec?.classList.toggle("is-reveal", idx >= 2);
-    jInfra?.classList.toggle("is-reveal", idx >= 4);
+    /* Crossfade */
+    content.classList.add("is-leaving");
+    setTimeout(() => {
+      content.innerHTML = renderContent(current);
+      content.classList.remove("is-leaving");
+      content.classList.add("is-entering");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          content.classList.remove("is-entering");
+        });
+      });
+    }, 180);
+
+    /* Nav buttons */
+    if (prevBtn) prevBtn.disabled = current === 0;
+    if (nextBtn) nextBtn.disabled = current === DATA.length - 1;
+    if (counter) counter.textContent = `${current + 1} / ${DATA.length}`;
   }
 
-  document.querySelectorAll(".journey__node").forEach((node) => {
-    const jump = () => {
-      const i = Number(node.dataset.index);
-      scrollToPanel(document.getElementById(`journeyPanel-${i}`));
-    };
-    node.addEventListener("click", jump);
-    node.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        jump();
-      }
-    });
+  /* ── Node clicks ── */
+  rail.addEventListener("click", (e) => {
+    const btn = e.target.closest(".ji__node");
+    if (!btn) return;
+    activate(Number(btn.dataset.index));
   });
 
-  const panels = Array.from(document.querySelectorAll(".journey__panel"));
-  const io = new IntersectionObserver(
-    (entries) => {
-      const best = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  /* ── Arrow nav ── */
+  if (prevBtn) prevBtn.addEventListener("click", () => activate(current - 1, -1));
+  if (nextBtn) nextBtn.addEventListener("click", () => activate(current + 1,  1));
 
-      if (best) activate(Number(best.target.dataset.index));
-    },
-    {
-      root: null,
-      rootMargin: "-18% 0px -52% 0px",
-      threshold: [0.12, 0.25, 0.4, 0.6],
-    }
-  );
-
-  panels.forEach((p) => io.observe(p));
-
+  /* ── Init ── */
   activate(0);
 })();
