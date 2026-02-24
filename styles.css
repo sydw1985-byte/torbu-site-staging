@@ -2041,133 +2041,146 @@ html{
 }
 /* =========================
    Journey Component (inline, company page)
-   Replaces the full journey page scroll experience.
-   Add to company.html; no separate page needed.
+   Vertical nav — left column items, right column panel
 ========================= */
 
-/* ── Wrapper ── */
+/* ── Wrapper: two-column on desktop, stacked on mobile ── */
 .journey-inline {
-  max-width: 820px;
-  margin: 0 auto;
+  max-width: 860px;
+  margin: 24px auto 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0 28px;
+  align-items: start;
 }
 
-/* ── Node rail ── */
+/* ── Vertical nav column ── */
 .ji__rail {
-  display: flex;
-  align-items: flex-start;
+  grid-column: 1;
+  grid-row: 1 / 3;
   position: relative;
-  margin-bottom: 24px;
-  padding: 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 2px;
 }
 
-/* Connecting line behind nodes */
+/* Connecting line down the left */
 .ji__rail::before {
   content: "";
   position: absolute;
-  left: 0; right: 0;
-  top: 20px;
-  height: 1px;
+  left: 9px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
   background: var(--line);
   z-index: 0;
 }
 
-/* Fill line (JS sets width via --fill custom property) */
-.ji__rail::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 20px;
-  height: 2px;
-  width: var(--fill, 0%);
-  background: linear-gradient(90deg, var(--midnight), rgba(3,81,87,.5));
-  border-radius: 2px;
-  transition: width .4s cubic-bezier(.2,.8,.2,1);
-  z-index: 0;
-}
-
-/* ── Individual node ── */
-.ji__node {
-  flex: 1;
+/* ── Nav item ── */
+.ji__navItem {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0 10px 0;
   background: none;
   border: none;
-  padding: 0;
-  text-align: center;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  position: relative;
+  z-index: 1;
+  border-radius: 12px;
+  transition: background .15s;
+  width: 100%;
 }
 
-.ji__dot {
-  width: 14px;
-  height: 14px;
+.ji__navItem:hover {
+  background: rgba(3,81,87,.04);
+}
+
+.ji__navItem:focus-visible {
+  outline: 2px solid rgba(214,252,73,.5);
+  outline-offset: 2px;
+}
+
+/* Dot */
+.ji__navDot {
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   background: var(--isabelline);
-  border: 1.5px solid rgba(31,35,34,.25);
-  transition: background .2s, border-color .2s, box-shadow .2s, transform .2s;
+  border: 1.5px solid rgba(31,35,34,.22);
   flex-shrink: 0;
+  margin-top: 4px;
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .2s;
 }
 
-.ji__node.is-active .ji__dot {
+.ji__navItem.is-active .ji__navDot {
   background: var(--midnight);
   border-color: var(--midnight);
-  box-shadow: 0 0 0 4px rgba(3,81,87,.12);
-  transform: scale(1.15);
+  box-shadow: 0 0 0 3px rgba(3,81,87,.14);
+  transform: scale(1.2);
 }
 
-.ji__node.is-final.is-active .ji__dot {
+.ji__navItem.is-final.is-active .ji__navDot {
   background: var(--lime);
   border-color: #8aac00;
-  box-shadow: 0 0 0 4px rgba(214,252,73,.28);
+  box-shadow: 0 0 0 3px rgba(214,252,73,.35);
 }
 
-.ji__year {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(31,35,34,.55);
-  white-space: nowrap;
-  line-height: 1.2;
-  transition: color .2s, font-weight .2s;
+/* Text labels */
+.ji__navText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.ji__phase {
-  font-size: 10px;
+.ji__navPhase {
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: .10em;
+  color: rgba(31,35,34,.65);
+  line-height: 1.2;
+  transition: color .2s;
   text-transform: uppercase;
-  color: rgba(3,81,87,.60);
+  letter-spacing: .08em;
+}
+
+.ji__navYear {
+  font-size: 11px;
+  color: rgba(31,35,34,.40);
   line-height: 1.2;
   transition: color .2s;
 }
 
-.ji__node.is-active .ji__year {
+.ji__navItem.is-active .ji__navPhase {
   color: var(--midnight);
   font-weight: 700;
 }
 
-.ji__node.is-active .ji__phase {
-  color: var(--midnight);
+.ji__navItem.is-active .ji__navYear {
+  color: rgba(3,81,87,.65);
 }
 
 /* ── Content panel ── */
 .ji__panel {
+  grid-column: 2;
+  grid-row: 1;
   border: 1px solid rgba(3,81,87,.12);
   border-radius: 18px;
   background: #ffffff;
-  padding: 22px 22px 18px;
+  padding: 22px 22px 20px;
   box-shadow:
     0 1px 2px rgba(0,0,0,.04),
     0 4px 12px rgba(0,0,0,.06),
     0 16px 32px rgba(0,0,0,.05);
   position: relative;
-  min-height: 180px;
+  min-height: 200px;
   text-align: left;
+  color: var(--eerie);
 }
 
-/* Active state: left accent bar */
 .ji__panel::before {
   content: "";
   position: absolute;
@@ -2182,24 +2195,24 @@ html{
   background: var(--lime);
 }
 
-/* Content swap animation */
+/* ── Content swap animation ── */
 .ji__content {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity .2s ease, transform .2s ease;
+  transition: opacity .18s ease, transform .18s ease;
 }
 
 .ji__content.is-leaving {
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .ji__content.is-entering {
   opacity: 0;
-  transform: translateY(4px);
+  transform: translateY(5px);
 }
 
-/* Panel header */
+/* ── Panel internals ── */
 .ji__header {
   display: flex;
   align-items: center;
@@ -2228,45 +2241,46 @@ html{
 
 .ji__date {
   font-size: 11px;
-  color: rgba(31,35,34,.50);
+  color: rgba(31,35,34,.45);
 }
 
-/* Panel title */
 .ji__title {
   margin: 0 0 10px;
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: var(--midnight);
+  line-height: 1.25;
+  color: var(--midnight) !important;
 }
 
-/* Narrative — single paragraph, no bullets */
 .ji__narrative {
   margin: 0 0 14px;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: rgba(31,35,34,.78);
 }
 
-/* Takeaway */
 .ji__takeaway {
   border-top: 1px solid var(--line);
   padding-top: 12px;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(31,35,34,.88);
+  color: rgba(31,35,34,.85);
   line-height: 1.5;
+  font-style: italic;
 }
 
 .ji__takeaway::before {
   content: "↳ ";
   color: var(--midnight);
   font-weight: 700;
+  font-style: normal;
 }
 
-/* Nav arrows */
+/* ── Prev/Next nav ── */
 .ji__nav {
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2280,7 +2294,7 @@ html{
   padding: 6px 14px;
   font-size: 12px;
   font-weight: 600;
-  color: rgba(31,35,34,.70);
+  color: rgba(31,35,34,.65);
   cursor: pointer;
   transition: border-color .15s, color .15s, background .15s;
   font-family: inherit;
@@ -2293,22 +2307,85 @@ html{
 }
 
 .ji__navBtn:disabled {
-  opacity: .3;
+  opacity: .28;
   cursor: default;
   pointer-events: none;
 }
 
 .ji__counter {
   font-size: 11px;
-  color: rgba(31,35,34,.45);
+  color: rgba(31,35,34,.40);
   letter-spacing: .04em;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .ji__year { font-size: 10px; }
-  .ji__phase { display: none; }
+/* ── Mobile: stack vertically ── */
+@media (max-width: 640px) {
+  .journey-inline {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 16px 0;
+  }
+
+  /* Rail becomes horizontal scroll row on mobile */
+  .ji__rail {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 0 0 4px;
+    scrollbar-width: none;
+  }
+
+  .ji__rail::-webkit-scrollbar { display: none; }
+
+  .ji__rail::before { display: none; }
+
+  .ji__navItem {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    min-width: 72px;
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.6);
+  }
+
+  .ji__navItem.is-active {
+    background: rgba(3,81,87,.05);
+    border-color: rgba(3,81,87,.22);
+  }
+
+  .ji__navText {
+    align-items: center;
+  }
+
+  .ji__navPhase {
+    font-size: 10px;
+    letter-spacing: .06em;
+  }
+
+  .ji__navYear {
+    font-size: 10px;
+  }
+
+  .ji__navDot {
+    margin-top: 0;
+  }
+
+  .ji__panel {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 160px;
+  }
+
+  .ji__nav {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
   .ji__title { font-size: 17px; }
   .ji__narrative { font-size: 13px; }
-  .ji__panel { padding: 18px 16px 14px; }
 }
