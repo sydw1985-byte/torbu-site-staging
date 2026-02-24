@@ -275,7 +275,10 @@
         <div class="jia__bodyInner">
           <h3 class="jia__title">${esc(d.title)}</h3>
           <p class="jia__narrative">${esc(d.narrative)}</p>
-          <div class="jia__takeaway">${esc(d.takeaway)}</div>
+          <div class="jia__takeaway">
+            <div class="jia__takeawayLabel">Principle</div>
+            <p class="jia__takeawayText">${esc(d.takeaway)}</p>
+          </div>
         </div>
       </div>
     </div>
