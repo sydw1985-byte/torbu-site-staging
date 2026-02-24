@@ -211,57 +211,59 @@
     {
       years: "2018–2019",
       phase: "Foundation",
-      title: "Accountability needs structure.",
-      narrative: "STRIDE launched as a supervision platform for academic sports — a domain with real chains of command, compliance obligations, and outcome tracking. We built role-based oversight, structured daily records, and supervisor visibility into the platform from day one. The operating principle that emerged: you can't enforce accountability without first defining structure.",
-      takeaway: "Structure before content. That principle still runs the platform.",
+      title: "Every team needs a system.",
+      narrative: "TORBU began as STRIDE, a supervision platform for academic sports. We built a role-based system that captured daily activity, records, and supervisor visibility from day one.",
+      takeaway: "First principle: Accountability requires defined structure.",
       final: false,
     },
     {
       years: "2022",
-      phase: "Rebuild",
-      title: "We built it to institutional grade.",
-      narrative: "Early prototyping taught us what regulated environments actually require. We moved engineering in-house and rebuilt the platform from the ground up — establishing direct architectural control, stable multi-level permissions, and audit-grade recordkeeping. This wasn't a course correction; it was the R&D phase that made everything after it possible.",
-      takeaway: "You can't govern at scale without owning the architecture beneath it.",
+      phase: "Institutional",
+      title: "We built it to an institutional standard.",
+      narrative: "Early prototypes exposed what regulated environments demand. We moved engineering in-house and consolidated the system under full architectural control — establishing stable multi-level permissions and audit-ready records. We rebranded as TORBU.",
+      takeaway: "Second principle: Governance at scale requires architectural ownership.",
       final: false,
     },
     {
       years: "2022–2024",
       phase: "Education",
-      title: "Certification runs on the same logic.",
-      narrative: "We expanded into K–12, CTE programs, and structured learning environments. Certification tracking, compliance workflows, and hierarchical oversight all translated directly from sports. This phase deepened the platform's compliance logic and confirmed a pattern: the same governance architecture that works for coaches works for teachers, program directors, and certification bodies.",
-      takeaway: "Certification and compliance run on identical operating logic.",
+      title: "Learning and training follow the same logic.",
+      narrative: "We expanded into K–12, CTE programs, and structured learning environments. Training tracking, compliance workflows, and hierarchical oversight translated directly.",
+      takeaway: "Third principle: Supervisory architecture transcends domain.",
       final: false,
     },
     {
       years: "2022–2025",
       phase: "Regulated Systems",
-      title: "High-accountability environments built the architecture.",
-      narrative: "We took the platform into federal training environments — and this is where chain-of-command architecture was genuinely built and stress-tested. Large-scale curriculum digitization, hierarchical readiness analytics, multi-level oversight at enterprise scale. The operating conditions were the most demanding we'd encountered, and the platform held. This phase produced the architecture that regulated infrastructure deployment requires.",
-      takeaway: "Seven years of R&D. The platform held under federal-grade scrutiny.",
+      title: "High-accountability environments refined the system.",
+      narrative: "We tested chain-of-command architecture at scale in federal training environments. We digitized large curriculum systems, structured readiness analytics, and enabled multi-level oversight across complex institutions.",
+      takeaway: "Fourth principle: Durable architecture withstands demanding conditions.",
       final: false,
     },
     {
       years: "2025 →",
       phase: "Infrastructure",
       title: "The landscape is shifting toward mandate.",
-      narrative: "Across regulated infrastructure — utilities, public works, critical systems — operator training and oversight are moving from best practice to legal requirement. The governance logic we built across seven years maps directly to what these mandates require: defined authority, structured certification, and verified records. The platform was built for exactly this transition.",
-      takeaway: "When oversight becomes law, the systems that run it become infrastructure.",
+      narrative: "Across utilities, public works, and critical systems, operator training and oversight are moving from practice to requirement. The governance logic built over seven years aligns directly with this shift. Defined authority. Structured certification. Verified records.",
+      takeaway: "Fifth principle: When oversight becomes law, supervisory software becomes infrastructure.",
       final: true,
     },
   ];
 
   let current = -1;
 
-  /* ── Build rail nodes ── */
+  /* ── Build vertical nav items ── */
   rail.innerHTML = DATA.map((d, i) => `
     <button
-      class="ji__node${d.final ? " is-final" : ""}"
+      class="ji__navItem${d.final ? " is-final" : ""}"
       data-index="${i}"
       aria-label="${d.years}: ${d.phase}"
     >
-      <div class="ji__dot"></div>
-      <div class="ji__year">${d.years}</div>
-      <div class="ji__phase">${d.phase}</div>
+      <div class="ji__navDot"></div>
+      <div class="ji__navText">
+        <span class="ji__navPhase">${d.phase}</span>
+        <span class="ji__navYear">${d.years}</span>
+      </div>
     </button>
   `).join("");
 
@@ -279,21 +281,17 @@
     `;
   }
 
-  /* ── Activate a node with crossfade ── */
-  function activate(idx, direction = 1) {
+  /* ── Activate ── */
+  function activate(idx) {
     if (idx === current) return;
     const prev = current;
     current = Math.max(0, Math.min(DATA.length - 1, idx));
     const d = DATA[current];
 
-    /* Update nodes */
-    document.querySelectorAll(".ji__node").forEach((n, i) => {
+    /* Update nav items */
+    document.querySelectorAll(".ji__navItem").forEach((n, i) => {
       n.classList.toggle("is-active", i === current);
     });
-
-    /* Rail fill */
-    const pct = DATA.length <= 1 ? 100 : (current / (DATA.length - 1)) * 100;
-    rail.style.setProperty("--fill", `${pct}%`);
 
     /* Panel final state */
     panel.classList.toggle("is-final", d.final);
@@ -302,7 +300,6 @@
     if (prev === -1) {
       content.innerHTML = renderContent(current);
     } else {
-      /* Crossfade */
       content.classList.add("is-leaving");
       setTimeout(() => {
         content.innerHTML = renderContent(current);
@@ -313,7 +310,7 @@
             content.classList.remove("is-entering");
           });
         });
-      }, 180);
+      }, 160);
     }
 
     /* Nav buttons */
@@ -322,16 +319,16 @@
     if (counter) counter.textContent = `${current + 1} / ${DATA.length}`;
   }
 
-  /* ── Node clicks ── */
+  /* ── Clicks ── */
   rail.addEventListener("click", (e) => {
-    const btn = e.target.closest(".ji__node");
+    const btn = e.target.closest(".ji__navItem");
     if (!btn) return;
     activate(Number(btn.dataset.index));
   });
 
   /* ── Arrow nav ── */
-  if (prevBtn) prevBtn.addEventListener("click", () => activate(current - 1, -1));
-  if (nextBtn) nextBtn.addEventListener("click", () => activate(current + 1,  1));
+  if (prevBtn) prevBtn.addEventListener("click", () => activate(current - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => activate(current + 1));
 
   /* ── Init ── */
   activate(0);
