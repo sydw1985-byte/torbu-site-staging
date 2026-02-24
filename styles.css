@@ -2041,61 +2041,72 @@ html{
 }
 /* =========================
    Journey Accordion (company page)
-   Single interaction model, desktop + mobile.
+   Styled to match sector accordion: white cards, teal labels, depth.
+   Principles expand with emphasis on open.
 ========================= */
 
 .jia__wrap {
   max-width: 720px;
   margin: 28px auto 0;
+  display: grid;
+  gap: 12px;
 }
 
-/* ── Each row ── */
+/* ── Each item: white card ── */
 .jia__item {
   position: relative;
-  border-top: 1px solid var(--line);
-  padding-left: 4px;
-  transition: padding-left .2s ease;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  backdrop-filter: saturate(120%) blur(8px);
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-.jia__item:last-child {
-  border-bottom: 1px solid var(--line);
+.jia__item.is-open {
+  border-color: rgba(3,81,87,.22);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.04),
+    0 10px 28px rgba(3,81,87,.10),
+    0 24px 48px rgba(0,0,0,.06);
 }
 
-/* Active left bar */
+/* Left bar — slides in on open */
 .jia__item::before {
   content: "";
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 3px;
-  border-radius: 2px;
+  width: 4px;
   background: var(--midnight);
-  opacity: 0;
-  transition: opacity .2s ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .28s cubic-bezier(.2,.8,.2,1);
+  border-radius: 0;
 }
 
 .jia__item.is-open::before {
-  opacity: 1;
+  transform: scaleY(1);
 }
 
-.jia__item.is-final.is-open::before {
+.jia__item.is-final::before {
   background: var(--lime);
 }
 
-/* ── Trigger row ── */
+/* ── Trigger ── */
 .jia__trigger {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 4px 18px 14px;
+  padding: 16px 18px 16px 20px;
   background: none;
   border: none;
   cursor: pointer;
   font-family: inherit;
   text-align: left;
   transition: background .15s;
-  border-radius: 12px;
 }
 
 .jia__trigger:hover {
@@ -2104,40 +2115,52 @@ html{
 
 .jia__trigger:focus-visible {
   outline: 2px solid rgba(214,252,73,.5);
-  outline-offset: 2px;
-  border-radius: 10px;
+  outline-offset: -2px;
+  border-radius: 18px;
 }
 
 .jia__triggerLeft {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 14px;
   flex: 1;
   min-width: 0;
 }
 
-/* Year pill */
+/* Year — small teal caps, matches eco__title / governance__title */
 .jia__years {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .10em;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(3,81,87,.65);
+  color: rgba(3,81,87,.70);
   white-space: nowrap;
   flex-shrink: 0;
+  transition: color .2s;
 }
 
 .jia__item.is-open .jia__years {
   color: var(--midnight);
 }
 
-/* Phase name */
+/* Divider dot between year and phase */
+.jia__triggerLeft::after {
+  content: "·";
+  color: rgba(31,35,34,.25);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Phase name — matches industryLabel weight */
 .jia__phase {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(31,35,34,.75);
-  letter-spacing: -.01em;
+  color: rgba(31,35,34,.80);
+  letter-spacing: -.005em;
   transition: color .2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .jia__item.is-open .jia__phase {
@@ -2146,9 +2169,9 @@ html{
 
 /* Chevron */
 .jia__chevron {
-  color: rgba(31,35,34,.35);
+  color: rgba(31,35,34,.30);
   flex-shrink: 0;
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), color .2s;
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), color .2s;
 }
 
 .jia__item.is-open .jia__chevron {
@@ -2156,15 +2179,15 @@ html{
   color: var(--midnight);
 }
 
-/* ── Collapsible body ── */
+/* ── Body ── */
 .jia__body {
   overflow: hidden;
   max-height: 0;
-  transition: max-height .35s cubic-bezier(.2,.8,.2,1);
+  transition: max-height .38s cubic-bezier(.2,.8,.2,1);
 }
 
 .jia__body[hidden] {
-  display: block !important; /* override hidden so CSS transition works */
+  display: block !important;
   visibility: hidden;
 }
 
@@ -2173,65 +2196,97 @@ html{
 }
 
 .jia__bodyInner {
-  padding: 0 14px 22px 14px;
+  padding: 2px 20px 22px 20px;
+  border-top: 1px solid var(--line);
 }
 
-/* ── Content ── */
+/* ── Title ── */
 .jia__title {
-  margin: 0 0 10px;
-  font-size: 18px;
+  margin: 16px 0 10px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: -.02em;
   line-height: 1.25;
   color: var(--midnight);
 }
 
+/* ── Narrative ── */
 .jia__narrative {
-  margin: 0 0 14px;
+  margin: 0 0 0;
   font-size: 14px;
   line-height: 1.75;
   color: rgba(31,35,34,.78);
 }
 
+/* ── Principle — prominent, like industryTorbu strong ── */
+.jia__divider {
+  height: 1px;
+  margin: 16px 0 0;
+  background: var(--line);
+}
+
 .jia__takeaway {
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
-  font-size: 13px;
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(3,81,87,.12);
+  background: rgba(3,81,87,.04);
+  margin-top: 12px;
+}
+
+.jia__takeawayLabel {
+  font-size: 10px;
   font-weight: 600;
-  font-style: italic;
-  color: rgba(31,35,34,.82);
-  line-height: 1.55;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(3,81,87,.65);
+  margin-bottom: 6px;
 }
 
-.jia__takeaway::before {
-  content: "↳ ";
-  color: var(--midnight);
+.jia__takeawayText {
+  margin: 0;
+  font-size: 15px;
   font-weight: 700;
-  font-style: normal;
+  color: var(--midnight);
+  line-height: 1.45;
+  letter-spacing: -.01em;
 }
 
-.jia__item.is-final .jia__takeaway::before {
-  color: #6e8a00;
+/* Final item principle: lime tint */
+.jia__item.is-final .jia__takeaway {
+  border-color: rgba(214,252,73,.35);
+  background: rgba(214,252,73,.08);
+}
+
+.jia__item.is-final .jia__takeawayLabel {
+  color: rgba(100,130,0,.75);
+}
+
+.jia__item.is-final .jia__takeawayText {
+  color: rgba(31,35,34,.90);
 }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
   .jia__wrap {
     margin-top: 20px;
+    gap: 10px;
   }
 
   .jia__trigger {
-    padding: 16px 4px 16px 12px;
+    padding: 14px 16px 14px 18px;
   }
 
   .jia__triggerLeft {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
+    gap: 10px;
   }
 
   .jia__phase {
     font-size: 14px;
+  }
+
+  .jia__bodyInner {
+    padding: 2px 16px 18px 18px;
   }
 
   .jia__title {
@@ -2242,7 +2297,7 @@ html{
     font-size: 13px;
   }
 
-  .jia__bodyInner {
-    padding: 0 10px 18px 12px;
+  .jia__takeawayText {
+    font-size: 14px;
   }
 }
