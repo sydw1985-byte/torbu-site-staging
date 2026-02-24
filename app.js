@@ -201,40 +201,40 @@
     {
       years: "2018–2019",
       phase: "Foundation",
-      title: "Every team needs a system.",
-      narrative: "TORBU began as STRIDE, a supervision platform for academic sports. We built a role-based system that captured daily activity, records, and supervisor visibility.",
+      title: "Defined structure.",
+      narrative: "We formalized role-based oversight, daily records, and supervisory visibility. Authority was embedded into workflow from the outset.",
       takeaway: "Accountability requires defined structure.",
       final: false,
     },
     {
       years: "2022",
       phase: "Design",
-      title: "We built it to last.",
-      narrative: "Early prototypes exposed what structured environments demand. We moved engineering in-house and took full architectural control. We established multi-level permissions and audit-ready records. We rebranded as TORBU.",
+      title: "Architectural control.",
+      narrative: "We consolidated engineering under direct control. We established stable multi-level permissions and audit-ready records. The system was reintroduced as TORBU.",
       takeaway: "Governance at scale requires architectural ownership.",
       final: false,
     },
     {
       years: "2022–2024",
-      phase: "Expansion",
-      title: "The same logic applies across domains.",
-      narrative: "We expanded into K 12, CTE programs, and structured learning environments. Instructional oversight, documented activity, and tiered accountability translated directly.",
-      takeaway: "Supervisory architecture transcends domain.",
+      phase: "Deployment",
+      title: "Domain-neutral oversight.",
+      narrative: "We extended the architecture into K–12 and CTE environments. Instructional oversight, structured workflows, and supervisory visibility translated directly.",
+      takeaway: "Supervisory architecture applies across institutions.",
       final: false,
     },
     {
       years: "2022–2025",
       phase: "Refinement",
-      title: "Demanding environments sharpened the system.",
-      narrative: "We tested chain-of-command architecture at scale in federal training environments. We digitized large curriculum systems. We structured readiness analytics. We enabled multi-level oversight across complex institutions.",
-      takeaway: "Durable architecture withstands demanding conditions.",
+      title: "Enterprise supervision.",
+      narrative: "We deployed chain-of-command architecture at scale in federal training environments. We digitized large curriculum systems and structured readiness analytics. Multi-level oversight operated across complex institutions.",
+      takeaway: "Supervisory systems must hold under stress.",
       final: false,
     },
     {
       years: "2025 →",
       phase: "Infrastructure",
-      title: "The landscape is shifting toward mandate.",
-      narrative: "Across utilities, public works, and critical systems, operator training and oversight are becoming legal requirements. The governance logic built over seven years aligns directly with this shift. Defined authority. Structured certification. Verified records.",
+      title: "Statutory alignment.",
+      narrative: "Operator oversight is moving from practice to requirement. Training, certification, and recordkeeping are increasingly mandated. The governance logic aligns directly with this shift. Defined authority. Structured certification. Verified records.",
       takeaway: "When oversight becomes law, supervisory software becomes infrastructure.",
       final: true,
     },
@@ -276,7 +276,6 @@
           <h3 class="jia__title">${esc(d.title)}</h3>
           <p class="jia__narrative">${esc(d.narrative)}</p>
           <div class="jia__takeaway">
-            <div class="jia__takeawayLabel">Principle</div>
             <p class="jia__takeawayText">${esc(d.takeaway)}</p>
           </div>
         </div>
