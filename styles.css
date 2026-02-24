@@ -2143,14 +2143,6 @@ html{
   color: var(--midnight);
 }
 
-/* Divider dot between year and phase */
-.jia__triggerLeft::after {
-  content: "·";
-  color: rgba(31,35,34,.25);
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
 /* Phase name — matches industryLabel weight */
 .jia__phase {
   font-size: 15px;
