@@ -218,7 +218,7 @@
       years: "2022–2024",
       phase: "Deployment",
       title: "Domain-neutral oversight.",
-      narrative: "We extended the architecture into structured training environments across multiple sectors. Instructional oversight, structured workflows, and supervisory visibility translated directly.",
+      narrative: "We extended the architecture into structured training environments across multiple sectors. Instructional oversight, documented workflows, and tiered accountability translated directly.",
       takeaway: "Supervisory architecture applies across institutions.",
       final: false,
     },
