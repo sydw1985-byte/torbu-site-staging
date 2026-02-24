@@ -2218,20 +2218,30 @@ html{
   color: rgba(31,35,34,.78);
 }
 
-/* ── Principle — prominent, like industryTorbu strong ── */
-.jia__divider {
-  height: 1px;
-  margin: 16px 0 0;
-  background: var(--line);
-}
-
+/* ── Principle card — interactive, Architecture-style ── */
 .jia__takeaway {
-  margin: 0;
+  margin-top: 14px;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid rgba(3,81,87,.12);
   background: rgba(3,81,87,.04);
-  margin-top: 12px;
+  cursor: default;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    border-color .18s ease;
+  user-select: none;
+}
+
+/* Hover: lift + teal wash, matches integrate__card hover */
+.jia__takeaway:hover {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.28);
+  background: rgba(214,252,73,.10);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
 }
 
 .jia__takeawayLabel {
@@ -2241,6 +2251,11 @@ html{
   text-transform: uppercase;
   color: rgba(3,81,87,.65);
   margin-bottom: 6px;
+  transition: color .18s ease;
+}
+
+.jia__takeaway:hover .jia__takeawayLabel {
+  color: rgba(3,81,87,.90);
 }
 
 .jia__takeawayText {
@@ -2252,14 +2267,26 @@ html{
   letter-spacing: -.01em;
 }
 
-/* Final item principle: lime tint */
+/* Final item: lime tint, lime hover */
 .jia__item.is-final .jia__takeaway {
-  border-color: rgba(214,252,73,.35);
-  background: rgba(214,252,73,.08);
+  border-color: rgba(214,252,73,.30);
+  background: rgba(214,252,73,.07);
+}
+
+.jia__item.is-final .jia__takeaway:hover {
+  border-color: rgba(214,252,73,.55);
+  background: rgba(214,252,73,.16);
+  box-shadow:
+    0 4px 12px rgba(214,252,73,.18),
+    0 12px 28px rgba(0,0,0,.05);
 }
 
 .jia__item.is-final .jia__takeawayLabel {
-  color: rgba(100,130,0,.75);
+  color: rgba(100,130,0,.72);
+}
+
+.jia__item.is-final .jia__takeaway:hover .jia__takeawayLabel {
+  color: rgba(80,110,0,.90);
 }
 
 .jia__item.is-final .jia__takeawayText {
