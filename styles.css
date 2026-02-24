@@ -1912,7 +1912,7 @@ html{
   border: 1px solid var(--line);
   border-radius: 18px;
   background: #ffffff;
-  padding: 20px 20px 18px;
+  padding: 24px 22px 20px;
   box-shadow:
     0 1px 2px rgba(0,0,0,.04),
     0 4px 10px rgba(0,0,0,.06),
@@ -1926,9 +1926,9 @@ html{
 }
 
 .journey__layers {
-  margin-top: 14px;
+  margin-top: 12px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
   text-align: left;
 }
 
@@ -1971,12 +1971,15 @@ html{
 }
 
 .journey__close {
-  margin: 14px auto 0;
-  font-size: 15px;
+  margin: 18px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
   font-weight: 500;
-  color: rgba(31,35,34,.80);
+  font-style: italic;
+  color: rgba(31,35,34,.70);
   line-height: 1.65;
-  max-width: 66ch;
+  max-width: 60ch;
 }
 
 /* ── Mobile ── */
