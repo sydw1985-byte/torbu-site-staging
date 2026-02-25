@@ -2298,3 +2298,56 @@ html{
     font-size: 14px;
   }
 }
+
+/* =========================
+   Company page callouts — interactive, Architecture-style
+   Matches .integrate__card hover behavior
+========================= */
+
+.company__callout {
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    border-color .18s ease;
+  cursor: default;
+}
+
+.company__callout:hover {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.28);
+  background: rgba(214,252,73,.10);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
+}
+
+/* "Accountability is non-negotiable" — stronger treatment */
+.company__callout--strong {
+  border-color: rgba(3,81,87,.16);
+  background: rgba(3,81,87,.04);
+}
+
+.company__callout--strong span {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--midnight);
+  letter-spacing: -.01em;
+}
+
+.company__callout--strong:hover {
+  border-color: rgba(3,81,87,.32);
+  background: rgba(214,252,73,.12);
+  box-shadow:
+    0 6px 16px rgba(3,81,87,.12),
+    0 16px 36px rgba(0,0,0,.07);
+}
+
+/* "The supervisory model remains consistent" — secondary callout */
+.company__callout--secondary {
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.75));
+}
+
+.company__callout--secondary:hover {
+  background: rgba(214,252,73,.08);
+}
