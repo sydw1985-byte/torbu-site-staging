@@ -234,7 +234,7 @@
       years: "2025 →",
       phase: "Implementation",
       title: "Statutory alignment.",
-      narrative: "Infrastructure statutes now formalize operator oversight requirements. We scale seven years of architectural discipline into a purpose-built governance framework. Defined authority. Structured certification. Verified records.",
+      narrative: "Infrastructure statutes now formalize operator oversight requirements. We scale seven years of architectural discipline into a purpose-built governance framework.",
       takeaway: "When oversight becomes law, supervisory software becomes infrastructure.",
       final: true,
     },
