@@ -63,7 +63,15 @@
     panel.hidden = isOpen;
   });
 
-  closeAll();
+  /* Open Water by default on page load */
+  const waterBtn = root.querySelector('.industryTrigger[aria-controls="panel-water"]');
+  const waterPanel = document.getElementById("panel-water");
+  if (waterBtn && waterPanel) {
+    waterBtn.setAttribute("aria-expanded", "true");
+    waterPanel.hidden = false;
+  } else {
+    closeAll();
+  }
 })();
 
 /* Reads the hash and opens the Water accordion automatically (use case) */
@@ -234,7 +242,7 @@
       years: "2025 →",
       phase: "Implementation",
       title: "Statutory alignment.",
-      narrative: "Infrastructure statutes now formalize operator oversight requirements. We scale seven years of architectural discipline into a purpose-built governance framework.",
+      narrative: "Infrastructure statutes now formalize operator oversight requirements. We scale seven years of architectural discipline into a purpose-built governance framework. Defined authority. Structured certification. Verified records.",
       takeaway: "When oversight becomes law, supervisory software becomes infrastructure.",
       final: true,
     },
