@@ -229,25 +229,6 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <script>
-    (() => {
-      const navBtn = document.getElementById("navToggle");
-      const drawer = document.getElementById("drawer");
-      if (!navBtn || !drawer) return;
-
-      navBtn.addEventListener("click", () => {
-        const isOpen = navBtn.getAttribute("aria-expanded") === "true";
-        navBtn.setAttribute("aria-expanded", String(!isOpen));
-        drawer.hidden = isOpen;
-      });
-
-      drawer.addEventListener("click", (e) => {
-        if (e.target.closest("a")) {
-          drawer.hidden = true;
-          navBtn.setAttribute("aria-expanded", "false");
-        }
-      });
-    })();
-  </script>
+  <script src="./app.js" defer></script>
 </body>
 </html>
