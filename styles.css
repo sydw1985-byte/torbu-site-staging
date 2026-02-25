@@ -2356,3 +2356,51 @@ html{
 .company__callout--secondary:active {
   background: rgba(214,252,73,.08);
 }
+
+/* =========================
+   Callout tap states (mobile)
+   Mirrors hover — triggered via JS is-tapped class
+========================= */
+
+.company__callout.is-tapped {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.28);
+  background: rgba(214,252,73,.10);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
+}
+
+.company__callout--strong.is-tapped {
+  border-color: rgba(3,81,87,.32);
+  background: rgba(214,252,73,.12);
+  box-shadow:
+    0 6px 16px rgba(3,81,87,.12),
+    0 16px 36px rgba(0,0,0,.07);
+}
+
+.company__callout--secondary.is-tapped {
+  background: rgba(214,252,73,.08);
+  border-color: rgba(3,81,87,.28);
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
+}
+
+.jia__takeaway.is-tapped {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.28);
+  background: rgba(214,252,73,.10);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
+}
+
+.jia__item.is-final .jia__takeaway.is-tapped {
+  border-color: rgba(214,252,73,.55);
+  background: rgba(214,252,73,.16);
+  box-shadow:
+    0 4px 12px rgba(214,252,73,.18),
+    0 12px 28px rgba(0,0,0,.05);
+}
