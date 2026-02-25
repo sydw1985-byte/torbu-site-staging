@@ -104,6 +104,32 @@
   }, 120);
 })();
 
+/* Callout tap highlight (mobile touch) */
+(() => {
+  const HIGHLIGHT_MS = 600;
+
+  function bindCallouts(selector) {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.addEventListener("touchstart", () => {
+        el.classList.add("is-tapped");
+      }, { passive: true });
+
+      el.addEventListener("touchend", () => {
+        setTimeout(() => el.classList.remove("is-tapped"), HIGHLIGHT_MS);
+      }, { passive: true });
+
+      el.addEventListener("touchcancel", () => {
+        el.classList.remove("is-tapped");
+      }, { passive: true });
+    });
+  }
+
+  bindCallouts(".company__callout");
+  bindCallouts(".jia__takeaway");
+  bindCallouts(".usecase__callout");
+  bindCallouts(".usecase__emphasis");
+})();
+
 /* Contact form submit (Worker + Turnstile) */
 (() => {
   const form = document.getElementById("contactForm");
