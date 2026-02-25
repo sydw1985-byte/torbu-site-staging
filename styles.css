@@ -981,6 +981,11 @@ Industries Accordion (stacked, centered)
   font-size:.95rem;
 }
 
+.usecase__callout--soft {
+  background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.70));
+  border-color: rgba(3,81,87,.10);
+}
+
 /* =========================
    Company page (match Use Case rhythm)
 ========================= */
