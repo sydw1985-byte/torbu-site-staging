@@ -94,7 +94,7 @@
         </div>
 
         <div class="hero__buttons hero__buttons--center">
-          <button class="btn btn--ghost" onclick="history.length > 1 ? history.back() : window.location='./index.html#sectors'">Back</button>
+          <a class="btn btn--ghost" href="./index.html#sectors" onclick="if(history.length > 1){ event.preventDefault(); history.back(); }">Back</a>
           <a class="btn btn--ghost" href="./index.html#contact">Contact</a>
         </div>
       </div>
