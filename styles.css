@@ -2404,3 +2404,75 @@ html{
     0 4px 12px rgba(214,252,73,.18),
     0 12px 28px rgba(0,0,0,.05);
 }
+
+/* =========================
+   Water use case callouts — interactive, matches company callouts
+========================= */
+
+.usecase__callout {
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    border-color .18s ease;
+  cursor: default;
+}
+
+.usecase__callout:hover,
+.usecase__callout:active,
+.usecase__callout.is-tapped {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.28);
+  background: rgba(214,252,73,.10);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
+}
+
+/* "Framework added. Systems preserved." — soft variant */
+.usecase__callout--soft {
+  border-color: rgba(3,81,87,.10);
+  background: rgba(3,81,87,.03);
+}
+
+.usecase__callout--soft:hover,
+.usecase__callout--soft:active,
+.usecase__callout--soft.is-tapped {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.28);
+  background: rgba(214,252,73,.10);
+  box-shadow:
+    0 4px 12px rgba(3,81,87,.10),
+    0 12px 28px rgba(0,0,0,.06);
+}
+
+/* "Standards flow down. Verified results roll up." — strong close */
+.usecase__emphasis {
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    border-color .18s ease;
+  cursor: default;
+  border-color: rgba(3,81,87,.16);
+  background: rgba(3,81,87,.04);
+}
+
+.usecase__emphasis:hover,
+.usecase__emphasis:active,
+.usecase__emphasis.is-tapped {
+  transform: translateY(-2px);
+  border-color: rgba(3,81,87,.32);
+  background: rgba(214,252,73,.12);
+  box-shadow:
+    0 6px 16px rgba(3,81,87,.12),
+    0 16px 36px rgba(0,0,0,.07);
+}
+
+.usecase__emphasis div {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--midnight);
+  letter-spacing: -.01em;
+  line-height: 1.5;
+}
