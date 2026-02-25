@@ -2227,7 +2227,8 @@ html{
 }
 
 /* Hover: lift + teal wash, matches integrate__card hover */
-.jia__takeaway:hover {
+.jia__takeaway:hover,
+.jia__takeaway:active {
   transform: translateY(-2px);
   border-color: rgba(3,81,87,.28);
   background: rgba(214,252,73,.10);
@@ -2251,7 +2252,8 @@ html{
   background: rgba(214,252,73,.07);
 }
 
-.jia__item.is-final .jia__takeaway:hover {
+.jia__item.is-final .jia__takeaway:hover,
+.jia__item.is-final .jia__takeaway:active {
   border-color: rgba(214,252,73,.55);
   background: rgba(214,252,73,.16);
   box-shadow:
@@ -2313,7 +2315,8 @@ html{
   cursor: default;
 }
 
-.company__callout:hover {
+.company__callout:hover,
+.company__callout:active {
   transform: translateY(-2px);
   border-color: rgba(3,81,87,.28);
   background: rgba(214,252,73,.10);
@@ -2335,7 +2338,8 @@ html{
   letter-spacing: -.01em;
 }
 
-.company__callout--strong:hover {
+.company__callout--strong:hover,
+.company__callout--strong:active {
   border-color: rgba(3,81,87,.32);
   background: rgba(214,252,73,.12);
   box-shadow:
@@ -2348,6 +2352,7 @@ html{
   background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.75));
 }
 
-.company__callout--secondary:hover {
+.company__callout--secondary:hover,
+.company__callout--secondary:active {
   background: rgba(214,252,73,.08);
 }
