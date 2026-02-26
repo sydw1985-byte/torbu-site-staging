@@ -92,7 +92,14 @@ img{max-width:100%;height:auto;display:block}
   font-size:16px;
   line-height:1.6;
 }
-
+.micro-kicker{
+  margin:0 0 10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(31,35,34,.55);
+}
 /* =============
    Buttons
 ============= */
