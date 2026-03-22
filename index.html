@@ -17,65 +17,65 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Favicons (cache-busted) -->
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=20260219" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260219">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=20260219">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=20260219">
-  
+
   <!-- iOS -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260219">
   <meta name="apple-mobile-web-app-title" content="TORBU">
-  
+
   <!-- Safari pinned tab -->
   <link rel="mask-icon" href="safari-pinned-tab.svg?v=20260219" color="#035157">
-  
+
   <!-- Android / PWA -->
   <link rel="manifest" href="site.webmanifest?v=20260219">
   <meta name="theme-color" content="#035157">
 
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 
 <body class="has-ribbon">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="header">
-  <div class="container header__inner">
-    <a class="brand" href="#main" aria-label="TORBU home">
-      <img class="brand__logo" src="assets/torbu-logo-horizontal-green.png" alt="TORBU" />
-    </a>
+    <div class="container header__inner">
+      <a class="brand" href="#main" aria-label="TORBU home">
+        <img class="brand__logo" src="assets/torbu-logo-horizontal-green.png" alt="TORBU" />
+      </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <div class="nav__links nav__links--desktop">
-        <a class="nav__link" href="#governance">Governance</a>
-        <a class="nav__link" href="#model">Model</a>
-        <a class="nav__link" href="#architecture">Architecture</a>
-        <a class="nav__link" href="#why">Why now</a>
-        <a class="nav__link" href="./company.html">Company</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav__links nav__links--desktop">
+          <a class="nav__link" href="#governance">Governance</a>
+          <a class="nav__link" href="#model">Model</a>
+          <a class="nav__link" href="#architecture">Architecture</a>
+          <a class="nav__link" href="#why">Why now</a>
+          <a class="nav__link" href="./company.html">Company</a>
+        </div>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--primary nav__cta" href="#contact">Contact</a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </nav>
-
-    <div class="nav__actions">
-      <a class="btn btn--primary nav__cta" href="#contact">Contact</a>
-      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </div>
 
-  <div class="drawer" id="drawer" hidden>
-    <nav class="drawer__nav" aria-label="Mobile navigation">
-      <a class="drawer__link" href="#governance">Governance</a>
-      <a class="drawer__link" href="#model">Model</a>
-      <a class="drawer__link" href="#architecture">Architecture</a>
-      <a class="drawer__link" href="#why">Why now</a>
-      <a class="drawer__link" href="company.html">Company</a>
-      <a class="drawer__link" href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+    <div class="drawer" id="drawer" hidden>
+      <nav class="drawer__nav" aria-label="Mobile navigation">
+        <a class="drawer__link" href="#governance">Governance</a>
+        <a class="drawer__link" href="#model">Model</a>
+        <a class="drawer__link" href="#architecture">Architecture</a>
+        <a class="drawer__link" href="#why">Why now</a>
+        <a class="drawer__link" href="company.html">Company</a>
+        <a class="drawer__link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
   <main id="main">
 
@@ -101,7 +101,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- GOVERNANCE -->
     <section class="section" id="governance">
       <div class="container">
@@ -110,27 +110,36 @@
         </div>
 
         <div class="sector-gravity">
-          <p class="sector-gravity__water">As automation expands, oversight must scale with it.</p>
           <p class="sector-gravity__water">
-            Standards must propagate.<br />
-            Performance becomes visible.<br />
-            Responsibility remains traceable.
+            Regulated systems run on human judgment. As automation expands, that judgment becomes harder to trace — and easier to lose.
+          </p>
+          <p class="sector-gravity__water">
+            Fragmented tools. Workforce transitions. Compliance pressure across systems no single team controls.
           </p>
           <p class="governance__statement">
             TORBU is supervisory architecture delivered as secure enterprise software.
             It defines authority across policy, operational, and supervisory domains.
           </p>
         </div>
+      </div>
+    </section>
 
+    <!-- DIFFERENTIATION -->
+    <section class="section section--alt" id="differentiation">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="h2">Most compliance tools record what happened.<br>TORBU controls what can happen.</h2>
+          <p class="subhead">TORBU enforces readiness before the record exists&nbsp;— not after.</p>
+        </div>
       </div>
     </section>
 
     <!-- MODEL -->
-    <section class="section section--alt" id="model">
+    <section class="section" id="model">
       <div class="container">
         <div class="section__head">
           <h2 class="h2">Model</h2>
-          <p class="subhead">From policy to verified supervisory control. 
+          <p class="subhead">From policy to verified supervisory control.
             Authority moves downward. Accountability moves upward.</p>
         </div>
 
@@ -158,7 +167,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- ARCHITECTURE -->
     <section class="section section--alt" id="architecture">
       <div class="container">
@@ -206,7 +215,7 @@
             <h3 class="h3 eco__title">Ecosystem Model</h3>
             <p class="eco__subhead">Structured for coordinated delivery across complex environments.</p>
           </div>
-        
+
           <div class="eco__grid" role="list" aria-label="Ecosystem roles">
             <div class="eco__card" role="listitem" tabindex="0">
               <div class="eco__kicker">Policy &amp; Standards</div>
@@ -221,7 +230,7 @@
               <div class="eco__items">Asset condition • Workforce capacity • Performance signals</div>
             </div>
           </div>
-        
+
           <div class="eco__center" aria-label="Coordinated operating layer">
             <div class="eco__centerTitle">TORBU is the coordinated operating layer between policy and execution.</div>
             <div class="eco__centerText">Standards flow down. Verified results roll up.</div>
@@ -232,17 +241,7 @@
       </div>
     </section>
 
-    <!-- ── DIFFERENTIATION ─────────────────────────────────────── -->
-    <section class="section section--alt" id="differentiation">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Most compliance tools record what happened.<br>TORBU controls what can happen.</h2>
-          <p class="subhead">TORBU enforces readiness before the record exists&nbsp;— not after.</p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ── TWO-LAYER MODEL ─────────────────────────────────────── -->
+    <!-- ONE STANDARD -->
     <section class="section" id="standard">
       <div class="container">
         <div class="section__head">
@@ -253,29 +252,33 @@
             same content, same requirements, same checkpoints.
           </p>
         </div>
-    
+
         <div class="steps" style="margin-top:32px;">
           <div class="step">
             <div class="checkpoint" aria-hidden="true"></div>
             <h3 class="h3">Author once</h3>
+            <p>Defined once. Controlled centrally.</p>
           </div>
           <div class="step">
             <div class="checkpoint" aria-hidden="true"></div>
             <h3 class="h3">Configure locally</h3>
+            <p>Required setup before anything activates.</p>
           </div>
           <div class="step">
             <div class="checkpoint" aria-hidden="true"></div>
             <h3 class="h3">Deliver consistently</h3>
+            <p>Same standard. Every time.</p>
           </div>
           <div class="step">
             <div class="checkpoint" aria-hidden="true"></div>
             <h3 class="h3">Surface every gap</h3>
+            <p>Every gap surfaces immediately.</p>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- ── PUBLISH GATE ────────────────────────────────────────── -->
+
+    <!-- PUBLISH GATE -->
     <section class="section section--alt" id="gate">
       <div class="container">
         <div class="section__head">
@@ -285,7 +288,7 @@
             Bypassing the interface does not bypass the gate.
           </p>
         </div>
-    
+
         <div class="usecase usecase--center" style="margin-top:32px;">
           <div class="usecase__callout usecase__callout--soft" role="note" aria-label="Enforcement principle">
             <span style="font-weight:500;">Verification before the record.</span> Not after.
@@ -303,7 +306,7 @@
         </div>
 
         <div class="industry-accordion" id="industryAccordion" aria-label="Regulated industries">
-        
+
           <!-- WATER -->
           <div class="industryItem">
             <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-water">
@@ -330,7 +333,7 @@
               </div>
             </div>
           </div>
-        
+
           <!-- ENERGY -->
           <div class="industryItem">
             <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-energy">
@@ -354,7 +357,7 @@
               </div>
             </div>
           </div>
-        
+
           <!-- TRANSIT -->
           <div class="industryItem">
             <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-transit">
@@ -380,7 +383,7 @@
               </div>
             </div>
           </div>
-        
+
           <!-- PUBLIC SAFETY -->
           <div class="industryItem">
             <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-public-safety">
@@ -404,7 +407,7 @@
               </div>
             </div>
           </div>
-        
+
           <!-- MILITARY -->
           <div class="industryItem">
             <button class="industryTrigger" type="button" aria-expanded="false" aria-controls="panel-military">
@@ -429,7 +432,7 @@
               </div>
             </div>
           </div>
-        
+
         </div>
       </div>
     </section>
@@ -441,14 +444,13 @@
           <h2 class="h2">Why now</h2>
         </div>
         <p class="why-now__body">
-          AI scales automation across regulated systems, distributing workflows across fragmented tools. Responsibility remains human.
+          Infrastructure statutes are formalizing what was previously discretionary. Operator certification requirements. Asset management mandates. State oversight authority over utilities that cannot sustain themselves.
         </p>
         <p class="why-now__body">
-          Increased complexity still demands clear authority and traceable oversight.
-          TORBU preserves supervisory coherence as automation expands.
+          At the same time, AI is distributing execution across systems that have no shared accountability layer. The tools multiply. The responsibility doesn't move.
         </p>
         <p class="why-now__body">
-          <span style="font-weight: 500;">Accountability is non-negotiable.</span>
+          <span style="font-weight:500;">The window to build governed infrastructure is now — before the next failure makes the case instead.</span>
         </p>
       </div>
     </section>
@@ -505,14 +507,14 @@
     </section>
 
   </main>
-  
+
   <!-- Credibility ribbon -->
   <section class="cred-ribbon" aria-label="Credibility">
     <div class="container cred-ribbon__inner">
       <span class="cred-ribbon__text">Built for accountability at scale.</span>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -545,12 +547,10 @@
       </div>
     </div>
   </footer>
-  
-<!-- Automatically adjusts copyright year -->
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-<!-- Your JS (cache-busted) -->
-<script src="app.js?v=11" defer></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="app.js?v=11" defer></script>
 </body>
 </html>
