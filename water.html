@@ -1,38 +1,46 @@
 <!doctype html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <!-- Canonical -->
+
   <link rel="canonical" href="https://torbu.com/water.html">
 
   <title>TORBU — Water Use Case</title>
   <meta name="description" content="TORBU water use case: supervisory control across fragmented systems, workforce transition, and compliance pressure." />
 
   <!-- Poppins -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicons (cache-busted) -->
+
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=20260219" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260219">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=20260219">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=20260219">
 
   <!-- iOS -->
+
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260219">
   <meta name="apple-mobile-web-app-title" content="TORBU">
 
   <!-- Safari pinned tab -->
+
   <link rel="mask-icon" href="safari-pinned-tab.svg?v=20260219" color="#035157">
 
   <!-- Android / PWA -->
+
   <link rel="manifest" href="site.webmanifest?v=20260219">
   <meta name="theme-color" content="#035157">
 
   <!-- Styles -->
+
   <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 
@@ -45,146 +53,152 @@
         <img class="brand__logo" src="assets/torbu-logo-horizontal-green.png" alt="TORBU" />
       </a>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <div class="nav__links nav__links--desktop">
-          <a class="nav__link" href="./index.html#governance">Governance</a>
-          <a class="nav__link" href="./index.html#model">Model</a>
-          <a class="nav__link" href="./index.html#architecture">Architecture</a>
-          <a class="nav__link" href="./index.html#why">Why now</a>
-          <a class="nav__link" href="./company.html">Company</a>
-        </div>
-      </nav>
-
-      <div class="nav__actions">
-        <a class="btn btn--primary nav__cta" href="./index.html#contact">Contact</a>
-        <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+```
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav__links nav__links--desktop">
+      <a class="nav__link" href="./index.html#governance">Governance</a>
+      <a class="nav__link" href="./index.html#model">Model</a>
+      <a class="nav__link" href="./index.html#architecture">Architecture</a>
+      <a class="nav__link" href="./index.html#why">Why now</a>
+      <a class="nav__link" href="./company.html">Company</a>
     </div>
+  </nav>
 
-    <div class="drawer" id="drawer" hidden>
-      <nav class="drawer__nav" aria-label="Mobile navigation">
-        <a class="drawer__link" href="./index.html#governance">Governance</a>
-        <a class="drawer__link" href="./index.html#model">Model</a>
-        <a class="drawer__link" href="./index.html#architecture">Architecture</a>
-        <a class="drawer__link" href="./index.html#why">Why now</a>
-        <a class="drawer__link" href="company.html">Company</a>
-        <a class="drawer__link" href="./index.html#contact">Contact</a>
-      </nav>
-    </div>
+  <div class="nav__actions">
+    <a class="btn btn--primary nav__cta" href="./index.html#contact">Contact</a>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<div class="drawer" id="drawer" hidden>
+  <nav class="drawer__nav" aria-label="Mobile navigation">
+    <a class="drawer__link" href="./index.html#governance">Governance</a>
+    <a class="drawer__link" href="./index.html#model">Model</a>
+    <a class="drawer__link" href="./index.html#architecture">Architecture</a>
+    <a class="drawer__link" href="./index.html#why">Why now</a>
+    <a class="drawer__link" href="company.html">Company</a>
+    <a class="drawer__link" href="./index.html#contact">Contact</a>
+  </nav>
+</div>
+```
+
   </header>
 
   <main id="main">
 
-    <!-- PAGE HERO -->
-    <section class="section section--usecaseHero" id="water">
-      <div class="container">
-        <div class="section__head">
-          <p class="micro-kicker">Use case</p>
-          <h1 class="h2">Water Systems in Transition</h1>
-          <p class="subhead">
-            Utilities must meet uniform standards across fragmented systems and declining workforce continuity.
-            As compliance and operational functions spread across multiple systems and actors, supervisory control becomes harder to maintain.
-          </p>
-        </div>
+```
+<!-- PAGE HERO -->
+<section class="section section--usecaseHero" id="water">
+  <div class="container">
+    <div class="section__head">
+      <p class="micro-kicker">Use case</p>
+      <h1 class="h2">Water Systems in Transition</h1>
+      <p class="subhead">
+        Utilities must meet uniform standards across fragmented systems and declining workforce continuity.
+        As compliance and operational functions spread across multiple systems and actors, supervisory control becomes harder to maintain.
+      </p>
+    </div>
 
-        <div class="hero__buttons hero__buttons--center">
-          <a class="btn btn--ghost" href="./index.html#sectors" onclick="if(history.length > 1){ event.preventDefault(); history.back(); }">Back</a>
-          <a class="btn btn--ghost" href="./index.html#contact">Contact</a>
+    <div class="hero__buttons hero__buttons--center">
+      <a class="btn btn--ghost" href="./index.html#sectors" onclick="if(history.length > 1){ event.preventDefault(); history.back(); }">Back</a>
+      <a class="btn btn--ghost" href="./index.html#contact">Contact</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURAL CHALLENGE -->
+<section class="section section--alt section--usecaseTight" id="water-challenge">
+  <div class="container">
+    <div class="usecase">
+      <p class="micro-kicker">Context</p>
+      <h2 class="h2">The Structural Challenge</h2>
+
+      <div class="usecase__listWrap">
+        <ul class="usecase__list">
+          <li>Fragmented documentation across legacy tools</li>
+          <li>Workforce transition and certification gaps</li>
+          <li>Inconsistent execution and validation</li>
+          <li>Expanding regulatory reporting</li>
+          <li>Multi-utility coordination under state programs</li>
+        </ul>
+      </div>
+
+      <div class="usecase__callout" role="note" aria-label="Key takeaway">
+        <span style="font-weight:500;">Assets modernize.</span> Administrative control often does not.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TORBU FITS -->
+<section class="section section--usecaseTight" id="water-fit">
+  <div class="container">
+    <div class="usecase">
+      <p class="micro-kicker">Approach</p>
+      <h2 class="h2">Where TORBU Fits</h2>
+      <p class="subhead">TORBU provides a supervisory operating layer across execution.</p>
+
+      <div class="usecase__listWrap">
+        <ul class="usecase__list">
+          <li>Standards propagation</li>
+          <li>Accountable ownership</li>
+          <li>Defined checkpoints before risk compounds</li>
+          <li>Training and certification validation</li>
+          <li>Verified visibility for program oversight</li>
+        </ul>
+      </div>
+
+      <p class="usecase__body">
+        TORBU enforces role-based authority, permission-bound certification workflows, and immutable audit records across institutions.
+      </p>
+
+      <div class="usecase__callout usecase__callout--soft" role="note" aria-label="Operating principle">
+        <span style="font-weight:500;">Framework added.</span> Systems preserved.
+      </div>
+
+      <div style="margin-top:36px;">
+        <h3 class="h3" style="text-align:center; margin-bottom:12px;">No workflow advances until it is ready.</h3>
+        <p class="usecase__body">
+          Every required condition must be met before any workflow activates.
+          TORBU enforces local configuration before execution proceeds.
+          Bypassing the interface does not bypass the gate.
+        </p>
+        <div class="usecase__emphasis" role="note" aria-label="Enforcement outcome" style="margin-top:24px;">
+          <div style="font-weight:500;">Verification before the record. Not after.</div>
         </div>
       </div>
-    </section>
 
-    <!-- STRUCTURAL CHALLENGE -->
-    <section class="section section--alt section--usecaseTight" id="water-challenge">
-      <div class="container">
-        <div class="usecase">
-          <p class="micro-kicker">Context</p>
-          <h2 class="h2">The Structural Challenge</h2>
+    </div>
+  </div>
+</section>
 
-          <div class="usecase__listWrap">
-            <ul class="usecase__list">
-              <li>Fragmented documentation across legacy tools</li>
-              <li>Workforce transition and certification gaps</li>
-              <li>Inconsistent execution and validation</li>
-              <li>Expanding regulatory reporting</li>
-              <li>Multi-utility coordination under state programs</li>
-            </ul>
-          </div>
+<!-- RESULT -->
+<section class="section section--alt section--usecaseTight" id="water-result">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Result</h2>
+    </div>
 
-          <div class="usecase__callout" role="note" aria-label="Key takeaway">
-            <span style="font-weight:500;">Assets modernize.</span> Administrative control often does not.
-          </div>
-        </div>
+    <div class="usecase usecase--center">
+      <p class="usecase__body">
+        Utilities maintain supervisory control as automation expands and workforce continuity declines.
+      </p>
+
+      <div class="usecase__emphasis" role="note" aria-label="Core promise">
+        <div style="font-weight:500;">Standards flow down.</div>
+        <div style="font-weight:500;">Verified results roll up.</div>
       </div>
-    </section>
-
-    <!-- WHERE TORBU FITS -->
-    <section class="section section--usecaseTight" id="water-fit">
-      <div class="container">
-        <div class="usecase">
-          <p class="micro-kicker">Approach</p>
-          <h2 class="h2">Where TORBU Fits</h2>
-          <p class="subhead">TORBU provides a supervisory operating layer across execution.</p>
-
-          <div class="usecase__listWrap">
-            <ul class="usecase__list">
-              <li>Standards propagation</li>
-              <li>Accountable ownership</li>
-              <li>Defined checkpoints before risk compounds</li>
-              <li>Training and certification validation</li>
-              <li>Verified visibility for program oversight</li>
-            </ul>
-          </div>
-
-          <p class="usecase__body">
-            TORBU enforces role-based authority, permission-bound certification workflows, and immutable audit records across institutions.
-          </p>
-
-          <div class="usecase__callout usecase__callout--soft" role="note" aria-label="Operating principle">
-            <span style="font-weight:500;">Framework added.</span> Systems preserved.
-          </div>
-
-          <div style="margin-top:36px;">
-            <h3 class="h3" style="text-align:center; margin-bottom:12px;">Nothing moves until it is ready.</h3>
-            <p class="usecase__body">
-              Every required condition must be met before a lesson reaches an operator.
-              TORBU enforces local configuration before any content activates.
-              Bypassing the interface does not bypass the gate.
-            </p>
-            <div class="usecase__emphasis" role="note" aria-label="Enforcement outcome" style="margin-top:24px;">
-              <div style="font-weight:500;">Verification before the record. Not after.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- RESULT -->
-    <section class="section section--alt section--usecaseTight" id="water-result">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Result</h2>
-        </div>
-
-        <div class="usecase usecase--center">
-          <p class="usecase__body">
-            Utilities maintain supervisory control as automation expands and workforce continuity declines.
-          </p>
-
-          <div class="usecase__emphasis" role="note" aria-label="Core promise">
-            <div style="font-weight:500;">Standards flow down.</div>
-            <div style="font-weight:500;">Verified results roll up.</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </div>
+</section>
+```
 
   </main>
 
   <!-- Credibility ribbon -->
+
   <section class="cred-ribbon" aria-label="Credibility">
     <div class="container cred-ribbon__inner">
       <span class="cred-ribbon__text">Built for accountability at scale.</span>
@@ -192,6 +206,7 @@
   </section>
 
   <!-- Footer -->
+
   <footer class="footer">
     <div class="container">
       <div class="footer__top">
@@ -202,28 +217,31 @@
           <div class="footer__tag">Operating Intelligence for Regulated Systems.</div>
         </div>
 
-        <nav class="footer__nav" aria-label="Footer navigation">
-          <a href="./index.html#governance">Governance</a>
-          <a href="./index.html#model">Model</a>
-          <a href="./index.html#architecture">Architecture</a>
-          <a href="./index.html#why">Why now</a>
-          <a href="company.html">Company</a>
-          <a href="./index.html#contact">Contact</a>
-        </nav>
-      </div>
+```
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <a href="./index.html#governance">Governance</a>
+      <a href="./index.html#model">Model</a>
+      <a href="./index.html#architecture">Architecture</a>
+      <a href="./index.html#why">Why now</a>
+      <a href="company.html">Company</a>
+      <a href="./index.html#contact">Contact</a>
+    </nav>
+  </div>
 
-      <div class="footer__bottom">
-        <div class="footer__legal">
-          © <span id="year"></span> TORBU, LLC. All rights reserved.
-          TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.
-        </div>
-        <div class="footer__legal-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <span class="footer__sep">•</span>
-          <a href="terms.html">Terms of Service</a>
-        </div>
-      </div>
+  <div class="footer__bottom">
+    <div class="footer__legal">
+      © <span id="year"></span> TORBU, LLC. All rights reserved.
+      TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.
     </div>
+    <div class="footer__legal-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <span class="footer__sep">•</span>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+</div>
+```
+
   </footer>
 
   <script>
@@ -231,5 +249,6 @@
   </script>
 
   <script src="./app.js?v=11" defer></script>
+
 </body>
 </html>
