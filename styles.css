@@ -618,31 +618,6 @@ img{max-width:100%;height:auto;display:block}
 .industry-accordion .industryItem:first-child{ margin-top: 0; }
 
 /* =========================
-   Model
-========================= */
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4, minmax(0, 1fr));
-  gap:18px;
-  margin-top:18px;
-}
-.step{
-  position:relative;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:#fff;
-  padding:18px 16px 16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-.checkpoint{
-  width:10px;height:10px;border-radius:999px;
-  background:var(--lime);
-  border:2px solid var(--midnight);
-  margin:0 auto 10px;
-}
-
-/* =========================
    Architecture Layer Stack
 ========================= */
 
@@ -1404,7 +1379,6 @@ textarea:focus{
   .h1{font-size:clamp(40px, 9vw, 58px)}
   .hero .lead{font-size:16px}
   .grid2{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
   .eco__grid{ grid-template-columns:1fr; gap:14px; padding-bottom:12px; }
   .eco__card::after{display:none}
   .eco__center{max-width:100%; margin-top:10px}
