@@ -798,6 +798,9 @@ img{max-width:100%;height:auto;display:block}
   font-size:13px;
   color:rgba(31,35,34,.70);
 }
+.architecture__caption{
+  margin-bottom:24px;
+}
 
 .eco__card:hover,
 .eco__card:focus-visible{
