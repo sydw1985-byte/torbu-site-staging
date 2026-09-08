@@ -27,7 +27,6 @@
   });
 })();
 
-/* Industry accordion (one open at a time) */
 /* Industry accordion (one open at a time), animated to match
    the Company Journey accordion's max-height technique. */
 (() => {
