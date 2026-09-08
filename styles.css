@@ -39,6 +39,17 @@ a{color:inherit;text-decoration:none}
 a:hover{opacity:.92}
 img{max-width:100%;height:auto;display:block}
 
+/* Respect OS-level motion preference: disable non-essential
+   transitions/animations for anyone with reduced motion set. */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 .container{
   max-width:var(--max);
   margin:0 auto;
@@ -533,7 +544,19 @@ img{max-width:100%;height:auto;display:block}
   transform: rotate(45deg);
 }
 
-.industryPanel{ padding: 0 12px; }
+.industryPanel{
+  padding: 0 12px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .38s cubic-bezier(.2,.8,.2,1);
+}
+
+.industryPanel[hidden]{
+  display: block !important;
+  visibility: hidden;
+}
+
+.industryItem.is-open .industryPanel{ visibility: visible; }
 
 .industryPanelInner{
   margin-top: 10px;
@@ -645,6 +668,21 @@ img{max-width:100%;height:auto;display:block}
   margin-bottom:8px;
 }
 .integrate__items{ color:rgba(31,35,34,.80); }
+
+/* Scroll-reveal utility: fade + rise into place. JS toggles
+   .is-visible via IntersectionObserver. Falls back to fully
+   visible if JS never runs (progressive enhancement, not a
+   requirement to see the content). */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: none;
+}
+
 .integrate__connector{
   display:flex;
   justify-content:center;
