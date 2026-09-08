@@ -28,6 +28,8 @@
 })();
 
 /* Industry accordion (one open at a time) */
+/* Industry accordion (one open at a time), animated to match
+   the Company Journey accordion's max-height technique. */
 (() => {
   const root = document.getElementById("industryAccordion");
   if (!root) return;
@@ -37,14 +39,37 @@
     return panelId ? document.getElementById(panelId) : null;
   }
 
+  function open(btn) {
+    const item = btn.closest(".industryItem");
+    const panel = getPanel(btn);
+    if (!panel) return;
+    const inner = panel.querySelector(".industryPanelInner");
+
+    btn.setAttribute("aria-expanded", "true");
+    if (item) item.classList.add("is-open");
+    panel.hidden = false;
+    panel.style.maxHeight = (inner ? inner.offsetHeight : panel.scrollHeight) + "px";
+  }
+
+  function close(btn) {
+    const item = btn.closest(".industryItem");
+    const panel = getPanel(btn);
+    if (!panel) return;
+
+    btn.setAttribute("aria-expanded", "false");
+    if (item) item.classList.remove("is-open");
+    panel.style.maxHeight = "0";
+    panel.addEventListener("transitionend", () => {
+      if (btn.getAttribute("aria-expanded") !== "true") panel.hidden = true;
+    }, { once: true });
+  }
+
   function closeAll(exceptBtn = null) {
     root
       .querySelectorAll('.industryTrigger[aria-expanded="true"]')
       .forEach((btn) => {
         if (btn === exceptBtn) return;
-        const panel = getPanel(btn);
-        btn.setAttribute("aria-expanded", "false");
-        if (panel) panel.hidden = true;
+        close(btn);
       });
   }
 
@@ -52,56 +77,41 @@
     const btn = e.target.closest(".industryTrigger");
     if (!btn || !root.contains(btn)) return;
 
-    const panel = getPanel(btn);
-    if (!panel) return;
-
     const isOpen = btn.getAttribute("aria-expanded") === "true";
-
     closeAll(btn);
 
-    btn.setAttribute("aria-expanded", String(!isOpen));
-    panel.hidden = isOpen;
+    if (isOpen) {
+      close(btn);
+    } else {
+      open(btn);
+    }
   });
 
   /* Open Water by default on page load */
   const waterBtn = root.querySelector('.industryTrigger[aria-controls="panel-water"]');
-  const waterPanel = document.getElementById("panel-water");
-  if (waterBtn && waterPanel) {
-    waterBtn.setAttribute("aria-expanded", "true");
-    waterPanel.hidden = false;
+  if (waterBtn) {
+    open(waterBtn);
   } else {
     closeAll();
   }
-})();
 
-/* Reads the hash and opens the Water accordion automatically (use case) */
-(() => {
+  /* Reads the hash and opens the Water accordion automatically (use case) */
   const h = window.location.hash || "";
-  if (!h.includes("governance-open-water")) return;
+  if (h.includes("governance-open-water")) {
+    const gov = document.getElementById("governance");
+    const panel = document.getElementById("panel-water");
 
-  const root = document.getElementById("industryAccordion");
-  if (!root) return;
+    if (waterBtn && panel) {
+      if (gov) gov.scrollIntoView({ behavior: "auto", block: "start" });
 
-  const gov = document.getElementById("governance");
-  const btn = root.querySelector('.industryTrigger[aria-controls="panel-water"]');
-  const panel = document.getElementById("panel-water");
-  if (!btn || !panel) return;
+      closeAll(waterBtn);
+      open(waterBtn);
 
-  if (gov) gov.scrollIntoView({ behavior: "auto", block: "start" });
-
-  root.querySelectorAll('.industryTrigger[aria-expanded="true"]').forEach((b) => {
-    b.setAttribute("aria-expanded", "false");
-    const pid = b.getAttribute("aria-controls");
-    const p = pid ? document.getElementById(pid) : null;
-    if (p) p.hidden = true;
-  });
-
-  btn.setAttribute("aria-expanded", "true");
-  panel.hidden = false;
-
-  setTimeout(() => {
-    btn.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 120);
+      setTimeout(() => {
+        waterBtn.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
+    }
+  }
 })();
 
 /* Callout tap highlight (mobile touch) */
@@ -370,4 +380,35 @@
   /* ── Open first on load ── */
   const first = wrap.querySelector(".jia__item");
   if (first) open(first);
+})();
+
+/* Scroll-reveal — Architecture diagram cards (Supervisory /
+   Execution / Physical Layer). Applied entirely from JS: the
+   .reveal class is added here, not in the HTML, so if this
+   script fails to load or run, the cards are never hidden —
+   they just render normally with no animation. Respects
+   prefers-reduced-motion via the CSS transition-duration
+   override in styles.css; no separate check needed here since
+   an instant 0.001ms transition looks the same as no reveal. */
+(() => {
+  const cards = document.querySelectorAll(".integrate__card");
+  if (!cards.length) return;
+
+  if (!("IntersectionObserver" in window)) return;
+
+  cards.forEach((card) => card.classList.add("reveal"));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  cards.forEach((card) => observer.observe(card));
 })();
