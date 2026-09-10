@@ -83,6 +83,24 @@
       close(btn);
     } else {
       open(btn);
+
+      /* Click-only feedback: trigger pulse + brief lime flash
+         on the panel that was just opened. Not applied to the
+         default-open-on-load or hash-triggered auto-open below,
+         so it only fires in direct response to a user click. */
+      btn.classList.remove("is-pulse");
+      void btn.offsetWidth; /* restart animation if clicked again quickly */
+      btn.classList.add("is-pulse");
+      btn.addEventListener("animationend", () => {
+        btn.classList.remove("is-pulse");
+      }, { once: true });
+
+      const panel = getPanel(btn);
+      const inner = panel ? panel.querySelector(".industryPanelInner") : null;
+      if (inner) {
+        inner.classList.add("is-flash");
+        setTimeout(() => inner.classList.remove("is-flash"), 350);
+      }
     }
   });
 
@@ -388,14 +406,23 @@
    they just render normally with no animation. Respects
    prefers-reduced-motion via the CSS transition-duration
    override in styles.css; no separate check needed here since
-   an instant 0.001ms transition looks the same as no reveal. */
+   an instant 0.001ms transition looks the same as no reveal.
+
+   Staggered via a per-card transition-delay (120ms apart) so
+   the three cards visually reveal in sequence — reinforcing
+   "authority moves downward" — even though all three usually
+   cross the intersection threshold in the same frame, since
+   they're stacked close together. */
 (() => {
   const cards = document.querySelectorAll(".integrate__card");
   if (!cards.length) return;
 
   if (!("IntersectionObserver" in window)) return;
 
-  cards.forEach((card) => card.classList.add("reveal"));
+  cards.forEach((card, i) => {
+    card.classList.add("reveal");
+    card.style.transitionDelay = (i * 120) + "ms";
+  });
 
   const observer = new IntersectionObserver(
     (entries) => {

@@ -46,6 +46,7 @@ img{max-width:100%;height:auto;display:block}
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }
@@ -506,12 +507,22 @@ img{max-width:100%;height:auto;display:block}
   padding: 10px 0;
   cursor: pointer;
   color: rgba(31,35,34,.92);
+  transform-origin: left center;
 }
 
 .industryTrigger:hover{ background: rgba(255,255,255,.35); }
 .industryTrigger:focus-visible{
   outline: 2px solid rgba(3,81,87,.25);
   outline-offset: 2px;
+}
+
+@keyframes triggerPulse{
+  0%{ transform: scale(1); }
+  40%{ transform: scale(1.03); }
+  100%{ transform: scale(1); }
+}
+.industryTrigger.is-pulse{
+  animation: triggerPulse .15s ease;
 }
 
 .industryIcon{
@@ -567,6 +578,13 @@ img{max-width:100%;height:auto;display:block}
   text-align: left;
   color: rgba(31,35,34,.82);
   line-height: 1.55;
+  transition: border-color .6s ease, box-shadow .6s ease;
+}
+
+.industryPanelInner.is-flash{
+  border-color: rgba(214,252,73,.90);
+  box-shadow: 0 0 0 3px rgba(214,252,73,.18);
+  transition: none;
 }
 
 .industryPanelInner p{ margin: 0; }
