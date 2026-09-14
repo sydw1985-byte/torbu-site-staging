@@ -2420,6 +2420,67 @@ body.video-open{ overflow:hidden; }
   background:#000;
 }
 
+.video-modal__controls{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:12px;
+  padding:8px 4px;
+}
+.vc-btn{
+  flex:0 0 32px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:background .15s ease, border-color .15s ease;
+}
+.vc-btn:hover{
+  background:rgba(255,255,255,.16);
+  border-color:rgba(255,255,255,.5);
+}
+.vc-btn:focus-visible{
+  outline:3px solid rgba(214,252,73,.55);
+  outline-offset:2px;
+}
+.vc-time{
+  flex:0 0 auto;
+  min-width:34px;
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+  color:rgba(255,255,255,.75);
+}
+.vc-progress{
+  flex:1 1 auto;
+  padding:10px 0;
+  cursor:pointer;
+}
+.vc-progress__track{
+  position:relative;
+  height:4px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+  overflow:hidden;
+}
+.vc-progress__fill{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:0%;
+  background:var(--lime, #D6FC49);
+  border-radius:999px;
+}
+.vc-progress:focus-visible{
+  outline:3px solid rgba(214,252,73,.55);
+  outline-offset:3px;
+  border-radius:999px;
+}
+
 .video-modal__close{
   width:40px;
   height:40px;
