@@ -2290,14 +2290,13 @@ html{ scroll-behavior: smooth; }
   width:132px;
   height:132px;
   border-radius:50%;
-  background:rgba(255,255,255,.20);
-  border:1.5px solid rgba(255,255,255,.65);
-  backdrop-filter:blur(10px);
-  color:#fff;
+  background:rgba(255,255,255,.10);
+  border:1.5px solid rgba(242,237,232,.52);
+  backdrop-filter:blur(8px);
+  color:rgba(242,237,232,.96);
   display:flex;
   align-items:center;
   justify-content:center;
-  padding-left:5px;
   box-shadow:0 12px 34px rgba(0,0,0,.24);
   transition:
     transform .2s cubic-bezier(.2,.8,.2,1),
@@ -2306,13 +2305,14 @@ html{ scroll-behavior: smooth; }
 }
 .spotlight:hover .spotlight__playRing{
   transform:translate(-50%, -50%) scale(1.06);
-  background:rgba(255,255,255,.30);
+  background:rgba(255,255,255,.16);
+  border-color:rgba(242,237,232,.62);
   box-shadow:0 16px 40px rgba(0,0,0,.28);
 }
 
 .spotlight__playRing svg{
-  width:44px;
-  height:44px;
+  width:52px;
+  height:52px;
 }
 
 
@@ -2328,7 +2328,7 @@ html{ scroll-behavior: smooth; }
 @media (max-width:600px){
   .spotlight{ border-radius:18px; }
   .spotlight__playRing{ width:100px; height:100px; }
-  .spotlight__playRing svg{ width:34px; height:34px; }
+  .spotlight__playRing svg{ width:40px; height:40px; }
   .spotlight__duration{
     right:12px;
     bottom:10px;
