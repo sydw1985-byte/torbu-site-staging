@@ -523,7 +523,7 @@
         <button class="video-modal__close" id="videoModalClose" type="button" aria-label="Close video">✕</button>
       </div>
       <div class="video-modal__frame">
-        <video id="spotlightVideo" playsinline preload="metadata" controls
+        <video id="spotlightVideo" playsinline preload="metadata"
                poster="assets/torbu-video-poster.jpg"
                data-src="assets/torbu-explainer.mp4">
           Your browser does not support embedded video.
@@ -545,6 +545,17 @@
       if (!openBtn || !modal || !closeBtn || !video) return;
 
       let lastFocus = null;
+      let controlsTimer = null;
+
+      /* iOS Safari's native <video controls> overlay (pause button,
+         10s skip buttons, scrubber) appears automatically the moment
+         playback starts and takes several seconds to auto-fade —
+         confirmed via screenshot to sit directly on top of the
+         video's opening beat, blocking it. Fix: don't have
+         `controls` present at all when playback starts; add it a
+         few seconds in, after the opening line has had time to
+         land clean. */
+      const CONTROLS_DELAY_MS = 3000;
 
       function ensureVideoSource() {
         if (video.src) return;
@@ -562,13 +573,21 @@
         requestAnimationFrame(() => modal.classList.add("is-open"));
         document.body.classList.add("video-open");
 
+        video.removeAttribute("controls");
         video.currentTime = 0;
         video.play().catch(() => {});
         closeBtn.focus();
+
+        clearTimeout(controlsTimer);
+        controlsTimer = setTimeout(() => {
+          video.setAttribute("controls", "");
+        }, CONTROLS_DELAY_MS);
       }
 
       function closeModal() {
+        clearTimeout(controlsTimer);
         video.pause();
+        video.removeAttribute("controls");
         modal.classList.remove("is-open");
         document.body.classList.remove("video-open");
 
