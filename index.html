@@ -35,7 +35,7 @@
   <link rel="manifest" href="site.webmanifest?v=20260219">
   <meta name="theme-color" content="#035157">
 
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=16" />
 </head>
 
 <body class="has-ribbon">
@@ -121,6 +121,34 @@
       </div>
     </section>
 
+    <!-- VIDEO SPOTLIGHT -->
+    <section class="section section--video" id="spotlight" aria-labelledby="spotlightTitle">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="h2" id="spotlightTitle">See how TORBU works</h2>
+          <p class="subhead">A one-minute walkthrough of the supervisory model.</p>
+        </div>
+
+        <button class="spotlight" type="button" id="spotlightOpen"
+                aria-haspopup="dialog" aria-controls="videoModal"
+                aria-label="Play TORBU supervisory model overview">
+          <img class="spotlight__poster" src="assets/torbu-video-poster.jpg"
+               alt="" width="1600" height="900" loading="lazy" decoding="async" />
+          <span class="spotlight__shade" aria-hidden="true"></span>
+          <span class="spotlight__duration" aria-hidden="true">1 min overview</span>
+          <span class="spotlight__playRing" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path d="M8 5v14l11-7L8 5z" fill="currentColor"/>
+            </svg>
+          </span>
+        </button>
+
+        <p class="spotlight__summary">
+          TORBU defines authority, verifies evidence, requires review, and produces an auditable record.
+        </p>
+      </div>
+    </section>
+
     <!-- ARCHITECTURE (includes Model: Define / Execute / Verify / Govern) -->
     <section class="section section--alt" id="architecture">
       <div class="container">
@@ -192,6 +220,45 @@
             <div class="eco__centerText">Standards flow down. Verified results roll up.</div>
           </div>
           <p class="eco__caption">Framework added. Systems preserved.</p>
+        </div>
+
+        <!-- SUPERVISORY CHECKPOINTS -->
+        <div class="eco eco--clean">
+          <div class="eco__divider" aria-hidden="true"></div>
+          <div class="eco__head">
+            <h3 class="h3 eco__title">Supervisory Checkpoints</h3>
+            <p class="eco__subhead">The same pattern applies wherever a decision requires evidence.</p>
+          </div>
+
+          <div class="checkpoint__grid" role="list" aria-label="Checkpoint types">
+            <div class="eco__card" role="listitem" tabindex="0">
+              <div class="eco__kicker">Operational Readiness</div>
+              <div class="eco__items">Confirms systems and crews are prepared before work begins.</div>
+            </div>
+            <div class="eco__card" role="listitem" tabindex="0">
+              <div class="eco__kicker">Cybersecurity</div>
+              <div class="eco__items">Requires defined controls before work advances — access, approvals, remediation, and evidence. Preserves the review trail.</div>
+            </div>
+            <div class="eco__card" role="listitem" tabindex="0">
+              <div class="eco__kicker">Human Review for AI</div>
+              <div class="eco__items">Defines where AI can act, where a person must review or approve, and what evidence must accompany the decision.</div>
+            </div>
+            <div class="eco__card" role="listitem" tabindex="0">
+              <div class="eco__kicker">Workforce Qualification</div>
+              <div class="eco__items">Confirms training and certification are current before assignment.</div>
+            </div>
+            <div class="eco__card" role="listitem" tabindex="0">
+              <div class="eco__kicker">Regulatory Evidence</div>
+              <div class="eco__items">Confirms required documentation exists before reporting.</div>
+            </div>
+          </div>
+
+          <div class="eco__center" aria-label="Checkpoint pattern">
+            <div class="eco__centerTitle">TORBU applies the same supervisory pattern across each checkpoint.</div>
+            <div class="eco__centerText">Define the requirement. Assign authority. Verify evidence. Require review. Produce an auditable record.</div>
+          </div>
+          <p class="eco__caption">AI can recommend. TORBU determines when a person must review or approve.</p>
+          <p class="eco__caption">Controls can live in many systems. TORBU verifies required checks occurred before the process advances.</p>
         </div>
 
       </div>
@@ -447,9 +514,105 @@
     </div>
   </footer>
 
+  <!-- Video spotlight modal -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true"
+       aria-labelledby="videoModalTitle" hidden>
+    <div class="video-modal__inner" role="document">
+      <div class="video-modal__topbar">
+        <div class="video-modal__title" id="videoModalTitle">How TORBU works</div>
+        <button class="video-modal__close" id="videoModalClose" type="button" aria-label="Close video">✕</button>
+      </div>
+      <div class="video-modal__frame">
+        <video id="spotlightVideo" playsinline preload="none" controls
+               poster="assets/torbu-video-poster.jpg"
+               data-src="assets/torbu-explainer.mp4">
+          Your browser does not support embedded video.
+        </video>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
   <script src="app.js?v=12" defer></script>
+  <script>
+    (() => {
+      const openBtn = document.getElementById("spotlightOpen");
+      const modal = document.getElementById("videoModal");
+      const closeBtn = document.getElementById("videoModalClose");
+      const video = document.getElementById("spotlightVideo");
+      if (!openBtn || !modal || !closeBtn || !video) return;
+
+      let lastFocus = null;
+
+      function ensureVideoSource() {
+        if (video.src) return;
+        const src = video.dataset.src;
+        if (!src) return;
+        video.src = src;
+        video.load();
+      }
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        ensureVideoSource();
+
+        modal.hidden = false;
+        requestAnimationFrame(() => modal.classList.add("is-open"));
+        document.body.classList.add("video-open");
+
+        video.currentTime = 0;
+        video.play().catch(() => {});
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        video.pause();
+        modal.classList.remove("is-open");
+        document.body.classList.remove("video-open");
+
+        window.setTimeout(() => {
+          modal.hidden = true;
+          (lastFocus || openBtn).focus();
+        }, 220);
+      }
+
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (modal.hidden) return;
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeModal();
+          return;
+        }
+
+        if (event.key === "Tab") {
+          const focusable = [closeBtn, video].filter(Boolean);
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      video.addEventListener("ended", () => {
+        video.currentTime = 0;
+      });
+    })();
+  </script>
 </body>
 </html>
