@@ -31,7 +31,7 @@
   <link rel="manifest" href="site.webmanifest?v=20260219">
   <meta name="theme-color" content="#035157">
  
-  <link rel="stylesheet" href="styles.css?v=16" />
+  <link rel="stylesheet" href="styles.css?v=17" />
 </head>
  
 <body class="page--company has-ribbon">
@@ -136,29 +136,78 @@
       </div>
     </section>
  
-    <!-- COMPANY JOURNEY -->
-    <section class="section section--companyTight" id="company-journey">
+    <!-- COMPANY STORY -->
+    <section class="section section--companyTight journey-story-section" id="company-journey">
       <div class="container">
         <div class="company">
-          <p class="micro-kicker">Operating doctrine</p>
-          <h2 class="h2">Formed under discipline</h2>
+          <p class="micro-kicker">Company story</p>
+          <h2 class="h2">How TORBU evolved</h2>
           <p class="subhead">
-            We developed TORBU within demanding supervisory environments.
-            Each phase established the foundation for the next.
-          </p>
-          <p style="margin-top:12px; font-size:13px;">
-            <a href="./water.html" style="color:var(--midnight); font-weight:600; letter-spacing:.01em;">
-              Applying supervisory architecture to water infrastructure →
-            </a>
+            Built through successive supervisory environments. Each phase added a capability the next one required.
           </p>
         </div>
- 
-        <div class="jia__wrap" id="jiAccordion" aria-label="Company journey"></div>
- 
-        <div class="hero__buttons hero__buttons--center" style="margin-top:2rem;">
+
+        <div class="journey-story" id="journeyStory" aria-label="TORBU company timeline">
+          <aside class="journey-story__rail" aria-label="Timeline navigation">
+            <div class="journey-story__line" aria-hidden="true">
+              <span class="journey-story__lineFill" id="journeyLineFill"></span>
+            </div>
+            <ol class="journey-story__nav">
+              <li><button class="journey-story__navItem is-active" type="button" data-step="0"><span>2018–2019</span><strong>Foundation</strong></button></li>
+              <li><button class="journey-story__navItem" type="button" data-step="1"><span>2022</span><strong>Control</strong></button></li>
+              <li><button class="journey-story__navItem" type="button" data-step="2"><span>2022–2024</span><strong>Expansion</strong></button></li>
+              <li><button class="journey-story__navItem" type="button" data-step="3"><span>2022–2025</span><strong>Validation</strong></button></li>
+              <li><button class="journey-story__navItem journey-story__navItem--final" type="button" data-step="4"><span>2025 →</span><strong>Implementation</strong></button></li>
+            </ol>
+          </aside>
+
+          <div class="journey-story__steps">
+            <article class="journey-story__step is-active" data-step="0" tabindex="-1">
+              <div class="journey-story__dot" aria-hidden="true"></div>
+              <p class="journey-story__year">2018–2019</p>
+              <h3 class="journey-story__phase">Foundation</h3>
+              <p class="journey-story__copy">Built role-based supervision, daily records, and tiered visibility.</p>
+            </article>
+
+            <article class="journey-story__step" data-step="1" tabindex="-1">
+              <div class="journey-story__dot" aria-hidden="true"></div>
+              <p class="journey-story__year">2022</p>
+              <h3 class="journey-story__phase">Control</h3>
+              <p class="journey-story__copy">Brought architecture under direct control and stabilized permissions and records.</p>
+            </article>
+
+            <article class="journey-story__step" data-step="2" tabindex="-1">
+              <div class="journey-story__dot" aria-hidden="true"></div>
+              <p class="journey-story__year">2022–2024</p>
+              <h3 class="journey-story__phase">Expansion</h3>
+              <p class="journey-story__copy">Applied the supervisory model across training and institutional environments.</p>
+            </article>
+
+            <article class="journey-story__step" data-step="3" tabindex="-1">
+              <div class="journey-story__dot" aria-hidden="true"></div>
+              <p class="journey-story__year">2022–2025</p>
+              <h3 class="journey-story__phase">Validation</h3>
+              <p class="journey-story__copy">Tested the model in high-accountability federal training environments.</p>
+            </article>
+
+            <article class="journey-story__step journey-story__step--final" data-step="4" tabindex="-1">
+              <div class="journey-story__dot" aria-hidden="true"></div>
+              <p class="journey-story__year">2025 →</p>
+              <h3 class="journey-story__phase">Implementation</h3>
+              <p class="journey-story__copy">Applied the architecture to regulated infrastructure and statutory oversight.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="journey-story__next">
+          <p class="micro-kicker">See it applied</p>
+          <a class="journey-story__nextLink" href="./water.html">Applying supervisory architecture to water infrastructure →</a>
+        </div>
+
+        <div class="hero__buttons hero__buttons--center journey-story__contact">
           <a class="btn btn--ghost" href="./index.html#contact">Contact us to discuss your environment →</a>
         </div>
- 
+
       </div>
     </section>
  

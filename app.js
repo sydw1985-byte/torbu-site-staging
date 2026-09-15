@@ -83,24 +83,6 @@
       close(btn);
     } else {
       open(btn);
-
-      /* Click-only feedback: trigger pulse + brief lime flash
-         on the panel that was just opened. Not applied to the
-         default-open-on-load or hash-triggered auto-open below,
-         so it only fires in direct response to a user click. */
-      btn.classList.remove("is-pulse");
-      void btn.offsetWidth; /* restart animation if clicked again quickly */
-      btn.classList.add("is-pulse");
-      btn.addEventListener("animationend", () => {
-        btn.classList.remove("is-pulse");
-      }, { once: true });
-
-      const panel = getPanel(btn);
-      const inner = panel ? panel.querySelector(".industryPanelInner") : null;
-      if (inner) {
-        inner.classList.add("is-flash");
-        setTimeout(() => inner.classList.remove("is-flash"), 350);
-      }
     }
   });
 
@@ -250,154 +232,86 @@
   });
 })();
 
-/* Company Journey — accordion, company.html
-   Single interaction model across desktop + mobile.
+
+/* Company Story — scroll-driven timeline, company.html
+   Desktop: sticky rail + active story stage.
+   Mobile: simple vertical timeline with active-stage emphasis.
 ============================================================ */
 
 (() => {
-  const wrap = document.getElementById("jiAccordion");
-  if (!wrap) return;
+  const story = document.getElementById("journeyStory");
+  if (!story) return;
 
-  const DATA = [
-    {
-      years: "2018–2019",
-      phase: "Foundation",
-      title: "Defined oversight.",
-      narrative: "We formalized role-based supervision, daily records, and tiered visibility. Authority was embedded into workflow from inception.",
-      takeaway: "Accountability requires defined structure.",
-      final: false,
-    },
-    {
-      years: "2022",
-      phase: "Control",
-      title: "Architectural ownership.",
-      narrative: "We consolidated engineering under direct architectural control. We established stable multi-level permissions and audit-ready records.",
-      takeaway: "Governance at scale requires architectural ownership.",
-      final: false,
-    },
-    {
-      years: "2022–2024",
-      phase: "Expansion",
-      title: "Domain-neutral supervision.",
-      narrative: "We extended the architecture into structured training environments across sectors. Instructional oversight, documented workflows, and tiered supervision translated directly.",
-      takeaway: "Supervisory architecture applies across institutions.",
-      final: false,
-    },
-    {
-      years: "2022–2025",
-      phase: "Validation",
-      title: "High-accountability environments.",
-      narrative: "We validated chain-of-command architecture in federal training environments. We digitized a large curriculum system and built a purpose-specific delivery platform.",
-      takeaway: "Supervisory systems must hold under stress.",
-      final: false,
-    },
-    {
-      years: "2025 →",
-      phase: "Implementation",
-      title: "Statutory alignment.",
-      narrative: "Infrastructure statutes now formalize operator oversight requirements. We scale seven years of architectural discipline into a purpose-built governance framework.",
-      takeaway: "When oversight becomes law, supervisory software becomes infrastructure.",
-      final: true,
-    },
-  ];
+  const steps = Array.from(story.querySelectorAll(".journey-story__step"));
+  const navItems = Array.from(story.querySelectorAll(".journey-story__navItem"));
+  const fill = document.getElementById("journeyLineFill");
+  if (!steps.length) return;
 
-  const esc = (s) => String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+  let activeIndex = 0;
 
-  /* ── Build accordion HTML ── */
-  wrap.innerHTML = DATA.map((d, i) => `
-    <div class="jia__item${d.final ? " is-final" : ""}" data-index="${i}">
-      <button
-        class="jia__trigger"
-        aria-expanded="false"
-        aria-controls="jia-panel-${i}"
-        id="jia-btn-${i}"
-      >
-        <div class="jia__triggerLeft">
-          <span class="jia__years">${esc(d.years)}</span>
-          <span class="jia__phase">${esc(d.phase)}</span>
-        </div>
-        <div class="jia__chevron" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </button>
-      <div
-        class="jia__body"
-        id="jia-panel-${i}"
-        role="region"
-        aria-labelledby="jia-btn-${i}"
-        hidden
-      >
-        <div class="jia__bodyInner">
-          <h3 class="jia__title">${esc(d.title)}</h3>
-          <p class="jia__narrative">${esc(d.narrative)}</p>
-          <div class="jia__takeaway">
-            <p class="jia__takeawayText">${esc(d.takeaway)}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join("");
+  function setActive(index) {
+    index = Math.max(0, Math.min(steps.length - 1, index));
+    activeIndex = index;
 
-  /* ── Open / close logic ── */
-  function open(item) {
-    const btn = item.querySelector(".jia__trigger");
-    const body = item.querySelector(".jia__body");
-    btn.setAttribute("aria-expanded", "true");
-    item.classList.add("is-open");
-    body.hidden = false;
-    /* Animate height */
-    const inner = body.querySelector(".jia__bodyInner");
-    body.style.maxHeight = inner.offsetHeight + "px";
+    steps.forEach((step, i) => {
+      step.classList.toggle("is-active", i === index);
+      step.classList.toggle("is-past", i < index);
+    });
+
+    navItems.forEach((item, i) => {
+      item.classList.toggle("is-active", i === index);
+      item.classList.toggle("is-past", i < index);
+      if (i === index) item.setAttribute("aria-current", "step");
+      else item.removeAttribute("aria-current");
+    });
+
+    if (fill) {
+      const pct = steps.length > 1 ? (index / (steps.length - 1)) * 100 : 100;
+      fill.style.height = pct + "%";
+    }
   }
 
-  function close(item) {
-    const btn = item.querySelector(".jia__trigger");
-    const body = item.querySelector(".jia__body");
-    btn.setAttribute("aria-expanded", "false");
-    item.classList.remove("is-open");
-    body.style.maxHeight = "0";
-    /* Hide after transition */
-    body.addEventListener("transitionend", () => {
-      if (!item.classList.contains("is-open")) body.hidden = true;
-    }, { once: true });
-  }
-
-  function toggle(item) {
-    const isOpen = item.classList.contains("is-open");
-    /* Close all */
-    wrap.querySelectorAll(".jia__item.is-open").forEach(close);
-    /* Open clicked if it was closed */
-    if (!isOpen) open(item);
-  }
-
-  /* ── Event delegation ── */
-  wrap.addEventListener("click", (e) => {
-    const trigger = e.target.closest(".jia__trigger");
-    if (!trigger) return;
-    const item = trigger.closest(".jia__item");
-    if (item) toggle(item);
+  navItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const index = Number(item.dataset.step);
+      const target = steps[index];
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      setActive(index);
+    });
   });
 
-  /* ── Keyboard support ── */
-  wrap.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    const trigger = e.target.closest(".jia__trigger");
-    if (!trigger) return;
-    e.preventDefault();
-    const item = trigger.closest(".jia__item");
-    if (item) toggle(item);
+  if (!("IntersectionObserver" in window)) {
+    setActive(0);
+    return;
+  }
+
+  const ratios = new Map();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const index = Number(entry.target.dataset.step);
+      ratios.set(index, entry.isIntersecting ? entry.intersectionRatio : 0);
+    });
+
+    let bestIndex = activeIndex;
+    let bestRatio = -1;
+    ratios.forEach((ratio, index) => {
+      if (ratio > bestRatio) {
+        bestRatio = ratio;
+        bestIndex = index;
+      }
+    });
+
+    if (bestRatio > 0) setActive(bestIndex);
+  }, {
+    threshold: [0.15, 0.3, 0.5, 0.7, 0.9],
+    rootMargin: "-18% 0px -28% 0px"
   });
 
-  /* ── Open first on load ── */
-  const first = wrap.querySelector(".jia__item");
-  if (first) open(first);
+  steps.forEach((step) => observer.observe(step));
+  setActive(0);
 })();
+
 
 /* Scroll-reveal — Architecture diagram cards (Supervisory /
    Execution / Physical Layer). Applied entirely from JS: the
@@ -406,23 +320,14 @@
    they just render normally with no animation. Respects
    prefers-reduced-motion via the CSS transition-duration
    override in styles.css; no separate check needed here since
-   an instant 0.001ms transition looks the same as no reveal.
-
-   Staggered via a per-card transition-delay (120ms apart) so
-   the three cards visually reveal in sequence — reinforcing
-   "authority moves downward" — even though all three usually
-   cross the intersection threshold in the same frame, since
-   they're stacked close together. */
+   an instant 0.001ms transition looks the same as no reveal. */
 (() => {
   const cards = document.querySelectorAll(".integrate__card");
   if (!cards.length) return;
 
   if (!("IntersectionObserver" in window)) return;
 
-  cards.forEach((card, i) => {
-    card.classList.add("reveal");
-    card.style.transitionDelay = (i * 120) + "ms";
-  });
+  cards.forEach((card) => card.classList.add("reveal"));
 
   const observer = new IntersectionObserver(
     (entries) => {
