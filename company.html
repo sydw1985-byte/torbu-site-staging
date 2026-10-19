@@ -33,6 +33,7 @@
  
   <link rel="stylesheet" href="styles.css?v=17" />
   <style>
+    img{-webkit-user-drag:none;-webkit-touch-callout:none}
     #company-founder .founder__photo{display:block;width:128px;height:128px;margin:0 auto 18px;border-radius:50%;object-fit:cover;border:1px solid rgba(3,81,87,.18)}
   </style>
 </head>
@@ -278,6 +279,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
  
+  <script>(function(){function im(e){return e.target&&e.target.tagName==="IMG"}document.addEventListener("contextmenu",function(e){if(im(e))e.preventDefault()});document.addEventListener("dragstart",function(e){if(im(e))e.preventDefault()})})();</script>
   <script src="./app.js?v=12" defer></script>
  
 </body>
