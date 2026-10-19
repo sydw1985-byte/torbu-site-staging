@@ -3,48 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- Canonical -->
   <link rel="canonical" href="https://torbu.com/water.html">
+  <title>TORBU — Shared Asset Records for Water Infrastructure</title>
+  <meta name="description" content="TORBU proposes a paid water infrastructure pilot to carry engineering evidence, findings, and review decisions across projects and firms. Request a private walkthrough." />
 
-  <title>TORBU — Water Use Case</title>
-  <meta name="description" content="TORBU water use case: supervisory control across fragmented systems, workforce transition, and compliance pressure." />
-
-  <!-- Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Favicons (cache-busted) -->
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=20260219" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260219">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=20260219">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=20260219">
-
-  <!-- iOS -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260219">
   <meta name="apple-mobile-web-app-title" content="TORBU">
-
-  <!-- Safari pinned tab -->
   <link rel="mask-icon" href="safari-pinned-tab.svg?v=20260219" color="#035157">
-
-  <!-- Android / PWA -->
   <link rel="manifest" href="site.webmanifest?v=20260219">
   <meta name="theme-color" content="#035157">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css?v=17" />
-</head>
 
+  <!-- Page-only additions. Existing site styles and navigation remain shared. -->
+  <style>
+    .water-page .water-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px;text-align:left}
+    .water-page .water-card{min-width:0;padding:24px;border:1px solid #cbd8d8;border-radius:14px;background:#fff;color:#243b40}
+    .water-page .water-card h3{margin:0 0 10px;color:#035157;font-size:1.1rem;line-height:1.4}
+    .water-page .water-card p{margin:0;line-height:1.7}
+    .water-page .water-step{display:block;margin-bottom:12px;color:#035157;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .water-page .water-note{max-width:780px;margin:20px auto 0;font-size:.9rem;line-height:1.7;color:#4a5f64;text-align:center}
+    .water-page .water-gap{margin-top:22px}
+    .water-page .water-contact{overflow-wrap:anywhere}
+    .water-page .water-ask{max-width:760px;margin:0 auto;text-align:center}
+    .water-page .water-status{padding:18px 22px;border-left:4px solid #035157;background:#edf4f3;line-height:1.7;text-align:left}
+    .water-page .water-status strong{color:#035157}
+    @media(max-width:800px){.water-page .water-grid{grid-template-columns:1fr;gap:14px}.water-page .water-card{padding:20px}}
+  </style>
+</head>
 <body class="page--usecase has-ribbon">
   <a class="skip-link" href="#main">Skip to content</a>
-
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="./index.html" aria-label="TORBU home">
         <img class="brand__logo" src="assets/torbu-logo-horizontal-green.png" alt="TORBU" />
       </a>
-
       <nav class="nav" aria-label="Primary navigation">
         <div class="nav__links nav__links--desktop">
           <a class="nav__link" href="./index.html#governance">Governance</a>
@@ -53,167 +52,163 @@
           <a class="nav__link" href="./company.html">Company</a>
         </div>
       </nav>
-
       <div class="nav__actions">
-        <a class="btn btn--primary nav__cta" href="./index.html#contact">Contact</a>
+        <a class="btn btn--primary nav__cta" href="./index.html#contact">Discuss a pilot</a>
         <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-
     <div class="drawer" id="drawer" hidden>
       <nav class="drawer__nav" aria-label="Mobile navigation">
         <a class="drawer__link" href="./index.html#governance">Governance</a>
         <a class="drawer__link" href="./index.html#architecture">Architecture</a>
         <a class="drawer__link" href="./index.html#why">Why now</a>
-        <a class="drawer__link" href="company.html">Company</a>
-        <a class="drawer__link" href="./index.html#contact">Contact</a>
+        <a class="drawer__link" href="./company.html">Company</a>
+        <a class="drawer__link" href="./index.html#contact">Discuss a pilot</a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-
-    <!-- PAGE HERO -->
-    <section class="section section--usecaseHero" id="water">
+  <main id="main" class="water-page">
+    <section class="section section--usecaseHero" id="water" aria-labelledby="water-title">
       <div class="container">
         <div class="section__head">
-          <p class="micro-kicker">Use case</p>
-          <h1 class="h2">Water Systems in Transition</h1>
-          <p class="subhead">
-            Utilities must meet uniform standards across fragmented systems and declining workforce continuity.
-            As compliance and operational functions spread across multiple systems and actors, supervisory control becomes harder to maintain.
-          </p>
+          <p class="micro-kicker">Water infrastructure</p>
+          <h1 class="h2" id="water-title">Carry engineering findings into the next project.</h1>
+          <p class="subhead">TORBU proposes a shared asset record that keeps evidence, findings, reviews, and updates connected as projects, people, and engineering firms change.</p>
+          <p class="water-note">We are seeking a paid pilot on an existing water or wastewater project. A concept prototype is available for private walkthroughs.</p>
         </div>
-
         <div class="hero__buttons hero__buttons--center">
-          <a class="btn btn--ghost" href="./index.html#sectors" onclick="if(history.length > 1){ event.preventDefault(); history.back(); }">Back</a>
-          <a class="btn btn--ghost" href="./index.html#contact">Contact</a>
+          <a class="btn btn--primary" href="./index.html#contact">Request a walkthrough</a>
+          <a class="btn btn--ghost" href="#water-example">See an example</a>
         </div>
       </div>
     </section>
 
-    <!-- STRUCTURAL CHALLENGE -->
-    <section class="section section--alt section--usecaseTight" id="water-challenge">
+    <section class="section section--alt section--usecaseTight" id="water-challenge" aria-labelledby="challenge-title">
       <div class="container">
         <div class="usecase">
-          <p class="micro-kicker">Context</p>
-          <h2 class="h2">The Structural Challenge</h2>
-
-          <div class="usecase__listWrap">
-            <ul class="usecase__list">
-              <li>Fragmented documentation across legacy tools</li>
-              <li>Workforce transition and certification gaps</li>
-              <li>Inconsistent execution and validation</li>
-              <li>Expanding regulatory reporting</li>
-              <li>Multi-utility coordination under state programs</li>
-              <li>Most utilities operate without a fully implemented asset management plan</li>
-            </ul>
-          </div>
-
-          <div class="usecase__callout" role="note" aria-label="Key takeaway">
-            <span style="font-weight:500;">Assets modernize.</span> Administrative control often does not.
+          <p class="micro-kicker">The handoff problem</p>
+          <h2 class="h2" id="challenge-title">What can the next team use?</h2>
+          <p class="usecase__body">A utility may have a good asset management system and still need to assemble earlier reports, source data, and engineering reasoning for a new assignment. The next team must understand what was concluded, what supported it, its limits, and whether it still applies.</p>
+          <p class="usecase__body water-gap">TORBU would organize that handoff around the asset. Qualified engineers would decide what earlier work can be reused and what needs further investigation.</p>
+          <div class="usecase__callout" role="note" aria-label="Purpose">
+            The next project starts with a clearer account of what is known and what still needs work.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHERE TORBU FITS -->
-    <section class="section section--usecaseTight" id="water-fit">
-      <div class="container">
-        <div class="usecase">
-          <p class="micro-kicker">Approach</p>
-          <h2 class="h2">Where TORBU Fits</h2>
-          <p class="subhead">TORBU creates one current, governed record. Utilities and engineering firms produce the evidence. The record shows who produced it and who reviewed it. It marks what's approved, what's open, and what changed later. Authorized developers, lenders, insurers, and public agencies use it for their own decisions. It doesn't replace the systems where the work happens.</p>
-
-          <div class="usecase__listWrap">
-            <ul class="usecase__list">
-              <li>Standards propagation</li>
-              <li>Accountable ownership</li>
-              <li>Defined checkpoints before risk compounds</li>
-              <li>Training and certification validation</li>
-              <li>Verified visibility for program oversight</li>
-            </ul>
-          </div>
-
-          <div class="usecase__callout usecase__callout--soft" role="note" aria-label="Operating principle">
-            <span style="font-weight:500;">Framework added.</span> Systems preserved.
-          </div>
-
-          <div style="margin-top:36px;">
-            <h3 class="h3" style="text-align:center; margin-bottom:12px;">No workflow advances until it is ready.</h3>
-            <p class="usecase__body">
-              Every required condition must be met before any workflow activates.
-              TORBU enforces local configuration before execution proceeds.
-              Bypassing the interface does not bypass the gate.
-            </p>
-            <div class="usecase__emphasis" role="note" aria-label="Enforcement outcome" style="margin-top:24px;">
-              <div style="font-weight:500;">Verification before the record. Not after.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- RESULT -->
-    <section class="section section--alt section--usecaseTight" id="water-result">
+    <section class="section section--usecaseTight" id="water-example" aria-labelledby="example-title">
       <div class="container">
         <div class="section__head">
-          <h2 class="h2">Result</h2>
+          <p class="micro-kicker">An illustrative example</p>
+          <h2 class="h2" id="example-title">One sewer segment. Two firms. One assignment.</h2>
+          <p class="subhead">A proposed inflow and infiltration (I/I) workflow for sewer segment SS-0412.</p>
         </div>
+        <div class="water-grid">
+          <article class="water-card">
+            <span class="water-step">01 · Earlier work</span>
+            <h3>Firm A records its finding.</h3>
+            <p>The finding links to the flow, rainfall, and inspection evidence used, with exact versions, authors, dates, method or basis, review status, and stated limits.</p>
+          </article>
+          <article class="water-card">
+            <span class="water-step">02 · A new assignment</span>
+            <h3>Firm B reviews what still applies.</h3>
+            <p>A later inspection prompts an update check. With authorized access, Firm B records what it can reuse, what needs additional limits, and what needs new investigation.</p>
+          </article>
+          <article class="water-card">
+            <span class="water-step">03 · Project output</span>
+            <h3>The next project has a starting point.</h3>
+            <p>A scoping package brings together reviewed findings, evidence references, limits, and remaining gaps. Firm B records its own decisions. Firm A’s original finding stays unchanged.</p>
+          </article>
+        </div>
+        <p class="water-note">Fictional asset and scenario. The concept prototype simulates this workflow. Qualified engineers remain responsible for their analysis and findings.</p>
+      </div>
+    </section>
 
-        <div class="usecase usecase--center">
-          <p class="usecase__body">
-            Utilities maintain supervisory control as automation expands and workforce continuity declines.
-          </p>
-          <p class="usecase__body">
-            TORBU creates the transparency utilities and regulators need to make informed capital planning and rate decisions.
-          </p>
-
-          <div class="usecase__emphasis" role="note" aria-label="Core promise">
-            <div style="font-weight:500;">Standards flow down.</div>
-            <div style="font-weight:500;">Verified results roll up.</div>
+    <section class="section section--alt section--usecaseTight" id="water-fit" aria-labelledby="fit-title">
+      <div class="container">
+        <div class="usecase">
+          <p class="micro-kicker">Working alongside existing systems</p>
+          <h2 class="h2" id="fit-title">Connect the engineering history to the asset.</h2>
+          <p class="usecase__body">TORBU is intended to work alongside asset management and maintenance systems (EAM or CMMS), GIS, and engineering firms’ project and document tools. The proposed record links findings to the utility’s agreed asset identifiers, including evidence supplied as files, references, or checked manual entries.</p>
+          <p class="usecase__body water-gap">Source records could remain in their existing repositories, subject to agreed access, version, and retention arrangements. Any direct system connections would be scoped and tested separately.</p>
+          <div class="usecase__listWrap">
+            <ul class="usecase__list">
+              <li>Each firm retains authorship and professional responsibility for its findings</li>
+              <li>Earlier findings remain traceable when new evidence arrives</li>
+              <li>The utility authorizes asset access, and rights holders control release under agreed terms</li>
+              <li>Sharing does not automatically grant reliance; agreements define permitted use and update duties</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="section section--usecaseTight" id="water-pilot" aria-labelledby="pilot-title">
+      <div class="container">
+        <div class="usecase">
+          <p class="micro-kicker">A paid pilot</p>
+          <h2 class="h2" id="pilot-title">Test the value on real work.</h2>
+          <p class="usecase__body">Start with an existing project, a qualified technical partner, and authorized evidence. The sponsor, TORBU, and the technical partner would agree two or three measures and establish a baseline before delivery begins.</p>
+          <div class="usecase__listWrap">
+            <ul class="usecase__list">
+              <li>Potential measures: evidence assembly, scoping effort, review resolution, handover completeness, and reviewed reuse</li>
+              <li>Compare against the current workflow, including a structured finding template attached to an existing asset record</li>
+              <li>Deliver a working asset record, an engineering review and update cycle, a scoping package, and an evaluation against the baseline</li>
+            </ul>
+          </div>
+          <p class="usecase__body water-gap">Scope, price, schedule, data rights, professional responsibilities, and acceptance criteria would be agreed before work starts.</p>
+          <div class="water-status water-gap" role="note" aria-label="Current status">
+            <strong>What exists today:</strong> a concept prototype with fictional records and a simulated workflow. The water record is not a production system. No engineering or savings results have been demonstrated. Funded delivery would implement the agreed intake, security, and persistent-record capabilities.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt section--usecaseTight" id="water-contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="micro-kicker">Next step</p>
+          <h2 class="h2" id="contact-title">Have a project where this could help?</h2>
+        </div>
+        <div class="water-ask">
+          <p class="usecase__body">An engineering firm, utility, agency, developer, or investment group could sponsor a pilot with a qualified technical partner. Let’s identify a candidate project and discuss the value to test. Introductions to potential sponsors are welcome.</p>
+          <div class="hero__buttons hero__buttons--center water-gap">
+            <a class="btn btn--primary" href="./index.html#contact">Discuss a paid pilot</a>
+            <a class="btn btn--ghost" href="./index.html#contact">Request a walkthrough</a>
+          </div>
+          <p class="water-note">Use the contact form and say whether you would like to discuss a pilot or see the prototype. Sydney Williams, Founder of TORBU, will follow up.</p>
+          <p class="water-note">Prototype access is provided privately for discussion.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Credibility ribbon -->
-  <section class="cred-ribbon" aria-label="Credibility">
+  <section class="cred-ribbon" aria-label="Guiding principle">
     <div class="container cred-ribbon__inner">
-      <span class="cred-ribbon__text">Built for accountability at scale.</span>
+      <span class="cred-ribbon__text">Qualified engineers decide. TORBU organizes the history.</span>
     </div>
   </section>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer__top">
         <div class="footer__left">
-          <div class="footer__brand">
-            TORBU<span class="reg reg--brand" aria-hidden="true">®</span>
-          </div>
+          <div class="footer__brand">TORBU<span class="reg reg--brand" aria-hidden="true">®</span></div>
           <div class="footer__tag">Supervisory Infrastructure for Regulated Systems.</div>
         </div>
-
         <nav class="footer__nav" aria-label="Footer navigation">
           <a href="./index.html#governance">Governance</a>
           <a href="./index.html#architecture">Architecture</a>
           <a href="./index.html#why">Why now</a>
-          <a href="company.html">Company</a>
-          <a href="./index.html#contact">Contact</a>
+          <a href="./company.html">Company</a>
+          <a href="./index.html#contact">Discuss a pilot</a>
         </nav>
       </div>
-
       <div class="footer__bottom">
-        <div class="footer__legal">
-          © <span id="year"></span> TORBU, LLC. All rights reserved.
-          TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.
-        </div>
+        <div class="footer__legal">© <span id="year"></span> TORBU, LLC. All rights reserved. TORBU<span class="reg reg--legal" aria-hidden="true">®</span> is a registered trademark of TORBU, LLC.</div>
         <div class="footer__legal-links">
           <a href="privacy.html">Privacy Policy</a>
           <span class="footer__sep">•</span>
@@ -222,11 +217,7 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   <script src="./app.js?v=12" defer></script>
 </body>
 </html>
