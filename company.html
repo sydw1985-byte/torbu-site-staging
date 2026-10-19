@@ -32,6 +32,9 @@
   <meta name="theme-color" content="#035157">
  
   <link rel="stylesheet" href="styles.css?v=17" />
+  <style>
+    #company-founder .founder__photo{display:block;width:128px;height:128px;margin:0 auto 18px;border-radius:50%;object-fit:cover;border:1px solid rgba(3,81,87,.18)}
+  </style>
 </head>
  
 <body class="page--company has-ribbon">
@@ -136,6 +139,23 @@
       </div>
     </section>
  
+    <!-- FOUNDER -->
+    <section class="section section--alt section--companyTight" id="company-founder" aria-labelledby="founder-title">
+      <div class="container">
+        <div class="company">
+          <p class="micro-kicker">Leadership</p>
+          <img class="founder__photo" src="./assets/sydney-williams.jpg" width="400" height="400" alt="Sydney Williams, Founder and CEO of TORBU" loading="lazy" onerror="this.remove()">
+          <h2 class="h2" id="founder-title">Sydney Williams</h2>
+          <p class="subhead">
+            Founder and CEO. Started TORBU with a simple belief: software can do more of the work. People still need to own the decisions.
+          </p>
+        </div>
+        <div class="hero__buttons hero__buttons--center">
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/sydwilliams/" target="_blank" rel="noopener noreferrer" aria-label="Sydney Williams on LinkedIn (opens in a new tab)">LinkedIn profile →</a>
+        </div>
+      </div>
+    </section>
+
     <!-- COMPANY STORY -->
     <section class="section section--companyTight journey-story-section" id="company-journey">
       <div class="container">
@@ -210,7 +230,7 @@
 
       </div>
     </section>
- 
+
   </main>
  
   <!-- Credibility ribbon -->
